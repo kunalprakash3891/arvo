@@ -1,0 +1,20 @@
+const editProfilePictureRoute = '/edit-profile-picture/';
+const editProfilePicturesRoute = '/edit-profile-pictures/';
+const settingsRoute = '/settings/';
+const viewProfileRoute = '/view-profile/';
+const viewPostRoute = '/view-post/';
+const blockedMembersRoute = '/settings/blocked-members/';
+const serversRoute = '/servers/';
+const createOrUpdateServerRoute = '/servers/create-or-update-server/';
+const perfectMatchQuizStartRoute = '/perfect-match-quiz-start/';
+const perfectMatchQuizRoute = '/perfect-match-quiz/';
+const perfectMatchQuizFinishRoute = '/perfect-match-quiz-finish/';
+const memberFiltersViewRoute = '/member-filters-view/';
+const memberXProfileOptionsSelectionViewRoute =
+    '/member-xprofile-options-selection/';
+const editProfileGroupViewRoute = '/edit-profile-group-view/';
+const memberSwipeViewRoute = '/member-swipe-view/';
+const subscriptionsViewRoute = '/subscriptions-view/';
+const faqsViewRoute = '/faqs-view/';
+const photoVerificationViewRoute = '/photo-verification-view/';
+const selectLocationViewRoute = '/selection-location-view/';

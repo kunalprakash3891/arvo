@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "688520948191",
+    "project_id": "arvo-bb0ae",
+    "storage_bucket": "arvo-bb0ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:688520948191:android:4fd4441ae1b004a6997c6a",
+        "android_client_info": {
+          "package_name": "com.n3.arvo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6M8fcustp7NaqiFl8vQUVHPMBPXXEFZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
