@@ -520,15 +520,36 @@ Widget _buildMultiSelectSelectedOptionsSummary(
             );
 }
 
-Widget buildXProfileNavigateSelectDisplayWidget(
+Widget buildXProfileNavigateToSelectDisplayWidget(
   BuildContext context,
   XProfileField xProfileField,
-  XProfileField? selectedOption,
+  Map<int, XProfileField?> dropdownSelections,
   Function onEditPressed,
   ValueNotifier<XProfileField?> fieldChangedValueNotifier, {
   String? alternateName,
   String? splitCharacter,
+  Member? currentUser,
 }) {
+  final existingUnserialisedValue = currentUser?.xProfile?.groups
+      .where((group) => group.id == xProfileField.groupId)
+      .first
+      .fields
+      .where((field) => field.id == xProfileField.id)
+      .first
+      .value
+      ?.unserialized
+      ?.firstOrNull;
+
+  final selectedValue = existingUnserialisedValue != null
+      ? existingUnserialisedValue.removeEscapeCharacters().parseHTML()
+      : '';
+
+  // Note: xProfileField.options is not in HTML, but it may have escape characters.
+  var selectedOption = xProfileField.options!
+      .where((option) => option.name.removeEscapeCharacters() == selectedValue)
+      .firstOrNull;
+  dropdownSelections[xProfileField.id] = selectedOption;
+
   final additionalInformation =
       xProfileFieldAdditionalInformationMap[xProfileField.id];
 
@@ -596,14 +617,15 @@ Widget buildXProfileNavigateSelectDisplayWidget(
                         fontWeight: FontWeight.bold,
                       ),
                     )
-                  : selectedOption != null
+                  : dropdownSelections[xProfileField.id] != null
                       ? Text(
                           splitCharacter != null
-                              ? selectedOption.name
+                              ? dropdownSelections[xProfileField.id]!
+                                  .name
                                   .split(splitCharacter)
                                   .reversed
                                   .join(', ')
-                              : selectedOption.name,
+                              : dropdownSelections[xProfileField.id]!.name,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),

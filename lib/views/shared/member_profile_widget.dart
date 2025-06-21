@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
-import 'package:arvo/constants/localised_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -252,7 +251,7 @@ class MemberProfileWidget extends StatelessWidget {
                 quickInfoWidgets.add(
                   buildQuickInfoWidget(
                     context: context,
-                    text: _formatLocationDisplayText(data.value),
+                    text: data.value.split(' | ').reversed.join(', '),
                     iconData: icon,
                     prefix: prefix,
                   ),
@@ -422,16 +421,6 @@ class MemberProfileWidget extends StatelessWidget {
     );
 
     return profileDataWidgetsScrollView;
-  }
-
-  String _formatLocationDisplayText(String value) {
-    var locations = value.split(' | ');
-
-    if (locations.first == defaultLocale) {
-      locations.remove(locations.first);
-    }
-
-    return locations.reversed.join(', ');
   }
 
   Widget _buildMatchedFieldWidget(

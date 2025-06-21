@@ -33,4 +33,4 @@ const adImageIOSDarkMode = '$assetImagesAdsIOS/dark_mode.png';
 const adImageIOSFavouritedMe = '$assetImagesAdsIOS/favourited_me.png';
 const adImageIOSPhotoFilter = '$assetImagesAdsIOS/photo_filter.png';
 
-const defaultCountryCode = 'FJ';
+const defaultCountryCode = 'AU';

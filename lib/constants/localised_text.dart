@@ -10,7 +10,6 @@ const localisedAboutText = 'Made by humans in Melbourne';
 const localisedTextNotPremium = "You're not a Premium member.";
 const localisedTextLocationTracking =
     "Your privacy is important to you, and to us too. Arvo will never request or track your precise location.";
-const defaultLocale = 'Australia';
 
 // TODO: Can we use something else instead of bugger?
 // Search

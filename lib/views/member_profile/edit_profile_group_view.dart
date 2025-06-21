@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/member_xprofile_location_selection_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
@@ -43,6 +44,7 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
   late final Map<int, XProfileFieldOptionsItem?> _multiSelectSelections;
   late final Future _future;
   late final ValueNotifier<XProfileFieldOptionsItem?> _multiSelectFieldChanged;
+  late final ValueNotifier<XProfileField?> _dropDownSelectFieldChanged;
   late final ValueNotifier<bool> _groupChanged;
   late final GlobalKey<FormState> _formKey;
   bool _autoValidate = false;
@@ -57,6 +59,7 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
     _dropdownSelections = {};
     _multiSelectSelections = {};
     _multiSelectFieldChanged = ValueNotifier(null);
+    _dropDownSelectFieldChanged = ValueNotifier(null);
     _groupChanged = ValueNotifier(false);
     _formKey = GlobalKey<FormState>();
     _future = _buildForm();
@@ -111,6 +114,24 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
               currentUser: _currentUser,
             );
           case fieldTypeSelectBox:
+            if (field.id == xProfileFieldLocation) {
+              _profileDataWidgets[field.id] =
+                  buildXProfileNavigateToSelectDisplayWidget(
+                context,
+                field,
+                _dropdownSelections,
+                (context, xProfileField, selectedOption) =>
+                    _awaitReturnFromLocationSelectionView(
+                  context,
+                  field,
+                  _dropdownSelections[field.id],
+                ),
+                _dropDownSelectFieldChanged,
+                splitCharacter: ' | ',
+                currentUser: _currentUser,
+              );
+              continue;
+            }
             _profileDataWidgets[field.id] = buildXProfileSelectBoxWidget(
               context,
               _xProfileGroupId!,
@@ -399,6 +420,37 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
       fieldContainsProfanityExceptions: fieldContainsProfanityExceptions,
       fieldsContainContactInformation: fieldsContainContactInformation,
     );
+  }
+
+  void _awaitReturnFromLocationSelectionView(
+    BuildContext context,
+    XProfileField xProfileFieldLocation,
+    XProfileField? xProfileFieldSelectedLocation,
+  ) async {
+    final xProfileFieldSelectedLocationOriginal =
+        xProfileFieldSelectedLocation != null
+            ? XProfileField.clone(xProfileFieldSelectedLocation)
+            : null;
+    // Navigate to view and wait for it to return.
+    final locationOptions = LocationOptions(
+        xProfileFieldLocation: xProfileFieldLocation,
+        xProfileFieldSelectedLocation: xProfileFieldSelectedLocation);
+    await Navigator.of(context).pushNamed(
+      selectLocationViewRoute,
+      arguments: locationOptions,
+    );
+    // Update this page on return.
+    if (locationOptions.xProfileFieldSelectedLocation !=
+        xProfileFieldSelectedLocationOriginal) {
+      _dropdownSelections[xProfileFieldLocation.id] =
+          locationOptions.xProfileFieldSelectedLocation;
+      if (mounted) {
+        _dropDownSelectFieldChanged.value =
+            locationOptions.xProfileFieldSelectedLocation;
+      }
+    }
+    // Clear the notifier value so that it can be triggered again.
+    if (mounted) _dropDownSelectFieldChanged.value = null;
   }
 
   Future<void> _save({bool prompt = false}) async {

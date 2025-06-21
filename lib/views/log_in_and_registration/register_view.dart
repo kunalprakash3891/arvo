@@ -84,6 +84,8 @@ class _RegisterViewState extends State<RegisterView> {
   final Map<int, XProfileFieldOptionsItem?> _multiSelectSelections = {};
   final ValueNotifier<XProfileFieldOptionsItem?> _multiSelectFieldChanged =
       ValueNotifier(null);
+  final ValueNotifier<XProfileField?> _dropDownSelectFieldChanged =
+      ValueNotifier(null);
   late final TextEditingController _textUserNameEditingController;
   late final TextEditingController _textEmailEditingController;
   late final TextEditingController _textPasswordEditingController;
@@ -98,10 +100,7 @@ class _RegisterViewState extends State<RegisterView> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
   DateTime? _selectedBirthdate;
-  XProfileField? _selectedLocation;
   final ValueNotifier<bool> _birthdateChanged = ValueNotifier(false);
-  final ValueNotifier<XProfileField?> _selectedLocationChanged =
-      ValueNotifier(null);
   ProcessedException? _error;
   late final Future _future;
   double _progress = 0;
@@ -958,20 +957,19 @@ class _RegisterViewState extends State<RegisterView> {
           case fieldTypeSelectBox:
             if (field.id == xProfileFieldLocation) {
               profileGroupDataWidgets[field.id] =
-                  buildXProfileNavigateSelectDisplayWidget(
-                context,
-                field,
-                _selectedLocation,
-                (context, xProfileField, selectedOption) =>
-                    _awaitReturnFromLocationSelectionView(
-                  context,
-                  field,
-                  _selectedLocation,
-                ),
-                _selectedLocationChanged,
-                alternateName: _xProfileFieldsAlternateNameMap[field.id],
-                splitCharacter: ' | ',
-              );
+                  buildXProfileNavigateToSelectDisplayWidget(
+                      context,
+                      field,
+                      _dropdownSelections,
+                      (context, xProfileField, selectedOption) =>
+                          _awaitReturnFromLocationSelectionView(
+                            context,
+                            field,
+                            _dropdownSelections[field.id],
+                          ),
+                      _dropDownSelectFieldChanged,
+                      alternateName: _xProfileFieldsAlternateNameMap[field.id],
+                      splitCharacter: ' | ');
               continue;
             }
             profileGroupDataWidgets[field.id] =
@@ -1130,13 +1128,15 @@ class _RegisterViewState extends State<RegisterView> {
     // Update this page on return.
     if (locationOptions.xProfileFieldSelectedLocation !=
         xProfileFieldSelectedLocationOriginal) {
-      _selectedLocation = locationOptions.xProfileFieldSelectedLocation;
+      _dropdownSelections[xProfileFieldLocation.id] =
+          locationOptions.xProfileFieldSelectedLocation;
       if (mounted) {
-        _selectedLocationChanged.value =
+        _dropDownSelectFieldChanged.value =
             locationOptions.xProfileFieldSelectedLocation;
       }
     }
-    // NOTE: The notifier value does not need to be cleared here because it's dedicated to the location field.
+    // Clear the notifier value so that it can be triggered again.
+    if (mounted) _dropDownSelectFieldChanged.value = null;
   }
 
   Widget _buildRegistrationWidget() {
@@ -1466,12 +1466,6 @@ class _RegisterViewState extends State<RegisterView> {
           }
           _registrationData['field_$profileGroupFieldId'] =
               DateFormat('yyyy-MM-dd 00:00:00').format(_selectedBirthdate!);
-        } else if (profileGroupFieldId == xProfileFieldLocation) {
-          if (_selectedLocation == null) {
-            throw EmptyRequiredFieldException('Please select your location.');
-          }
-          _registrationData['field_$profileGroupFieldId'] =
-              _selectedLocation!.name;
         } else if (_textEditingControllers[profileGroupFieldId] != null) {
           final newValue = _textEditingControllers[profileGroupFieldId]?.text;
           if (profileGroupField.isRequired &&

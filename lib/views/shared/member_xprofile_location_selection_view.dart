@@ -21,6 +21,7 @@ class MemberXProfileLocationSelectionView extends StatefulWidget {
       _MemberXProfileLocationSelectionViewState();
 }
 
+// TODO: Test with registration process to make sure changing the selected location various times works properly.
 class _MemberXProfileLocationSelectionViewState
     extends State<MemberXProfileLocationSelectionView> {
   LocationOptions? _locationOptions;
@@ -288,18 +289,22 @@ class _MemberXProfileLocationSelectionViewState
         if (locationNames.asMap()[1] != null) {
           final regionStateName = locationNames[1];
           _selectedStateRegion = _xProfileFieldLocations!.statesAndRegions
-              .where((regionState) =>
-                  regionState.name == regionStateName &&
-                  regionState.parentId == _selectedCountry!.id)
+              .where(
+                  (regionState) => regionState.parentId == _selectedCountry!.id)
+              .first
+              .options
+              ?.where((option) => option.name == regionStateName)
               .firstOrNull;
         }
 
         if (locationNames.asMap()[2] != null) {
           final cityTownName = locationNames[2];
           _selectedCityTown = _xProfileFieldLocations!.citiesAndTowns
-              .where((cityTown) =>
-                  cityTown.name == cityTownName &&
-                  cityTown.parentId == _selectedStateRegion!.id)
+              .where(
+                  (cityTown) => cityTown.parentId == _selectedStateRegion!.id)
+              .first
+              .options
+              ?.where((option) => option.name == cityTownName)
               .firstOrNull;
         }
       }
