@@ -148,7 +148,6 @@ class _HomeViewState extends State<HomeView> {
                             _buildProfileStatusWidget(),
                             _buildVerifyAccountWidget(),
                             _buildProfilePictureWidget(),
-                            _buildMorePhotosWidget(),
                             _buildNewestMembersWidget(),
                             _buildPerfectMatchQuizWidget(),
                             _buildPostsWidget(),
@@ -707,87 +706,6 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
     );
-  }
-
-  Widget _buildMorePhotosWidget() {
-    bool userHasUploadedAvatar =
-        basename(_currentUser.avatar!.full!) != basename(defaultAvatarURL);
-
-    if (userHasUploadedAvatar &&
-        (_currentUser.photos != null && _currentUser.photos!.isEmpty)) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          clipBehavior: Clip.hardEdge,
-          padding: const EdgeInsets.all(16.0),
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: const AssetImage(
-                'assets/images/many_photos.png',
-              ),
-              fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.6),
-                BlendMode.darken,
-              ),
-            ),
-            borderRadius: BorderRadius.circular(8.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 5.0,
-                spreadRadius: 1.0,
-                offset: const Offset(1.0, 1.0),
-              )
-            ],
-          ),
-          child: Column(
-            children: setHeightBetweenWidgets(
-              [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'You can now upload multiple photos to your profile.',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 72.0,
-                      width: 72.0,
-                      child: Image(
-                        image: AssetImage(
-                          'assets/images/new.png',
-                        ),
-                        fit: BoxFit.contain,
-                      ),
-                    )
-                  ],
-                ),
-                FilledButton(
-                  onPressed: () async {
-                    await navigateToEditProfilePicturesView(
-                        context, _connectionService);
-                  },
-                  child: const Text(
-                    'Upload More Photos',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-              height: 16.0,
-            ),
-          ),
-        ),
-      );
-    } else {
-      return const SizedBox.shrink();
-    }
   }
 
   Widget _buildPerfectMatchQuizWidget() {

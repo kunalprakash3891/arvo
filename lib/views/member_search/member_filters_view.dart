@@ -1,5 +1,6 @@
 import 'dart:io';
-
+import 'package:arvo/constants/x_profile.dart';
+import 'package:arvo/views/shared/member_xprofile_options_selection_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
@@ -131,7 +132,14 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
                 _buildXProfileFilterDisplayWidget(_filters.genders),
                 _buildXProfileFilterDisplayWidget(_filters.sexualOrientations),
                 _buildRangeFilterWidget(_filters.ageRange),
-                _buildXProfileFilterDisplayWidget(_filters.locations),
+                _buildXProfileFilterDisplayWidget(_filters.locations,
+                    selectedItemDescriptionFormatter:
+                        (selectedItemDescription) {
+                  return selectedItemDescription
+                      .split(xProfileLocationDisplayTitleSplitOnCharacter)
+                      .reversed
+                      .join(xProfileLocationDisplayTitleJoinOnCharacter);
+                }),
                 //_buildLocationFilterWidget(),
                 _buildXProfileFilterDisplayWidget(_filters.passions),
                 _buildXProfileFilterDisplayWidget(_filters.ethnicities),
@@ -421,7 +429,9 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
   }
 
   Widget _buildXProfileFilterDisplayWidget(
-      XProfileFieldOptionsItem xProfileFieldOptionsItem) {
+      XProfileFieldOptionsItem xProfileFieldOptionsItem,
+      {String Function(String selectedItemDescription)?
+          selectedItemDescriptionFormatter}) {
     final List<Widget> selectedItems = [];
 
     for (final selectionItem in xProfileFieldOptionsItem.selectionItems) {
@@ -429,7 +439,10 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
         selectedItems.add(
           buildQuickInfoWidget(
             context: context,
-            text: selectionItem.contextTypeDescription,
+            text: selectedItemDescriptionFormatter != null
+                ? selectedItemDescriptionFormatter(
+                    selectionItem.contextTypeDescription)
+                : selectionItem.contextTypeDescription,
           ),
         );
       }
@@ -452,7 +465,9 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
       child: ElevatedButton(
         onPressed: () async {
           await _awaitReturnFromOptionsSelectionView(
-              context, xProfileFieldOptionsItem);
+              context, xProfileFieldOptionsItem,
+              selectedItemDescriptionFormatter:
+                  selectedItemDescriptionFormatter);
         },
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.all(8.0),
@@ -494,14 +509,20 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
     );
   }
 
-  Future<void> _awaitReturnFromOptionsSelectionView(BuildContext context,
-      XProfileFieldOptionsItem xProfileFieldOptionsItem) async {
+  Future<void> _awaitReturnFromOptionsSelectionView(
+      BuildContext context, XProfileFieldOptionsItem xProfileFieldOptionsItem,
+      {String Function(String selectedItemDescription)?
+          selectedItemDescriptionFormatter}) async {
     final xProfileFieldOptionsItemOriginal =
         XProfileFieldOptionsItem.clone(xProfileFieldOptionsItem);
     // Navigate to view and wait for it to return.
     await Navigator.of(context).pushNamed(
-        memberXProfileOptionsSelectionViewRoute,
-        arguments: xProfileFieldOptionsItem);
+      memberXProfileOptionsSelectionViewRoute,
+      arguments: XProfileFieldSelectionOptions(
+        optionsItems: xProfileFieldOptionsItem,
+        descriptionFormatter: selectedItemDescriptionFormatter,
+      ),
+    );
     // Update this page on return.
     if (xProfileFieldOptionsItemOriginal != xProfileFieldOptionsItem) {
       if (mounted) {

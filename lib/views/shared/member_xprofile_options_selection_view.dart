@@ -17,6 +17,7 @@ class MemberXProfileOptionsSelectionView extends StatefulWidget {
       _MemberXProfileOptionsSelectionViewState();
 }
 
+// TODO: Location selection (via filters) does not format correctly for countries with ' in them, like cote d'ivoire. Also check for location selection (for xprofile).
 class _MemberXProfileOptionsSelectionViewState
     extends State<MemberXProfileOptionsSelectionView> {
   XProfileFieldOptionsItem? _optionsItem;
@@ -54,9 +55,16 @@ class _MemberXProfileOptionsSelectionViewState
 
   @override
   Widget build(BuildContext context) {
-    _optionsItem = context.getArgument<XProfileFieldOptionsItem>();
+    final selectionOptions =
+        context.getArgument<XProfileFieldSelectionOptions>();
 
-    if (_optionsItem == null) throw Exception('Invalid options.');
+    final options = context.getArgument<XProfileFieldOptionsItem>();
+
+    if (options == null && selectionOptions == null) {
+      throw Exception('Invalid options.');
+    }
+
+    _optionsItem = selectionOptions?.optionsItems ?? options;
 
     _scrollController.addListener(() {
       //Back to top botton will show on scroll offset.
@@ -76,6 +84,15 @@ class _MemberXProfileOptionsSelectionViewState
             selectionItem.isSelected &&
             selectionItem.contextTypeId != _noneSelectionItemId)
         .length;
+
+    // Format selection item display.
+    for (final selectionItem in _optionsItem!.selectionItems) {
+      selectionItem.displayTitle =
+          (selectionOptions?.descriptionFormatter != null)
+              ? selectionOptions!
+                  .descriptionFormatter!(selectionItem.contextTypeDescription)
+              : selectionItem.contextTypeDescription;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -140,8 +157,7 @@ class _MemberXProfileOptionsSelectionViewState
               children: setHeightBetweenWidgets(
                 _textSearchKeyController.text != ''
                     ? _optionsItem!.selectionItems
-                        .where((selectionItem) => selectionItem
-                            .contextTypeDescription
+                        .where((selectionItem) => selectionItem.displayTitle!
                             .toLowerCase()
                             .contains(_searchKey!.toLowerCase()))
                         .map((selectionItem) =>
@@ -239,7 +255,7 @@ class _MemberXProfileOptionsSelectionViewState
     return _noneSelectionItemId != null &&
             selectionItem.contextTypeId == _noneSelectionItemId
         ? SwitchListTile(
-            title: Text(selectionItem.contextTypeDescription),
+            title: Text(selectionItem.displayTitle!),
             value: selectionItem.isSelected,
             onChanged: (bool? value) {
               if (mounted) {
@@ -257,7 +273,7 @@ class _MemberXProfileOptionsSelectionViewState
             },
           )
         : CheckboxListTile(
-            title: Text(selectionItem.contextTypeDescription),
+            title: Text(selectionItem.displayTitle!),
             value: selectionItem.isSelected,
             onChanged: (bool? value) {
               if (mounted) {
@@ -273,4 +289,14 @@ class _MemberXProfileOptionsSelectionViewState
             },
           );
   }
+}
+
+class XProfileFieldSelectionOptions {
+  XProfileFieldOptionsItem optionsItems;
+  String Function(String selectedItemDescription)? descriptionFormatter;
+
+  XProfileFieldSelectionOptions({
+    required this.optionsItems,
+    this.descriptionFormatter,
+  });
 }

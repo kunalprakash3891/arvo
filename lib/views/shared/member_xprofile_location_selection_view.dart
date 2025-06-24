@@ -24,7 +24,7 @@ class MemberXProfileLocationSelectionView extends StatefulWidget {
 // TODO: Test with registration process to make sure changing the selected location various times works properly.
 class _MemberXProfileLocationSelectionViewState
     extends State<MemberXProfileLocationSelectionView> {
-  LocationOptions? _locationOptions;
+  XProfileLocationSelectionOptions? _locationOptions;
   XProfileFieldLocations? _xProfileFieldLocations;
   XProfileField? _selectedCountry;
   XProfileField? _selectedStateRegion;
@@ -43,7 +43,8 @@ class _MemberXProfileLocationSelectionViewState
   @override
   Widget build(BuildContext context) {
     if (_xProfileFieldLocations == null) {
-      _locationOptions = context.getArgument<LocationOptions>();
+      _locationOptions =
+          context.getArgument<XProfileLocationSelectionOptions>();
 
       if (_locationOptions == null) {
         throw Exception('Invalid location selection data.');
@@ -262,7 +263,7 @@ class _MemberXProfileLocationSelectionViewState
         .xProfileFieldLocation.options!
         .where((option) =>
             option.name ==
-            '${_selectedCountry!.name} | ${_selectedStateRegion!.name}')
+            '${_selectedCountry!.name}$xProfileLocationDisplayTitleSplitOnCharacter${_selectedStateRegion!.name}')
         .firstOrNull;
 
     if (_selectedCityTown?.name == null) return;
@@ -271,14 +272,15 @@ class _MemberXProfileLocationSelectionViewState
         .xProfileFieldLocation.options!
         .where((option) =>
             option.name ==
-            '${_selectedCountry!.name} | ${_selectedStateRegion!.name} | ${_selectedCityTown!.name}')
+            '${_selectedCountry!.name}$xProfileLocationDisplayTitleSplitOnCharacter${_selectedStateRegion!.name}$xProfileLocationDisplayTitleSplitOnCharacter${_selectedCityTown!.name}')
         .firstOrNull;
   }
 
   void _populateSelectedXProfileOptions() {
     if (_locationOptions!.xProfileFieldSelectedLocation != null) {
-      List<String> locationNames =
-          _locationOptions!.xProfileFieldSelectedLocation!.name.split(' | ');
+      List<String> locationNames = _locationOptions!
+          .xProfileFieldSelectedLocation!.name
+          .split(xProfileLocationDisplayTitleSplitOnCharacter);
 
       if (locationNames.isNotEmpty) {
         final countryName = locationNames.first;
@@ -349,11 +351,11 @@ class _MemberXProfileLocationSelectionViewState
   }
 }
 
-class LocationOptions {
+class XProfileLocationSelectionOptions {
   XProfileField xProfileFieldLocation;
   XProfileField? xProfileFieldSelectedLocation;
 
-  LocationOptions({
+  XProfileLocationSelectionOptions({
     required this.xProfileFieldLocation,
     required this.xProfileFieldSelectedLocation,
   });

@@ -12,6 +12,10 @@ const String fieldTypeTextArea = "textarea";
 const String fieldTypeMultiSelectBox = "multiselectbox";
 const String fieldTypeDateBox = "datebox";
 
+// xProfile location processing.
+const String xProfileLocationDisplayTitleSplitOnCharacter = ' | ';
+const String xProfileLocationDisplayTitleJoinOnCharacter = ', ';
+
 // xProfile groups and fields.
 const int xProfileGroupAboutMe = 1;
 const int xProfileGroupBackground = 2;

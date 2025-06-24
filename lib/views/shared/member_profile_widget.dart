@@ -251,7 +251,10 @@ class MemberProfileWidget extends StatelessWidget {
                 quickInfoWidgets.add(
                   buildQuickInfoWidget(
                     context: context,
-                    text: data.value.split(' | ').reversed.join(', '),
+                    text: data.value
+                        .split(xProfileLocationDisplayTitleSplitOnCharacter)
+                        .reversed
+                        .join(xProfileLocationDisplayTitleJoinOnCharacter),
                     iconData: icon,
                     prefix: prefix,
                   ),

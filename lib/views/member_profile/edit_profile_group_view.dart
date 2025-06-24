@@ -127,7 +127,7 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
                   _dropdownSelections[field.id],
                 ),
                 _dropDownSelectFieldChanged,
-                splitCharacter: ' | ',
+                splitCharacter: xProfileLocationDisplayTitleSplitOnCharacter,
                 currentUser: _currentUser,
               );
               continue;
@@ -432,7 +432,7 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
             ? XProfileField.clone(xProfileFieldSelectedLocation)
             : null;
     // Navigate to view and wait for it to return.
-    final locationOptions = LocationOptions(
+    final locationOptions = XProfileLocationSelectionOptions(
         xProfileFieldLocation: xProfileFieldLocation,
         xProfileFieldSelectedLocation: xProfileFieldSelectedLocation);
     await Navigator.of(context).pushNamed(

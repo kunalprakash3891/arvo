@@ -1,3 +1,4 @@
+import 'package:arvo/constants/x_profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field_description.dart';
@@ -156,7 +157,8 @@ Locations? extractXProfileFieldLocations(XProfileField? locationXProfileField) {
 
   for (final xProfileField in options) {
     // Split the name into the consituent locations.
-    List<String> locationNames = xProfileField.name.split(' | ');
+    List<String> locationNames =
+        xProfileField.name.split(xProfileLocationDisplayTitleSplitOnCharacter);
 
     if (locationNames.isEmpty) continue;
 
@@ -246,7 +248,7 @@ class Locations {
 
   for (final xProfileField in options) {
     // Split into the consituent locations.
-    List<String> locationNames = xProfileField.name.split(' | ');
+    List<String> locationNames = xProfileField.name.split(xProfileLocationDisplayTitleSplitOnCharacter);
 
     for (final locationName in locationNames) {
       for (int i = locationName.length - 1; i >= 0; i--) {

@@ -969,7 +969,8 @@ class _RegisterViewState extends State<RegisterView> {
                           ),
                       _dropDownSelectFieldChanged,
                       alternateName: _xProfileFieldsAlternateNameMap[field.id],
-                      splitCharacter: ' | ');
+                      splitCharacter:
+                          xProfileLocationDisplayTitleSplitOnCharacter);
               continue;
             }
             profileGroupDataWidgets[field.id] =
@@ -1118,7 +1119,7 @@ class _RegisterViewState extends State<RegisterView> {
             ? XProfileField.clone(xProfileFieldSelectedLocation)
             : null;
     // Navigate to view and wait for it to return.
-    final locationOptions = LocationOptions(
+    final locationOptions = XProfileLocationSelectionOptions(
         xProfileFieldLocation: xProfileFieldLocation,
         xProfileFieldSelectedLocation: xProfileFieldSelectedLocation);
     await Navigator.of(context).pushNamed(
