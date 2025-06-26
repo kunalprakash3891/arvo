@@ -195,7 +195,7 @@ class _MemberProfileViewState extends State<MemberProfileView> {
                 : setHeightBetweenWidgets(
                     [
                       _buildLoadingFloatingButtonWidget(kBaseColour),
-                      _buildLoadingFloatingButtonWidget(kBaseTriadicColour2),
+                      _buildLoadingFloatingButtonWidget(kBaseColour),
                     ],
                     height: 8.0,
                   ),
@@ -290,7 +290,7 @@ class _MemberProfileViewState extends State<MemberProfileView> {
               Platform.isIOS
                   ? CupertinoIcons.text_bubble
                   : Icons.chat_bubble_outline_rounded,
-              color: kBaseTriadicColour2,
+              color: kBaseColour,
               size: 32.0,
             ),
           ),

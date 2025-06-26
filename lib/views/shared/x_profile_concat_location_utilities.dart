@@ -1,3 +1,4 @@
+import 'package:app_base/extensions/string_extensions.dart';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field.dart';
@@ -167,7 +168,7 @@ Locations? extractXProfileFieldLocations(XProfileField? locationXProfileField) {
         .where((country) => country.name == countryName)
         .firstOrNull;
     if (country == null) {
-      // Generate a (time-based) unique id
+      // Generate a (time-based) unique id.
       country = Location(
           id: DateTime.now().microsecondsSinceEpoch, name: countryName);
       locations.countries.add(country);
@@ -182,7 +183,7 @@ Locations? extractXProfileFieldLocations(XProfileField? locationXProfileField) {
             regionState.parentId == country!.id)
         .firstOrNull;
     if (regionState == null) {
-      // Generate a (time-based) unique id
+      // Generate a (time-based) unique id.
       regionState = Location(
           id: DateTime.now().microsecondsSinceEpoch,
           parentId: country.id,
@@ -199,12 +200,27 @@ Locations? extractXProfileFieldLocations(XProfileField? locationXProfileField) {
             cityTown.parentId == regionState!.id)
         .firstOrNull;
     if (cityTown == null) {
-      // Generate a (time-based) unique id
+      // Generate a (time-based) unique id.
       cityTown ??= Location(
           id: DateTime.now().microsecondsSinceEpoch,
           parentId: regionState.id,
           name: cityTownName);
       locations.citiesAndTowns.add(cityTown);
+    }
+  }
+
+  // Sort the countries.
+  for (int i = xProfileFieldCountrySortMap.keys.last;
+      i >= xProfileFieldCountrySortMap.keys.first;
+      i--) {
+    final country = locations.countries
+        .where((country) =>
+            country.name.removeEscapeCharacters() ==
+            xProfileFieldCountrySortMap[i])
+        .firstOrNull;
+    if (country != null) {
+      locations.countries.remove(country);
+      locations.countries.insert(0, country);
     }
   }
 

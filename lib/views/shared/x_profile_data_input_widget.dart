@@ -331,7 +331,8 @@ Widget _generateDropDownButtonFieldWidget(
       optionName,
     );
   }
-  return Wrap(
+
+  final option = Wrap(
     children: [
       iconData == null
           ? const SizedBox.shrink()
@@ -345,6 +346,16 @@ Widget _generateDropDownButtonFieldWidget(
       )
     ],
   );
+
+  return xProfileDropDownDividerPostfix.contains(optionName)
+      ? Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            option,
+            const Divider(),
+          ],
+        )
+      : option;
 }
 
 Widget buildXProfileMultiSelectDisplayWidget(

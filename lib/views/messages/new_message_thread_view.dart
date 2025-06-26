@@ -470,7 +470,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
         right: 16.0,
         bottom: 16.0,
       ),
-      child: ElevatedButton(
+      child: FilledButton(
         onPressed: () async {
           _sendMessage();
         },

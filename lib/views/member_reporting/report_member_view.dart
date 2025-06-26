@@ -245,7 +245,7 @@ class _ReportMemberViewState extends State<ReportMemberView> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ElevatedButton(
+                        FilledButton(
                           onPressed: () async {
                             _submitReport();
                           },

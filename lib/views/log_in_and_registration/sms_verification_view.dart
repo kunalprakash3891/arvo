@@ -295,15 +295,7 @@ class _SmsVerificationViewState extends State<SmsVerificationView> {
             context: context,
             favourites: const [
               'AU',
-              'CA',
-              'FJ',
-              'GB',
               'NZ',
-              'PG',
-              'TO',
-              'SB',
-              'US',
-              'WS',
             ],
             onSelect: (selectedCountry) {
               _selectedCountry = selectedCountry;

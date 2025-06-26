@@ -250,7 +250,7 @@ class _MemberSwipeViewState extends State<MemberSwipeView> {
           : setHeightBetweenWidgets(
               [
                 _buildLoadingFloatingButtonWidget(kBaseColour),
-                _buildLoadingFloatingButtonWidget(kBaseTriadicColour2),
+                _buildLoadingFloatingButtonWidget(kBaseColour),
               ],
               height: 8.0,
             ),
@@ -345,7 +345,7 @@ class _MemberSwipeViewState extends State<MemberSwipeView> {
               Platform.isIOS
                   ? CupertinoIcons.text_bubble
                   : Icons.chat_bubble_outline_rounded,
-              color: kBaseTriadicColour2,
+              color: kBaseColour,
               size: 32.0,
             ),
           ),

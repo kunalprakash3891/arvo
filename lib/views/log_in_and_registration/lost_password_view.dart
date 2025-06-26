@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/theme/palette.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,7 +66,6 @@ class _LostPasswordViewState extends State<LostPasswordView> {
           _exit();
         },
         child: Scaffold(
-          backgroundColor: const Color(0xff782e43),
           appBar: AppBar(
             iconTheme: const IconThemeData(color: Colors.white),
             backgroundColor: Colors.transparent,
@@ -78,102 +78,116 @@ class _LostPasswordViewState extends State<LostPasswordView> {
           extendBodyBehindAppBar: true,
           body: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
-            child: Center(
-              child: SingleChildScrollView(
-                child: Form(
-                  key: _formKey,
-                  autovalidateMode: _autoValidate
-                      ? AutovalidateMode.onUserInteraction
-                      : AutovalidateMode.disabled,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: 320.0,
-                        child: buildLogoTaglineWidget(
-                          logo,
-                          tagline,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(32.0),
-                        child: Container(
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.surface,
-                            borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    kBaseGradientStart,
+                    kBaseGradientEnd,
+                  ],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                ),
+              ),
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: _formKey,
+                    autovalidateMode: _autoValidate
+                        ? AutovalidateMode.onUserInteraction
+                        : AutovalidateMode.disabled,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: 320.0,
+                          child: buildLogoTaglineWidget(
+                            logo,
+                            tagline,
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Lost Password",
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
-                              ),
-                              const SizedBox(
-                                height: 16.0,
-                              ),
-                              const Text(
-                                "Enter your email below to receive a link to reset your password.",
-                              ),
-                              const SizedBox(
-                                height: 16.0,
-                              ),
-                              TextFormField(
-                                style: Theme.of(context).textTheme.titleMedium,
-                                keyboardType: TextInputType.emailAddress,
-                                autofocus: true,
-                                autocorrect: false,
-                                controller: _emailAddress,
-                                decoration: const InputDecoration(
-                                  labelText: 'Email Address',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(32.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(16.0),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.surface,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Lost Password",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineMedium,
                                 ),
-                                validator: (value) {
-                                  if (value == null || value.trim().isEmpty) {
-                                    return 'Email Address cannot be empty.';
-                                  }
-                                  if (!value.isValidEmail()) {
-                                    return 'Please enter a valid email address.';
-                                  }
-                                  return null;
-                                },
-                                onFieldSubmitted: (value) async {
-                                  _sendPasswordResetEmail();
-                                },
-                              ),
-                              const SizedBox(
-                                height: 16.0,
-                              ),
-                              FilledButton(
-                                onPressed: () async {
-                                  _sendPasswordResetEmail();
-                                },
-                                child: const Text(
-                                  'Send password reset email',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                const SizedBox(
+                                  height: 16.0,
+                                ),
+                                const Text(
+                                  "Enter your email below to receive a link to reset your password.",
+                                ),
+                                const SizedBox(
+                                  height: 16.0,
+                                ),
+                                TextFormField(
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                  keyboardType: TextInputType.emailAddress,
+                                  autofocus: true,
+                                  autocorrect: false,
+                                  controller: _emailAddress,
+                                  decoration: const InputDecoration(
+                                    labelText: 'Email Address',
                                   ),
+                                  validator: (value) {
+                                    if (value == null || value.trim().isEmpty) {
+                                      return 'Email Address cannot be empty.';
+                                    }
+                                    if (!value.isValidEmail()) {
+                                      return 'Please enter a valid email address.';
+                                    }
+                                    return null;
+                                  },
+                                  onFieldSubmitted: (value) async {
+                                    _sendPasswordResetEmail();
+                                  },
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 8.0,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  TextButton(
-                                    onPressed: _exit,
-                                    child: const Text(
-                                      'Back to Log In page',
+                                const SizedBox(
+                                  height: 16.0,
+                                ),
+                                FilledButton(
+                                  onPressed: () async {
+                                    _sendPasswordResetEmail();
+                                  },
+                                  child: const Text(
+                                    'Send password reset email',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                const SizedBox(
+                                  height: 8.0,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                      onPressed: _exit,
+                                      child: const Text(
+                                        'Back to Log In page',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -178,6 +178,17 @@ Map<int, int> xProfileFieldCharacterLimitMap = {
 // Additional information map.
 Map<int, String> xProfileFieldAdditionalInformationMap = {};
 
+// Location (Country) sort map.
+Map<int, String> xProfileFieldCountrySortMap = {
+  1: 'Australia',
+  2: 'New Zealand',
+};
+
+// List of field values which will be displayed postfixed with a divider when shown in a drop down.
+List<String> xProfileDropDownDividerPostfix = [
+  xProfileFieldCountrySortMap.values.last
+];
+
 // TODO: Update these below.
 // "None" selection item field map.
 // <xProfileFieldId, selectionItemXProfileFieldId>

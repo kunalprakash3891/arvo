@@ -572,7 +572,6 @@ class MemberProfileWidget extends StatelessWidget {
                         heroTag: null,
                         elevation: 3.0,
                         shape: const CircleBorder(),
-                        backgroundColor: Colors.black,
                         onPressed: () {
                           if (editProfilePictures != null) {
                             editProfilePictures!(context);
@@ -580,7 +579,6 @@ class MemberProfileWidget extends StatelessWidget {
                         },
                         child: const Icon(
                           Icons.edit_rounded,
-                          color: Colors.white,
                         ),
                       )
                 : Container(
@@ -627,12 +625,10 @@ class MemberProfileWidget extends StatelessWidget {
                       _viewProfilePicture(context, memberAvatarUrl);
                       profilePictureTapped?.call();
                     },
-                    backgroundColor: Colors.black,
                     child: Icon(
                       Platform.isIOS
                           ? CupertinoIcons.arrow_up_left_arrow_down_right
                           : Icons.open_in_full_rounded,
-                      color: Colors.white,
                     ),
                   ),
           ),
