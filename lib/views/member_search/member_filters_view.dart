@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:arvo/views/shared/member_xprofile_options_selection_view.dart';
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
@@ -132,14 +133,10 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
                 _buildXProfileFilterDisplayWidget(_filters.genders),
                 _buildXProfileFilterDisplayWidget(_filters.sexualOrientations),
                 _buildRangeFilterWidget(_filters.ageRange),
-                _buildXProfileFilterDisplayWidget(_filters.locations,
-                    selectedItemDescriptionFormatter:
-                        (selectedItemDescription) {
-                  return selectedItemDescription
-                      .split(xProfileLocationDisplayTitleSplitOnCharacter)
-                      .reversed
-                      .join(xProfileLocationDisplayTitleJoinOnCharacter);
-                }),
+                _buildXProfileFilterDisplayWidget(
+                  _filters.locations,
+                  selectedItemDescriptionFormatter: locationDisplayFormatter,
+                ),
                 //_buildLocationFilterWidget(),
                 _buildXProfileFilterDisplayWidget(_filters.passions),
                 _buildXProfileFilterDisplayWidget(_filters.ethnicities),
@@ -430,8 +427,7 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
 
   Widget _buildXProfileFilterDisplayWidget(
       XProfileFieldOptionsItem xProfileFieldOptionsItem,
-      {String Function(String selectedItemDescription)?
-          selectedItemDescriptionFormatter}) {
+      {TextDisplayFormatterCallback? selectedItemDescriptionFormatter}) {
     final List<Widget> selectedItems = [];
 
     for (final selectionItem in xProfileFieldOptionsItem.selectionItems) {
@@ -511,8 +507,7 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
 
   Future<void> _awaitReturnFromOptionsSelectionView(
       BuildContext context, XProfileFieldOptionsItem xProfileFieldOptionsItem,
-      {String Function(String selectedItemDescription)?
-          selectedItemDescriptionFormatter}) async {
+      {TextDisplayFormatterCallback? selectedItemDescriptionFormatter}) async {
     final xProfileFieldOptionsItemOriginal =
         XProfileFieldOptionsItem.clone(xProfileFieldOptionsItem);
     // Navigate to view and wait for it to return.

@@ -3,6 +3,7 @@ import 'package:arvo/constants/x_profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field_description.dart';
+import 'package:nifty_three_bp_app_base/api/x_profile_options_item.dart';
 
 XProfileFieldLocations? generateLocationXProfileFields(
     XProfileField? xProfileField) {
@@ -209,6 +210,7 @@ Locations? extractXProfileFieldLocations(XProfileField? locationXProfileField) {
     }
   }
 
+  // Country sorting and formatting.
   // Sort the countries.
   for (int i = xProfileFieldCountrySortMap.keys.last;
       i >= xProfileFieldCountrySortMap.keys.first;
@@ -250,6 +252,13 @@ class Locations {
     required this.statesAndRegions,
     required this.citiesAndTowns,
   });
+}
+
+String locationDisplayFormatter(String selectedItemDescription) {
+  return selectedItemDescription
+      .split(xProfileLocationDisplayTitleSplitOnCharacter)
+      .reversed
+      .join(xProfileLocationDisplayTitleJoinOnCharacter);
 }
 
 // NOTE: The following code iteratively generates locations with parent identifiers, but does not group them into countries/states/cities.

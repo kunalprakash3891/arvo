@@ -290,13 +290,3 @@ class _MemberXProfileOptionsSelectionViewState
           );
   }
 }
-
-class XProfileFieldSelectionOptions {
-  XProfileFieldOptionsItem optionsItems;
-  String Function(String selectedItemDescription)? descriptionFormatter;
-
-  XProfileFieldSelectionOptions({
-    required this.optionsItems,
-    this.descriptionFormatter,
-  });
-}

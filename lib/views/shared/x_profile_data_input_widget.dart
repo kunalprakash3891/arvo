@@ -538,7 +538,7 @@ Widget buildXProfileNavigateToSelectDisplayWidget(
   Function onEditPressed,
   ValueNotifier<XProfileField?> fieldChangedValueNotifier, {
   String? alternateName,
-  String? splitCharacter,
+  TextDisplayFormatterCallback? textDisplayFormatter,
   Member? currentUser,
 }) {
   final existingUnserialisedValue = currentUser?.xProfile?.groups
@@ -621,8 +621,8 @@ Widget buildXProfileNavigateToSelectDisplayWidget(
             builder: (context, value, child) {
               return value != null && value.parentId == xProfileField.id
                   ? Text(
-                      splitCharacter != null
-                          ? value.name.split(splitCharacter).reversed.join(', ')
+                      textDisplayFormatter != null
+                          ? textDisplayFormatter(value.name)
                           : value.name,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
@@ -630,12 +630,9 @@ Widget buildXProfileNavigateToSelectDisplayWidget(
                     )
                   : dropdownSelections[xProfileField.id] != null
                       ? Text(
-                          splitCharacter != null
-                              ? dropdownSelections[xProfileField.id]!
-                                  .name
-                                  .split(splitCharacter)
-                                  .reversed
-                                  .join(', ')
+                          textDisplayFormatter != null
+                              ? textDisplayFormatter(
+                                  dropdownSelections[xProfileField.id]!.name)
                               : dropdownSelections[xProfileField.id]!.name,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,

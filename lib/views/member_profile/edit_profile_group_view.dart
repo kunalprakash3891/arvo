@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:arvo/views/shared/member_xprofile_location_selection_view.dart';
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
@@ -127,7 +128,7 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
                   _dropdownSelections[field.id],
                 ),
                 _dropDownSelectFieldChanged,
-                splitCharacter: xProfileLocationDisplayTitleSplitOnCharacter,
+                textDisplayFormatter: locationDisplayFormatter,
                 currentUser: _currentUser,
               );
               continue;

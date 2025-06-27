@@ -184,6 +184,17 @@ Map<int, String> xProfileFieldCountrySortMap = {
   2: 'New Zealand',
 };
 
+// Australia states short names map.
+Map<String, String> australianStatesShortNameMap = {
+  'ACT': 'Australian Capital Territory',
+  'NSW': 'New South Wales',
+  'NT': 'Northern Territory',
+  'QLD': 'Queensland',
+  'SA': 'South Australia',
+  'TAS': 'Tasmania',
+  'VIC': 'Victoria',
+};
+
 // List of field values which will be displayed postfixed with a divider when shown in a drop down.
 List<String> xProfileDropDownDividerPostfix = [
   xProfileFieldCountrySortMap.values.last

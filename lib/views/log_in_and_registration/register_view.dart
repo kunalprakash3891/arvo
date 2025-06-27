@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:age_calculator/age_calculator.dart';
 import 'package:arvo/views/shared/member_xprofile_location_selection_view.dart';
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -958,19 +959,19 @@ class _RegisterViewState extends State<RegisterView> {
             if (field.id == xProfileFieldLocation) {
               profileGroupDataWidgets[field.id] =
                   buildXProfileNavigateToSelectDisplayWidget(
-                      context,
-                      field,
-                      _dropdownSelections,
-                      (context, xProfileField, selectedOption) =>
-                          _awaitReturnFromLocationSelectionView(
-                            context,
-                            field,
-                            _dropdownSelections[field.id],
-                          ),
-                      _dropDownSelectFieldChanged,
-                      alternateName: _xProfileFieldsAlternateNameMap[field.id],
-                      splitCharacter:
-                          xProfileLocationDisplayTitleSplitOnCharacter);
+                context,
+                field,
+                _dropdownSelections,
+                (context, xProfileField, selectedOption) =>
+                    _awaitReturnFromLocationSelectionView(
+                  context,
+                  field,
+                  _dropdownSelections[field.id],
+                ),
+                _dropDownSelectFieldChanged,
+                alternateName: _xProfileFieldsAlternateNameMap[field.id],
+                textDisplayFormatter: locationDisplayFormatter,
+              );
               continue;
             }
             profileGroupDataWidgets[field.id] =

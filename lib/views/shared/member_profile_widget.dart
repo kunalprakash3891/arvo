@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -251,10 +252,7 @@ class MemberProfileWidget extends StatelessWidget {
                 quickInfoWidgets.add(
                   buildQuickInfoWidget(
                     context: context,
-                    text: data.value
-                        .split(xProfileLocationDisplayTitleSplitOnCharacter)
-                        .reversed
-                        .join(xProfileLocationDisplayTitleJoinOnCharacter),
+                    text: locationDisplayFormatter(data.value),
                     iconData: icon,
                     prefix: prefix,
                   ),
