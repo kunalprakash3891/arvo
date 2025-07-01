@@ -889,7 +889,7 @@ class _RegisterViewState extends State<RegisterView> {
                               style: Theme.of(context).textTheme.bodyMedium,
                               children: [
                                 const TextSpan(
-                                    text: 'I have read and accept the '),
+                                    text: 'I have read and accepted the '),
                                 TextSpan(
                                   text: 'Terms and Conditions',
                                   style: const TextStyle(

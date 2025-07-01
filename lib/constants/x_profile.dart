@@ -200,17 +200,16 @@ List<String> xProfileDropDownDividerPostfix = [
   xProfileFieldCountrySortMap.values.last
 ];
 
-// TODO: Update these below.
 // "None" selection item field map.
 // <xProfileFieldId, selectionItemXProfileFieldId>
-const int xProfileFieldIDontHaveAnyHobbies = 3227;
-const int xProfileFieldIDontLikeWatchingMovies = 3243;
-const int xProfileFieldIDontLikeListeningToMusic = 3262;
-const int xProfileFieldIDontHaveAFavouriteSweetTreat = 3292;
-const int xProfileFieldIDontLikeSportsOrExercise = 3336;
-const int xProfileFieldIDontLikeReading = 3355;
-const int xProfileFieldIDontReallyLikeGames = 3371;
-const int xProfileFieldNoPets = 3384;
+const int xProfileFieldIDontHaveAnyHobbies = 11304;
+const int xProfileFieldIDontLikeWatchingMovies = 11319;
+const int xProfileFieldIDontLikeListeningToMusic = 11487;
+const int xProfileFieldIDontHaveAFavouriteSweetTreat = 11365;
+const int xProfileFieldIDontLikeSportsOrExercise = 11554;
+const int xProfileFieldIDontLikeReading = 11425;
+const int xProfileFieldIDontReallyLikeGames = 11440;
+const int xProfileFieldNoPets = 11567;
 Map<int, int> noneSelectionItemXProfileFieldMap = {
   xProfileFieldHobbies: xProfileFieldIDontHaveAnyHobbies,
   xProfileFieldFavouriteMovies: xProfileFieldIDontLikeWatchingMovies,

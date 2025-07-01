@@ -94,7 +94,6 @@ class _EditProfileGroupViewState extends State<EditProfileGroupView> {
       // the same validation logic as has applied during registration.
       xProfileFieldName,
       xProfileFieldBirthdate,
-      xProfileFieldGender,
       xProfileFieldTermsAcceptance,
     ];
 
