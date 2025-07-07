@@ -113,7 +113,7 @@ class AdOverlay {
                           child: const Text(
                             'Get Premium',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: kBasePremiumForegroundTextColour,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

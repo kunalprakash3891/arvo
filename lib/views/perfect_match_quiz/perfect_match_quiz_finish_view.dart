@@ -64,7 +64,7 @@ class _PerfectMatchQuizFinishViewState
         _quizEndedCallback?.call();
       },
       child: Scaffold(
-        backgroundColor: kBaseAnalogousColour1,
+        backgroundColor: kBaseCoastalTeal,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: IconButton(
@@ -193,15 +193,15 @@ class _PerfectMatchQuizFinishViewState
                 backgroundColour:
                     Theme.of(context).colorScheme.secondaryContainer,
                 showStatus: _featureService.featureMemberOnlineIndicator,
-                onlineColour: kBaseComplementaryColour,
-                recentlyOnlineColour: kBaseAnalogousColour1,
+                onlineColour: kBaseOnlineColour,
+                recentlyOnlineColour: kBaseRecentlyOnlineColour,
                 viewProfileRoute: viewProfileRoute,
                 memberSwipeViewRoute: memberSwipeViewRoute,
                 matchWeightColour: getMatchPercentageColour(
                   item.matchWeight,
                   _featureService.featureMatchInsight,
                 ),
-                verifiedMemberIndicatorColour: kBaseTriadicColour2,
+                verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
               ),
             ),
           )

@@ -866,7 +866,7 @@ class _MessagesViewState extends State<MessagesView> {
                                     child: Center(
                                       child: value == messageThread.id
                                           ? const CircularProgressIndicator(
-                                              color: kBaseAnalogousColour1,
+                                              color: kBaseStarredMessageColour,
                                             )
                                           : IconButton(
                                               padding: EdgeInsets.zero,
@@ -883,7 +883,7 @@ class _MessagesViewState extends State<MessagesView> {
                                                               .star_fill
                                                           : Icons.star_rounded,
                                                       color:
-                                                          kBaseAnalogousColour1,
+                                                          kBaseStarredMessageColour,
                                                       size: 32.0,
                                                     )
                                                   : Icon(
@@ -892,7 +892,7 @@ class _MessagesViewState extends State<MessagesView> {
                                                           : Icons
                                                               .star_border_rounded,
                                                       color:
-                                                          kBaseAnalogousColour1,
+                                                          kBaseStarredMessageColour,
                                                       size: 32.0,
                                                     ),
                                             ),

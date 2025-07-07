@@ -111,7 +111,7 @@ class _DashboardViewState extends State<DashboardView> {
                                 child: Container(
                                   padding: const EdgeInsets.all(1.0),
                                   decoration: BoxDecoration(
-                                    color: kBaseMonochromaticColour,
+                                    color: kBaseCoralSunset,
                                     borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   constraints: const BoxConstraints(

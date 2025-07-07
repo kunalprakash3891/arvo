@@ -57,12 +57,13 @@ class _FavouritesViewState extends State<FavouritesView> {
                             Container(
                               padding: const EdgeInsets.all(4.0),
                               decoration: BoxDecoration(
-                                  color: kBaseColour,
+                                  color: kBasePremiumBackgroundColour,
                                   borderRadius: BorderRadius.circular(8.0)),
                               child: const Text(
                                 'Premium',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 10.0),
+                                    color: kBasePremiumForegroundTextColour,
+                                    fontSize: 10.0),
                               ),
                             ),
                           ],

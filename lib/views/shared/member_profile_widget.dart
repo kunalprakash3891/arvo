@@ -542,8 +542,8 @@ class MemberProfileWidget extends StatelessWidget {
                         hasFeatureMemberOnlineIndicator
                             ? buildActiveStatusWidget(
                                 member,
-                                kBaseComplementaryColour,
-                                kBaseAnalogousColour1,
+                                kBaseOnlineColour,
+                                kBaseRecentlyOnlineColour,
                                 activeText: 'Active',
                                 size: 16.0,
                               )
@@ -786,12 +786,13 @@ class MemberProfileWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(4.0),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.white),
-            color: kBaseColour,
+            // border: Border.all(color: kBaseSandyBeach),
+            color: kBasePremiumBackgroundColour,
             borderRadius: BorderRadius.circular(8.0)),
         child: const Text(
           'See online status with Premium',
-          style: TextStyle(color: Colors.white, fontSize: 12.0),
+          style: TextStyle(
+              color: kBasePremiumForegroundTextColour, fontSize: 12.0),
         ),
       ),
     );
@@ -819,7 +820,7 @@ class MemberProfileWidget extends StatelessWidget {
                             ),
                             const Icon(
                               Icons.verified_user_rounded,
-                              color: kBaseTriadicColour2,
+                              color: kBaseVerifiedIndicatorColour,
                               size: 64.0,
                             ),
                             Text(
@@ -849,9 +850,9 @@ class MemberProfileWidget extends StatelessWidget {
                       border: Border.all(color: Colors.white),
                       color: getPhotoVerificationStatusColour(
                         member.photoVerificationStatus!,
-                        kBaseAnalogousColour1,
-                        kBaseTriadicColour2,
-                        kRedColor,
+                        kBasePendingVerificationIndicatorColour,
+                        kBaseVerifiedIndicatorColour,
+                        kBaseVerificationRejectedIndicatorColour,
                         kBaseColour,
                       ),
                       borderRadius: BorderRadius.circular(8.0)),
@@ -897,7 +898,7 @@ class MemberProfileWidget extends StatelessWidget {
                               ),
                               const Icon(
                                 Icons.verified_user_rounded,
-                                color: kBaseTriadicColour2,
+                                color: kBaseVerifiedIndicatorColour,
                                 size: 64.0,
                               ),
                               Text(
@@ -916,7 +917,7 @@ class MemberProfileWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(4.0),
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
-                          color: kBaseTriadicColour2,
+                          color: kBaseVerifiedIndicatorColour,
                           borderRadius: BorderRadius.circular(8.0)),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -1136,8 +1137,8 @@ class MemberProfileWidget extends StatelessWidget {
                   border: Border.all(color: Colors.white),
                   color: getMemberPhotoModerationStatusColour(
                     memberPhoto.status,
-                    kBaseTriadicColour2,
-                    kBaseAnalogousColour1,
+                    kBaseVerifiedIndicatorColour,
+                    kBasePendingVerificationIndicatorColour,
                   ),
                   borderRadius: BorderRadius.circular(8.0)),
               child: Row(

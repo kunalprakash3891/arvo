@@ -400,7 +400,7 @@ class _HomeViewState extends State<HomeView> {
                     : Container(
                         padding: const EdgeInsets.all(4.0),
                         decoration: BoxDecoration(
-                            color: kBaseColour,
+                            color: kBasePremiumBackgroundColour,
                             borderRadius: BorderRadius.circular(8.0)),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -421,7 +421,9 @@ class _HomeViewState extends State<HomeView> {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
-                                    .copyWith(color: Colors.white),
+                                    .copyWith(
+                                        color:
+                                            kBasePremiumForegroundTextColour),
                               ),
                             ],
                             width: 8.0,
@@ -486,11 +488,11 @@ class _HomeViewState extends State<HomeView> {
           Navigator.of(context).pushNamed(subscriptionsViewRoute);
         },
         style: FilledButton.styleFrom(
-          backgroundColor: kActionColor,
+          backgroundColor: kBasePremiumBackgroundColour,
         ),
         child: const Text(
           'Upgrade',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: kBasePremiumForegroundTextColour),
         ),
       );
     }
@@ -833,15 +835,16 @@ class _HomeViewState extends State<HomeView> {
                       lastItem: false,
                       width: 160.0,
                       showStatus: _featureService.featureMemberOnlineIndicator,
-                      onlineColour: kBaseComplementaryColour,
-                      recentlyOnlineColour: kBaseAnalogousColour1,
+                      onlineColour: kBaseOnlineColour,
+                      recentlyOnlineColour: kBaseRecentlyOnlineColour,
                       viewProfileRoute: viewProfileRoute,
                       memberSwipeViewRoute: memberSwipeViewRoute,
                       matchWeightColour: getMatchPercentageColour(
                         _newestMembers[index].matchWeight,
                         _featureService.featureMatchInsight,
                       ),
-                      verifiedMemberIndicatorColour: kBaseTriadicColour2,
+                      verifiedMemberIndicatorColour:
+                          kBaseVerifiedIndicatorColour,
                     );
                   },
                 ),

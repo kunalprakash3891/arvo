@@ -391,7 +391,7 @@ class _SettingsViewState extends State<SettingsView> {
                     _deleteAccount();
                   },
                   style: FilledButton.styleFrom(
-                    backgroundColor: kRedColor,
+                    backgroundColor: kRedColour,
                   ),
                   child: const Text(
                     'Delete Account',
@@ -802,11 +802,12 @@ class _SettingsViewState extends State<SettingsView> {
                       : Container(
                           padding: const EdgeInsets.all(4.0),
                           decoration: BoxDecoration(
-                              color: kBaseColour,
+                              color: kBasePremiumBackgroundColour,
                               borderRadius: BorderRadius.circular(8.0)),
                           child: const Text(
                             'Premium',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                                color: kBasePremiumForegroundTextColour),
                           ),
                         ),
                 ],

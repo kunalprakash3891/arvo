@@ -274,22 +274,20 @@ String? getXProfileFieldDataPrefix(
   return null;
 }
 
-// TODO: Set these colours correctly (check dark mode visibility too)
 Color getMatchPercentageColour(int matchWeight, bool colourCoded) {
   return colourCoded
       ? matchWeight >= 50
-          ? kActionColor
+          ? kBaseHighPercentageColour
           : matchWeight >= 25
-              ? kBaseTriadicColour1 //TODO: This colour does not look nice in dark mode
-              : kBaseColour
+              ? kBaseMediumPercentageColour
+              : kBaseLowPercentageColour
       : kBaseColour;
 }
 
-// TODO: Set these colours correctly (check dark mode visibility too)
 Color getProfileCompletionPercentageColour(double percentage) {
   return percentage == 1
-      ? kActionColor
+      ? kBaseHighPercentageColour
       : percentage >= 0.5
-          ? kBaseTriadicColour1 //TODO: This colour does not look nice in dark mode
-          : kBaseColour;
+          ? kBaseMediumPercentageColour
+          : kBaseLowPercentageColour;
 }

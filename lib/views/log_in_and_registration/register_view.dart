@@ -750,16 +750,12 @@ class _RegisterViewState extends State<RegisterView> {
 
   Color _getPasswordStrengthColour(double? strength) {
     return strength == null
-        ? Theme.of(context).inputDecorationTheme.focusedBorder!.borderSide.color
+        ? kBaseCoralSunset
         : strength >= 4.0
-            ? kActionColor
+            ? kBaseEucalyptusGreen
             : strength >= 2.0
-                ? kBaseTriadicColour1 //TODO: This colour does not look nice in dark mode
-                : Theme.of(context)
-                    .inputDecorationTheme
-                    .focusedBorder!
-                    .borderSide
-                    .color;
+                ? kBaseOutbackOchre
+                : kBaseCoralSunset;
   }
 
   Widget _buildPasswordStrengthWidget(double? strength) {
@@ -830,7 +826,7 @@ class _RegisterViewState extends State<RegisterView> {
                     : Icons.radio_button_off_rounded,
             size: 24.0,
             color: checked
-                ? kActionColor
+                ? kActionColour
                 : Theme.of(context)
                     .inputDecorationTheme
                     .focusedBorder!

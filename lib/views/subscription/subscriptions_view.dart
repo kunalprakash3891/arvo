@@ -315,7 +315,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                           Container(
                             padding: const EdgeInsets.all(4.0),
                             decoration: BoxDecoration(
-                                color: kBaseColour,
+                                color: kBasePremiumBackgroundColour,
                                 borderRadius: BorderRadius.circular(8.0)),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -336,7 +336,9 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodySmall!
-                                        .copyWith(color: Colors.white),
+                                        .copyWith(
+                                            color:
+                                                kBasePremiumForegroundTextColour),
                                   ),
                                 ],
                                 width: 8.0,
@@ -478,7 +480,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
         hasPurchased ? const SizedBox(height: 8.0) : const SizedBox.shrink(),
         hasPurchased
             ? ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: kRedColor),
+                style: ElevatedButton.styleFrom(backgroundColor: kRedColour),
                 onPressed: () async {
                   await showGenericDialog(
                     context: context,
@@ -501,7 +503,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
               )
             : ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: kActionColor,
+                  backgroundColor: kActionColour,
                 ),
                 onPressed: () async {
                   if (_subscriptionService.purchases.isNotEmpty) {

@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:arvo/services/features/feature_service.dart';
+import 'package:arvo/theme/theme_cubit.dart';
+import 'package:arvo/views/log_in_and_registration/background_gradient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,7 +18,6 @@ import 'package:arvo/services/bloc/auth_event.dart';
 import 'package:arvo/services/bloc/auth_state.dart';
 import 'package:arvo/services/crud/arvo_local_storage_provider.dart';
 import 'package:arvo/services/crud/local_storage_service.dart';
-import 'package:arvo/theme/palette.dart';
 import 'package:arvo/views/shared/error_widget.dart';
 import 'package:nifty_three_bp_app_base/views/widgets/logo_tagline_widget.dart';
 
@@ -75,8 +77,6 @@ class _LogInViewState extends State<LogInView> {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               return Scaffold(
-                //TODO: Apply the same gradient background for this page to others that need it. Search for backgroundColor: const Color(0xff782e43)
-                //backgroundColor: const Color(0xff8457b3),
                 appBar: AppBar(
                   iconTheme: const IconThemeData(color: Colors.white),
                   backgroundColor: Colors.transparent,
@@ -105,53 +105,57 @@ class _LogInViewState extends State<LogInView> {
                 extendBodyBehindAppBar: true,
                 body: GestureDetector(
                   onTap: () => FocusScope.of(context).unfocus(),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          kBaseGradientStart,
-                          kBaseGradientEnd,
-                        ],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                      ),
-                    ),
-                    child: Center(
-                      child: SingleChildScrollView(
-                        child: Form(
-                          key: _formKey,
-                          autovalidateMode: _autoValidate
-                              ? AutovalidateMode.onUserInteraction
-                              : AutovalidateMode.disabled,
-                          child: Column(
-                            children: [
-                              FadeAnimation(
-                                0.8,
-                                SizedBox(
-                                    width: 320.0,
-                                    child: buildLogoTaglineWidget(
-                                      logo,
-                                      tagline,
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(32.0),
-                                child: Column(
-                                  children: [
-                                    FadeAnimation(
-                                      1.6,
-                                      _isLogInVisible
-                                          ? _buildLogInWidget()
-                                          : _buildWelcomeWidget(),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                  child: ValueListenableBuilder(
+                    valueListenable: context.read<ThemeCubit>().selectedTheme,
+                    builder: (context, value, child) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: getBackgroundGradientColours(
+                                FeatureService.arvo().featureSelectedTheme,
+                                context),
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
                           ),
                         ),
-                      ),
-                    ),
+                        child: Center(
+                          child: SingleChildScrollView(
+                            child: Form(
+                              key: _formKey,
+                              autovalidateMode: _autoValidate
+                                  ? AutovalidateMode.onUserInteraction
+                                  : AutovalidateMode.disabled,
+                              child: Column(
+                                children: [
+                                  FadeAnimation(
+                                    0.8,
+                                    SizedBox(
+                                        width: 320.0,
+                                        child: buildLogoTaglineWidget(
+                                          logo,
+                                          tagline,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(32.0),
+                                    child: Column(
+                                      children: [
+                                        FadeAnimation(
+                                          1.6,
+                                          _isLogInVisible
+                                              ? _buildLogInWidget()
+                                              : _buildWelcomeWidget(),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               );

@@ -4,7 +4,12 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 class ThemeCubit extends HydratedCubit<ThemeMode> {
   ThemeCubit() : super(ThemeMode.system);
 
-  void updateTheme(ThemeMode themeMode) => emit(themeMode);
+  ValueNotifier<ThemeMode> selectedTheme = ValueNotifier(ThemeMode.system);
+
+  void updateTheme(ThemeMode themeMode) {
+    selectedTheme.value = themeMode;
+    emit(themeMode);
+  }
 
   // This handles the restoration of the theme mode when the app is restarted.
   @override
@@ -13,13 +18,13 @@ class ThemeCubit extends HydratedCubit<ThemeMode> {
 
     switch (theme) {
       case 'ThemeMode.system':
-        return ThemeMode.system;
+        selectedTheme.value = ThemeMode.system;
       case 'ThemeMode.light':
-        return ThemeMode.light;
+        selectedTheme.value = ThemeMode.system;
       case 'ThemeMode.dark':
-        return ThemeMode.dark;
+        selectedTheme.value = ThemeMode.system;
     }
-    return ThemeMode.system;
+    return selectedTheme.value;
   }
 
   // This stores the ThemeMode anytime its changed

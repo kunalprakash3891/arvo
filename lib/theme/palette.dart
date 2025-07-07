@@ -1,62 +1,69 @@
 import 'package:flutter/material.dart';
 
-const kBaseColour = Color(0xff4A187D);
-const kBaseAlternateColour = Color(0xff981A9D);
+const kBaseColour = kBaseOutbackOchre;
 
-const kBaseGradientStart = kBaseAlternateColour;
-const kBaseGradientEnd = Color(0xff4A187D);
+// Australian colour palette, https://www.colorzaa.com/aussie-color-palette
+const kBaseBushGrey = Color(0xff455A64);
+const kBaseBlueMountains = Color(0xff311B92);
+const kBaseCoastalTeal = Color(0xff00ACC1);
+const kBaseCoralPink = Color(0xffD81B60);
+const kBaseCoralSunset = Color(0xffFF1744);
+const kBaseDesertRose = Color(0xffF50057);
+const kBaseEucalyptusGreen = Color(0xff4CAF50);
+const kBaseGoldenWattle = Color(0xffFBC02D);
+const kBaseGreatBarrierReef = Color(0xff00695C);
+const kBaseKangarooBrown = Color(0xff5D4037);
+const kBaseOceanBlue = Color(0xff0288D1);
+const kBaseOutbackNight = Color(0xff0F172A);
+const kBaseOutbackOchre = Color(0xffD84315);
+const kBaseOutbackOchre80 = Color(0xffE64A19);
+const kBaseOutbackOchre60 = Color(0xffF4511E);
+const kBaseOutbackOchre40 = Color(0xffFF7043);
+const kBaseOutbackOchre20 = Color(0xffFF7043);
+const kBaseRainForest = Color(0xff2E7D32);
+const kBaseSandyBeach = Color(0xffFFF8E1);
+const kBaseSydneySky = Color(0xff01579B);
+const kBaseUluruRed = Color(0xffB71C1C);
+const kBaseUluruRed80 = Color(0xffD32F2F);
+const kBaseUluruRed60 = Color(0xffE53935);
+const kBaseUluruRed40 = Color(0xffF44336);
+const kBaseUluruRed20 = Color(0xffEF5350);
 
 // Light theme colours.
-const kBaseLightColour = Color(0xff4A187D);
-// 0xff5E5566 default text colour based on 0xff4A187D.
-const kBaseLightBodyTextColour = Color(0xff5E5566);
-const kBaseLightDisplayTextColour = Color(0xff4A187D);
-// 0xff5E5566 default text colour based on 0xff4A187D.
-const kBaseLightLabelTextColour = Color(0xff5E5566);
+const kBaseLightColour = kBaseOutbackOchre;
+const kBaseLightBodyTextColour = kBaseKangarooBrown;
+const kBaseLightDisplayTextColour = kBaseOutbackOchre;
+const kBaseLightLabelTextColour = kBaseKangarooBrown;
 const kBaseLightTitleTextColour = Colors.black;
 const kBaseLightHeadlineTextColour = Colors.black;
-// 0xFFB3261E default error colour based on 0xff4A187D.
-const kBaseLightErrorColour = Color(0xFFB3261E);
-// 0xff5E5566 default text colour based on 0xff4A187D.
-const kBaseLightBorderColour = Color(0xff5E5566);
+const kBaseLightErrorColour = kBaseUluruRed;
+const kBaseLightBorderColour = kBaseBushGrey;
 const kBaseLightScaffoldColour = Colors.white;
 
-// TODO: Set these based on 0xff4A187D
-const kRedColor = Color.fromARGB(255, 255, 44, 44);
-const kActionColor = kBaseTetradicColour3;
+// Specific UI element colours.
+const kRedColour = kBaseCoralSunset;
+const kBaseFavouriteColour = kBaseDesertRose;
+const kActionColour = kBaseEucalyptusGreen;
+const kBaseOnlineColour = kBaseEucalyptusGreen;
+const kBaseRecentlyOnlineColour = kBaseOutbackOchre40;
+const kBaseHighPercentageColour = kBaseEucalyptusGreen;
+const kBaseMediumPercentageColour = kBaseOutbackOchre40;
+const kBaseLowPercentageColour = kBaseCoralSunset;
+const kBasePremiumBackgroundColour = kBaseGoldenWattle;
+const kBasePremiumForegroundTextColour = kBaseKangarooBrown;
+const kBaseStarredMessageColour = kBaseOutbackOchre;
+const kBaseVerifiedIndicatorColour = kBaseEucalyptusGreen;
+const kBasePendingVerificationIndicatorColour = kBaseOutbackOchre40;
+const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
 
 // Dark theme colours.
-// 0xFFBB92E6 default background colour based on 0xff4A187D.
-const kBaseDarkColour = Color(0xFFBB92E6);
-const kBaseDarkBodyTextColour = Colors.white;
-const kBaseDarkDisplayTextColour = Color(0xFFBB92E6);
-// 0xffD8D2E6 default text colour based on 0xff4A187D.
-const kBaseDarkLabelTextColour = Color(0xffD8D2E6);
-const kBaseDarkTitleTextColour = Colors.white;
-const kBaseDarkHeadlineTextColour = Colors.white;
-// 0xffE69490 default error colour based on 0xff4A187D.
-const kBaseDarkErrorColour = Color(0xffE69490);
-// 0xffD8D2E6 default text colour based on 0xff4A187D.
-const kBaseDarkBorderColour = Color(0xffD8D2E6);
-// 0xFF4C4A4D Monochromatic based on surface 0xFF323133
-const kBaseDarkScaffoldColour = Color(0xFF4C4A4D);
-
-// Shared colours.
-// https://www.canva.com/colors/color-wheel/
-// Based on 0xff4A187D
-// Monochromatic
-const kBaseMonochromaticColour = Color(0xff6320A8);
-// Complementary
-const kBaseComplementaryColour = Color(0xff4B7D18);
-// Analogous
-const kBaseAnalogousColour1 = Color(0xff7D187D);
-const kBaseAnalogousColour2 = Color(0xff18187D);
-// Triadic
-const kBaseTriadicColour1 = Color(0xff7D4A18);
-const kBaseTriadicColour2 = Color(0xff187D4A);
-// Tetradic
-const kBaseTetradicColour1 = Color(0xff7D1818);
-const kBaseTetradicColour2 = Color(0xff4B7D18);
-// Generate shades based off a colour.
-// https://maketintsandshades.com/#187D7C
-const kBaseTetradicColour3 = Color(0xff187D7C);
+const kBaseDarkColour = Color(0xFFE69F89); // kBaseOutbackOchre;
+const kBaseDarkBodyTextColour = kBaseSandyBeach;
+const kBaseDarkDisplayTextColour = Color(0xFFE69F89); // kBaseOutbackOchre;
+const kBaseDarkLabelTextColour = kBaseSandyBeach;
+const kBaseDarkTitleTextColour = kBaseSandyBeach;
+const kBaseDarkHeadlineTextColour = kBaseSandyBeach;
+// 0xFFE68E8E default error colour based on kBaseUluruRed.
+const kBaseDarkErrorColour = Color(0xFFE68E8E);
+const kBaseDarkBorderColour = kBaseSandyBeach;
+const kBaseDarkScaffoldColour = kBaseBushGrey;

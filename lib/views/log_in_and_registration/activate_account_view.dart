@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:arvo/theme/palette.dart';
+import 'package:arvo/services/features/feature_service.dart';
+import 'package:arvo/views/log_in_and_registration/background_gradient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -86,14 +87,12 @@ class _ActivateAccountViewState extends State<ActivateAccountView> {
           body: GestureDetector(
             onTap: () => FocusScope.of(context).unfocus(),
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [
-                    kBaseGradientStart,
-                    kBaseGradientEnd,
-                  ],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
+                  colors: getBackgroundGradientColours(
+                      FeatureService.arvo().featureSelectedTheme, context),
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
               child: Center(

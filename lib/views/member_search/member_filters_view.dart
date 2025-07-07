@@ -282,11 +282,12 @@ class _MemberFiltersViewState extends State<MemberFiltersView> {
                         : Container(
                             padding: const EdgeInsets.all(4.0),
                             decoration: BoxDecoration(
-                                color: kBaseColour,
+                                color: kBasePremiumBackgroundColour,
                                 borderRadius: BorderRadius.circular(8.0)),
                             child: const Text(
                               'Premium',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  color: kBasePremiumForegroundTextColour),
                             ),
                           ),
                   ],

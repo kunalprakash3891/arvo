@@ -253,7 +253,7 @@ class _MemberProfileViewState extends State<MemberProfileView> {
             valueListenable: _favouriteLoaded,
             builder: (context, value, child) {
               if (!value) {
-                return _buildLoadingFloatingButtonWidget(kBaseColour);
+                return _buildLoadingFloatingButtonWidget(kBaseFavouriteColour);
               } else {
                 return FloatingActionButton(
                   heroTag: null,
@@ -266,14 +266,14 @@ class _MemberProfileViewState extends State<MemberProfileView> {
                           Platform.isIOS
                               ? CupertinoIcons.heart_fill
                               : Icons.favorite_rounded,
-                          color: kBaseColour,
+                          color: kBaseFavouriteColour,
                           size: 32.0,
                         )
                       : Icon(
                           Platform.isIOS
                               ? CupertinoIcons.heart
                               : Icons.favorite_border_rounded,
-                          color: kBaseColour,
+                          color: kBaseFavouriteColour,
                           size: 32.0,
                         ),
                 );
@@ -290,7 +290,6 @@ class _MemberProfileViewState extends State<MemberProfileView> {
               Platform.isIOS
                   ? CupertinoIcons.text_bubble
                   : Icons.chat_bubble_outline_rounded,
-              color: kBaseColour,
               size: 32.0,
             ),
           ),

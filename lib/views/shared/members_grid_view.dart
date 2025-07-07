@@ -165,15 +165,15 @@ class MembersGridView extends StatelessWidget {
                 lastItem: index == members.length - 1 ? true : false,
                 onMemberProfileReturn: onMemberProfileReturn,
                 showStatus: showStatus,
-                onlineColour: kBaseComplementaryColour,
-                recentlyOnlineColour: kBaseAnalogousColour1,
+                onlineColour: kBaseOnlineColour,
+                recentlyOnlineColour: kBaseRecentlyOnlineColour,
                 viewProfileRoute: viewProfileRoute,
                 memberSwipeViewRoute: memberSwipeViewRoute,
                 matchWeightColour: getMatchPercentageColour(
                   members.elementAt(index).matchWeight,
                   showColourCodedMatchPercentage,
                 ),
-                verifiedMemberIndicatorColour: kBaseTriadicColour2,
+                verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
               );
             },
           ),

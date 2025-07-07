@@ -353,7 +353,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
               await _deleteProfilePhoto(context);
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: kRedColor,
+              backgroundColor: kRedColour,
             ),
             child: const Text(
               'Delete Photo',

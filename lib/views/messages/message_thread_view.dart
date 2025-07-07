@@ -370,9 +370,9 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                             kBaseColour,
                             kBaseColour,
                             Theme.of(context).colorScheme.surface,
-                            kBaseComplementaryColour,
-                            kBaseAnalogousColour1,
-                            kBaseTriadicColour2,
+                            kBaseOnlineColour,
+                            kBaseRecentlyOnlineColour,
+                            kBaseVerifiedIndicatorColour,
                             showOnlineStatus:
                                 _featureService.featureMemberOnlineIndicator,
                             callback: viewRecipientProfile,
@@ -631,7 +631,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                           decoration: BoxDecoration(
                             color: isMe
                                 ? Theme.of(context).colorScheme.primaryContainer
-                                : kBaseTetradicColour3,
+                                : kBaseCoastalTeal,
                             borderRadius: isMe
                                 ? const BorderRadius.only(
                                     topLeft: Radius.circular(16.0),
@@ -771,7 +771,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                         },
                                         style: ElevatedButton.styleFrom(
                                           minimumSize: const Size(64.0, 30.0),
-                                          backgroundColor: kRedColor,
+                                          backgroundColor: kRedColour,
                                         ),
                                         child: const Text(
                                           'Delete',

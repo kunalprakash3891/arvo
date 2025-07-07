@@ -26,7 +26,7 @@ class _PerfectMatchQuizStartViewState extends State<PerfectMatchQuizStartView> {
     _quizEndedCallback = _quizEndedCallback ?? context.getArgument<Function>();
 
     return Scaffold(
-      backgroundColor: kBaseAnalogousColour1,
+      backgroundColor: kBaseCoastalTeal,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(

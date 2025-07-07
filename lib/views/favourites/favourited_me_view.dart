@@ -1,3 +1,4 @@
+import 'package:arvo/theme/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/localised_text.dart';
 import 'package:arvo/constants/routes.dart';
@@ -157,10 +158,12 @@ class _FavouritedMeViewState extends State<FavouritedMeView> {
                   onPressed: () {
                     Navigator.of(context).pushNamed(subscriptionsViewRoute);
                   },
+                  style: FilledButton.styleFrom(
+                      backgroundColor: kBasePremiumBackgroundColour),
                   child: const Text(
                     'Get Premium',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: kBasePremiumForegroundTextColour,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
