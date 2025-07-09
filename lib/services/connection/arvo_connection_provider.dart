@@ -2202,6 +2202,8 @@ class ArvoConnectionProvider implements ConnectionProvider {
     try {
       response = await _httpClient.get(
         Uri.parse(_url + multiplePhotoManagementAvailableUrl),
+        //TODO: Does this need to be here? It's not there in hello!. Maybe if the user is verified this is not required.
+        headers: {HttpHeaders.authorizationHeader: "Bearer $token"},
       );
 
       if (response.statusCode == httpSuccessStatusCode) {

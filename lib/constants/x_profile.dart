@@ -186,14 +186,16 @@ Map<int, String> xProfileFieldCountrySortMap = {
 
 // Australia states short names map.
 Map<String, String> australianStatesShortNameMap = {
-  'ACT': 'Australian Capital Territory',
-  'NSW': 'New South Wales',
-  'NT': 'Northern Territory',
-  'QLD': 'Queensland',
-  'SA': 'South Australia',
-  'TAS': 'Tasmania',
-  'VIC': 'Victoria',
+  'Australian Capital Territory': 'ACT',
+  'New South Wales': 'NSW',
+  'Northern Territory': 'NT',
+  'Queensland': 'QLD',
+  'South Australia': 'SA',
+  'Tasmania': 'TAS',
+  'Victoria': 'VIC',
 };
+
+const String australia = 'Australia';
 
 // List of field values which will be displayed postfixed with a divider when shown in a drop down.
 List<String> xProfileDropDownDividerPostfix = [
@@ -233,7 +235,8 @@ IconData? getXProfileFieldDataIcon(
           return Icons.male_rounded;
         case 'female':
           return Icons.female_rounded;
-        case 'transgender':
+        case 'transgender man':
+        case 'transgender woman':
           return Icons.transgender_rounded;
       }
     case xProfileFieldLocation:

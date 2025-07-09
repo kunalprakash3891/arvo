@@ -261,6 +261,22 @@ String locationDisplayFormatter(String selectedItemDescription) {
       .join(xProfileLocationDisplayTitleJoinOnCharacter);
 }
 
+String shortLocationDisplayFormatter(String selectedItemDescription) {
+  final locations = selectedItemDescription
+      .split(xProfileLocationDisplayTitleSplitOnCharacter)
+      .toList();
+
+  // Replace long state names with short names
+  for (int i = 0; i < locations.length; i++) {
+    locations[i] = australianStatesShortNameMap[locations[i]] ?? locations[i];
+  }
+
+  // Remove country if Australia
+  locations.removeWhere((location) => location == australia);
+
+  return locations.reversed.join(xProfileLocationDisplayTitleJoinOnCharacter);
+}
+
 // NOTE: The following code iteratively generates locations with parent identifiers, but does not group them into countries/states/cities.
 /*List<Location>? extractXProfileFieldLocations(
     XProfileField? locationXProfileField) {

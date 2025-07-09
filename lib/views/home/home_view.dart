@@ -1,3 +1,4 @@
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -845,6 +846,8 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       verifiedMemberIndicatorColour:
                           kBaseVerifiedIndicatorColour,
+                      locationTextDisplayFormatter:
+                          shortLocationDisplayFormatter,
                     );
                   },
                 ),

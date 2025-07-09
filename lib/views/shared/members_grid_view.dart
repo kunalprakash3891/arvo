@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -174,6 +175,7 @@ class MembersGridView extends StatelessWidget {
                   showColourCodedMatchPercentage,
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
+                locationTextDisplayFormatter: shortLocationDisplayFormatter,
               );
             },
           ),

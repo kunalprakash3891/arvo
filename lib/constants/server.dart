@@ -11,6 +11,7 @@ const onlineSafetyTipsURL = "/online-safety-tips/";
 // TODO: Set website to use rounded photo for user default avatar.
 // TODO: Test by creating a new user
 // TODO: Test default photo is assigned properly when deleting photos.
+// TODO: This default avatar may need to be updated as it shows account as verified when it is not.
 const defaultAvatarURL = "/wp-content/uploads/2025/05/arvo-avatar-original.png";
 const faqsURL = "/faq/";
 const lostPasswordURL = "/wp-login.php?action=lostpassword";

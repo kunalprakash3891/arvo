@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -202,6 +203,7 @@ class _PerfectMatchQuizFinishViewState
                   _featureService.featureMatchInsight,
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
+                locationTextDisplayFormatter: shortLocationDisplayFormatter,
               ),
             ),
           )
