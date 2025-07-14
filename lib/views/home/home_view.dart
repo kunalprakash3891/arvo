@@ -1,3 +1,4 @@
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:arvo/constants/localised_assets.dart';
 import 'package:arvo/constants/localised_text.dart';
 import 'package:arvo/constants/routes.dart';
-import 'package:arvo/constants/server.dart';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:arvo/views/shared/navigate_to_edit_profile_pictures.dart';
 import 'package:nifty_three_bp_app_base/enums/member_directory_category.dart';
@@ -32,7 +32,6 @@ import 'package:nifty_three_bp_app_base/views/widgets/posts_grid_widget.dart';
 import 'package:app_base/dialogs/logout_dialog.dart';
 import 'package:app_base/widgets/animated_counter_widget.dart';
 import 'package:app_base/widgets/back_to_top_widget.dart';
-import 'package:path/path.dart' show basename;
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:uuid/uuid.dart';
 
@@ -227,17 +226,44 @@ class _HomeViewState extends State<HomeView> {
             animation: true,
             animationDuration: 1000,
             percent: _currentUser.profileCompletionPercentage,
-            center: Container(
-              width: 100.0,
-              height: 100.0,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                    image:
-                        CachedNetworkImageProvider(_currentUser.avatar!.full!),
-                    fit: BoxFit.cover),
-              ),
-            ),
+            center: memberHasDefaultAvatar(_currentUser.avatar!.full!)
+                ? Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: getAvatarPlaceholderImage(_currentUser.name),
+                        fit: BoxFit.cover,
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.4),
+                          BlendMode.darken,
+                        ),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        _currentUser.name![0],
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(
+                                color: getProfileCompletionPercentageColour(
+                                    _currentUser.profileCompletionPercentage)),
+                      ),
+                    ),
+                  )
+                : Container(
+                    width: 100.0,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: CachedNetworkImageProvider(
+                              _currentUser.avatar!.full!),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
           ),
           Positioned(
             left: 72.0,
@@ -577,9 +603,7 @@ class _HomeViewState extends State<HomeView> {
       return const SizedBox.shrink();
     }
 
-    bool userHasDefaultPhoto =
-        basename(_currentUser.avatar!.full!) == basename(defaultAvatarURL);
-    return userHasDefaultPhoto
+    return memberHasDefaultAvatar(_currentUser.avatar!.full!)
         ? Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -848,6 +872,14 @@ class _HomeViewState extends State<HomeView> {
                           kBaseVerifiedIndicatorColour,
                       locationTextDisplayFormatter:
                           shortLocationDisplayFormatter,
+                      avatarAsText: memberHasDefaultAvatar(
+                          _newestMembers[index].avatar?.full),
+                      avatarAsTextTextColour: getMatchPercentageColour(
+                        _newestMembers[index].matchWeight,
+                        _featureService.featureMatchInsight,
+                      ),
+                      avatarAsTextImageProvider: getAvatarPlaceholderImage(
+                          _newestMembers[index].name!),
                     );
                   },
                 ),

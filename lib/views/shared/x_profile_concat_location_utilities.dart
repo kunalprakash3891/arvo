@@ -3,7 +3,6 @@ import 'package:arvo/constants/x_profile.dart';
 import 'package:flutter/foundation.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field.dart';
 import 'package:nifty_three_bp_app_base/api/x_profile_field_description.dart';
-import 'package:nifty_three_bp_app_base/api/x_profile_options_item.dart';
 
 XProfileFieldLocations? generateLocationXProfileFields(
     XProfileField? xProfileField) {

@@ -1,10 +1,12 @@
-// xProfile field types.
 import 'dart:io';
 
+import 'package:arvo/constants/server.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/theme/palette.dart';
+import 'package:path/path.dart' show basename;
 
+// xProfile field types.
 const String fieldTypeTextBox = "textbox";
 const String fieldTypeSelectBox = "selectbox";
 const String fieldTypeCheckBox = "checkbox";
@@ -293,4 +295,9 @@ Color getProfileCompletionPercentageColour(double percentage) {
       : percentage >= 0.5
           ? kBaseMediumPercentageColour
           : kBaseLowPercentageColour;
+}
+
+bool memberHasDefaultAvatar(String? memberAvatarUrl) {
+  return (memberAvatarUrl == null) ||
+      basename(memberAvatarUrl) == basename(defaultAvatarURL);
 }

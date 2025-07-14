@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -176,6 +177,13 @@ class MembersGridView extends StatelessWidget {
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
                 locationTextDisplayFormatter: shortLocationDisplayFormatter,
+                avatarAsText: memberHasDefaultAvatar(
+                    members.elementAt(index).avatar?.full),
+                avatarAsTextTextColour: getMatchPercentageColour(
+                    members.elementAt(index).matchWeight,
+                    showColourCodedMatchPercentage),
+                avatarAsTextImageProvider:
+                    getAvatarPlaceholderImage(members.elementAt(index).name!),
               );
             },
           ),

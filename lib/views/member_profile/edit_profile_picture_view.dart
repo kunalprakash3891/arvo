@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:app_base/dialogs/widget_information_dialog.dart';
 import 'package:app_base/generics/get_arguments.dart';
+import 'package:arvo/constants/x_profile.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
-import 'package:arvo/constants/server.dart';
 import 'package:arvo/helpers/error_handling/exception_processing.dart';
 import 'package:arvo/services/connection/connection_service.dart';
 import 'package:nifty_three_bp_app_base/api/member.dart';
@@ -21,7 +21,6 @@ import 'package:app_base/dialogs/success_dialog.dart';
 import 'package:app_base/loading/loading_screen.dart';
 import 'package:nifty_three_bp_app_base/api/multiple_photo.dart';
 import 'package:nifty_three_bp_app_base/enums/photo_verification_status_type.dart';
-import 'package:path/path.dart' show basename;
 
 class EditProfilePictureView extends StatefulWidget {
   const EditProfilePictureView({super.key});
@@ -141,7 +140,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
     _multiplePhotoSystemStatus = multiplePhotoSystemStatus;
 
     bool userHasDefaultPhoto =
-        basename(_currentUser.avatar!.full!) == basename(defaultAvatarURL);
+        memberHasDefaultAvatar(_currentUser.avatar!.full!);
 
     return PopScope(
       canPop: _croppedImageFile == null,
@@ -369,7 +368,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
 
   Widget _buildProfilePhotoWidget() {
     bool userHasDefaultPhoto =
-        basename(_currentUser.avatar!.full!) == basename(defaultAvatarURL);
+        memberHasDefaultAvatar(_currentUser.avatar!.full!);
 
     return Container(
       padding: const EdgeInsets.all(8.0),
@@ -459,7 +458,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
           LoadingScreen().hide();
         }
         if (memberAvatar != null &&
-            basename(memberAvatar.full!) != basename(defaultAvatarURL)) {
+            !memberHasDefaultAvatar(memberAvatar.full!)) {
           if (mounted) {
             await showSuccessDialog(context,
                 "Your profile photo has been uploaded and is now awaiting moderation.\n\nDon't worry, it won't take long!");

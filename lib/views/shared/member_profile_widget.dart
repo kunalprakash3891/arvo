@@ -6,7 +6,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
-import 'package:arvo/constants/server.dart';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:arvo/views/member_reporting/report_member_view.dart';
 import 'package:nifty_three_bp_app_base/api/multiple_photo.dart';
@@ -22,7 +21,6 @@ import 'package:nifty_three_bp_app_base/views/picture_viewer_view.dart';
 import 'package:app_base/dialogs/success_dialog.dart';
 import 'package:app_base/extensions/string_extensions.dart';
 import 'package:app_base/widgets/quick_info_widget.dart';
-import 'package:path/path.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 typedef EditProfilePicturesCallback = void Function(BuildContext);
@@ -378,6 +376,7 @@ class MemberProfileWidget extends StatelessWidget {
                   ? LinearProgressIndicator(
                       minHeight: 8.0,
                       value: groupCompletionPercentage,
+                      // TODO: Check this by completing a profile and making sure the progress is linear and ends at 100%.
                       color: getProfileCompletionPercentageColour(
                           groupCompletionPercentage),
                     )
@@ -476,7 +475,7 @@ class MemberProfileWidget extends StatelessWidget {
     final memberAvatarUrl = memberAvatar?.urls.full ?? member.avatar!.full!;
     return GestureDetector(
       onTap: () async {
-        if (basename(memberAvatarUrl) == basename(defaultAvatarURL)) {
+        if (memberHasDefaultAvatar(memberAvatarUrl)) {
           return;
         }
         _viewProfilePicture(context, memberAvatarUrl);
@@ -492,7 +491,7 @@ class MemberProfileWidget extends StatelessWidget {
                   begin: Alignment.center,
                   end: Alignment.bottomCenter,
                   colors: const [Colors.transparent, Colors.black],
-                  stops: basename(memberAvatarUrl) == basename(defaultAvatarURL)
+                  stops: memberHasDefaultAvatar(memberAvatarUrl)
                       ? [1.0, 0.0]
                       : [0.5, 1.0],
                 ).createShader(rect);
@@ -564,7 +563,7 @@ class MemberProfileWidget extends StatelessWidget {
             right: 5.0,
             top: 10.0,
             child: (member.id == currentUser.id)
-                ? basename(memberAvatarUrl) == basename(defaultAvatarURL)
+                ? memberHasDefaultAvatar(memberAvatarUrl)
                     ? const SizedBox.shrink()
                     : FloatingActionButton.small(
                         heroTag: null,
@@ -613,7 +612,7 @@ class MemberProfileWidget extends StatelessWidget {
           Positioned(
             right: 5.0,
             bottom: 10.0,
-            child: basename(memberAvatarUrl) == basename(defaultAvatarURL)
+            child: memberHasDefaultAvatar(memberAvatarUrl)
                 ? const SizedBox.shrink()
                 : FloatingActionButton.small(
                     heroTag: null,
@@ -631,7 +630,7 @@ class MemberProfileWidget extends StatelessWidget {
                   ),
           ),
           (member.id == currentUser.id &&
-                  basename(memberAvatarUrl) == basename(defaultAvatarURL))
+                  memberHasDefaultAvatar(memberAvatarUrl))
               ? Container(
                   clipBehavior: Clip.antiAlias,
                   width: double.infinity,

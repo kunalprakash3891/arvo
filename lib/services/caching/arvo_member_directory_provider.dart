@@ -15,7 +15,6 @@ import 'package:nifty_three_bp_app_base/api/x_profile_options_item.dart';
 import 'package:arvo/services/crud/arvo_local_storage_provider.dart';
 import 'package:arvo/services/crud/local_storage_provider.dart';
 import 'package:intl/intl.dart';
-import 'package:path/path.dart';
 import 'package:uuid/uuid.dart';
 
 class ArvoMemberDirectoryProvider implements MemberDirectoryProvider {
@@ -302,11 +301,11 @@ class ArvoMemberDirectoryProvider implements MemberDirectoryProvider {
     // Apply photo filter.
     switch (_memberFilters.selectedProfilePhotoType.value) {
       case photoTypeHasPhoto:
-        members.removeWhere((member) =>
-            basename(member.avatar!.full!) == basename(defaultAvatarURL));
+        members.removeWhere(
+            (member) => memberHasDefaultAvatar(member.avatar!.full!));
       case photoTypeHasNoPhoto:
-        members.removeWhere((member) =>
-            basename(member.avatar!.full!) != basename(defaultAvatarURL));
+        members.removeWhere(
+            (member) => !memberHasDefaultAvatar(member.avatar!.full!));
     }
 
     return members;

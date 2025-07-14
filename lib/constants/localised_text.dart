@@ -39,3 +39,6 @@ const localisedErrorMessageGenericRequestException =
     "Could not complete the request, please try again. If this error persists, please contact the arvo support team at arvo.dating/contact/";
 const localisedErrorMessageCouldNotProcessRequest =
     'Could not process this request. Please try again later.';
+
+// Country Codes
+const defaultCountryCode = 'AU';

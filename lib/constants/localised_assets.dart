@@ -9,7 +9,7 @@ const friends = '$assetImages/friends.jpg';
 const adImageGeneric = '$assetImages/arvo_logo_white_text_1480x560.png';
 
 // Android ad images
-const assetImagesAdsAndroid = 'assets/images/ads/android';
+const assetImagesAdsAndroid = '$assetImages/ads/android';
 const adImageAndroidActivityIndicator =
     '$assetImagesAdsAndroid/activity_indicator.png';
 const adImageAndroidColourCodedMatchMeters =
@@ -22,7 +22,7 @@ const adImageAndroidFavouritedMe = '$assetImagesAdsAndroid/favourited_me.png';
 const adImageAndroidPhotoFilter = '$assetImagesAdsAndroid/photo_filter.png';
 
 // iOS ad images
-const assetImagesAdsIOS = 'assets/images/ads/ios';
+const assetImagesAdsIOS = '$assetImages/ads/ios';
 const adImageIOSActivityIndicator = '$assetImagesAdsIOS/activity_indicator.png';
 const adImageIOSColourCodedMatchMeters =
     '$assetImagesAdsIOS/colour_coded_match_meters.png';
@@ -33,4 +33,13 @@ const adImageIOSDarkMode = '$assetImagesAdsIOS/dark_mode.png';
 const adImageIOSFavouritedMe = '$assetImagesAdsIOS/favourited_me.png';
 const adImageIOSPhotoFilter = '$assetImagesAdsIOS/photo_filter.png';
 
-const defaultCountryCode = 'AU';
+// Avatar Placeholders
+const assetImagesAvatarPlaceholders = '$assetImages/avatar_placeholders';
+const avatarPlaceholderBeach = '$assetImagesAvatarPlaceholders/beach_bw.jpg';
+const avatarPlaceholderGrampians =
+    '$assetImagesAvatarPlaceholders/grampians_bw.jpg';
+const avatarPlaceholderHardwareLane =
+    '$assetImagesAvatarPlaceholders/hardware_lane_bw.jpg';
+const avatarPlaceholderHouse = '$assetImagesAvatarPlaceholders/house_bw.jpg';
+const avatarPlaceholderLibrary =
+    '$assetImagesAvatarPlaceholders/library_bw.jpg';

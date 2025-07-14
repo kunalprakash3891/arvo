@@ -1,10 +1,8 @@
 import 'package:age_calculator/age_calculator.dart';
-import 'package:arvo/constants/server.dart';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:nifty_three_bp_app_base/extensions/string.dart';
 import 'package:nifty_three_bp_app_base/api/member.dart';
 import 'package:app_base/extensions/string_extensions.dart';
-import 'package:path/path.dart';
 
 void populateMemberProfileCompletionPercentage(Member member) {
   int totalMemberProfileFieldsCount = 0;
@@ -25,7 +23,7 @@ void populateMemberProfileCompletionPercentage(Member member) {
 
       if (field.value == null) continue;
 
-      if (field.value!.raw != null && field.value!.raw!.isNotEmpty) {
+      if (field.value!.unserialized!.isNotEmpty) {
         memberProfileFieldsCompletedCount++;
         memberProfileGroupFieldsCompletedCount++;
       }
@@ -36,9 +34,7 @@ void populateMemberProfileCompletionPercentage(Member member) {
   }
 
   var memberPercentagePhoto =
-      basename(member.avatar!.full!) == basename(defaultAvatarURL)
-          ? 0
-          : totalPointsPhoto;
+      memberHasDefaultAvatar(member.avatar!.full!) ? 0 : totalPointsPhoto;
 
   var completedPercentage =
       ((memberProfileFieldsCompletedCount / totalMemberProfileFieldsCount) -

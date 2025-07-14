@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -204,6 +205,13 @@ class _PerfectMatchQuizFinishViewState
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
                 locationTextDisplayFormatter: shortLocationDisplayFormatter,
+                avatarAsText: memberHasDefaultAvatar(item.avatar?.full),
+                avatarAsTextTextColour: getMatchPercentageColour(
+                  item.matchWeight,
+                  _featureService.featureMatchInsight,
+                ),
+                avatarAsTextImageProvider:
+                    getAvatarPlaceholderImage(item.name!),
               ),
             ),
           )
