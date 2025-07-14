@@ -1,6 +1,7 @@
 import 'package:arvo/constants/localised_assets.dart';
 import 'package:flutter/cupertino.dart';
 
+// TODO: Credit these images.
 Map<String, String> avatarPlaceholderMap = {
   'a': avatarPlaceholderBeach,
   'b': avatarPlaceholderGrampians,
@@ -31,8 +32,9 @@ Map<String, String> avatarPlaceholderMap = {
 };
 
 AssetImage getAvatarPlaceholderImage(String? memberName) {
-  if (memberName == null || memberName.isEmpty)
+  if (memberName == null || memberName.isEmpty) {
     AssetImage(avatarPlaceholderMap.values.first);
+  }
 
   return AssetImage(avatarPlaceholderMap[memberName![0].toLowerCase()] ??
       avatarPlaceholderMap.values.first);

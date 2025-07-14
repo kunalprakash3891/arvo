@@ -220,7 +220,7 @@ class _PerfectMatchQuizFinishViewState
         enlargeCenterPage: true,
         enlargeStrategy: CenterPageEnlargeStrategy.zoom,
         viewportFraction: 0.5,
-        height: 248.0,
+        height: 288.0,
       ),
     );
   }

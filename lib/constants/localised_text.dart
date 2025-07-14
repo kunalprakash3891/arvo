@@ -11,7 +11,6 @@ const localisedTextNotPremium = "You're not a Premium member.";
 const localisedTextLocationTracking =
     "Your privacy is important to you, and to us too. Arvo will never request or track your precise location.";
 
-// TODO: Can we use something else instead of bugger?
 // Search
 const noResults =
     "Bugger! Your search returned no results. Try adjusting your filters and searching again.";
