@@ -240,7 +240,7 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
   }
 
   Widget _buildTakeVerificationPhotoWidget() {
-    return ElevatedButton(
+    return FilledButton(
       onPressed: () async {
         await showWidgetInformationDialog(
           context: context,
@@ -278,10 +278,6 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
       },
       child: const Text(
         'Continue',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
       ),
     );
   }
@@ -292,19 +288,10 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
       children: setWidthBetweenWidgets(
         [
           Expanded(
-            child: ElevatedButton(
+            child: OutlinedButton(
               onPressed: () {
                 _clear();
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50.0),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                      color: kBaseColour, width: 1, style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(32.0),
-                ),
-                backgroundColor: Colors.transparent,
-              ),
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: setWidthBetweenWidgets(
@@ -325,7 +312,7 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
             ),
           ),
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 _uploadProfilePhoto();
               },
@@ -337,14 +324,9 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
                       Platform.isIOS
                           ? CupertinoIcons.cloud_upload_fill
                           : Icons.upload_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Upload',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,

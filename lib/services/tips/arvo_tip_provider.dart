@@ -8,7 +8,6 @@ import 'package:arvo/services/connection/connection_provider.dart';
 import 'package:nifty_three_bp_app_base/api/member.dart';
 import 'package:arvo/services/crud/local_storage_provider.dart';
 import 'package:arvo/services/tips/tip_provider.dart';
-import 'package:arvo/theme/palette.dart';
 import 'package:app_base/utilities/widget_utilities.dart';
 import 'package:lottie/lottie.dart';
 import 'package:app_base/overlays/tip_overlay.dart';
@@ -60,7 +59,6 @@ class ArvoTipProvider implements TipProvider {
             dontShowAgainCallback: () async {
               await dismissTip(tipType);
             },
-            dontShowAgainButtonBorderColour: kBaseColour,
           );
         }
         break;
@@ -73,7 +71,6 @@ class ArvoTipProvider implements TipProvider {
             dontShowAgainCallback: () async {
               await dismissTip(tipType);
             },
-            dontShowAgainButtonBorderColour: kBaseColour,
           );
         }
         break;
@@ -86,7 +83,6 @@ class ArvoTipProvider implements TipProvider {
             dontShowAgainCallback: () async {
               await dismissTip(tipType);
             },
-            dontShowAgainButtonBorderColour: kBaseColour,
           );
         }
         break;

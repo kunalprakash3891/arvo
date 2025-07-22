@@ -51,10 +51,15 @@ const kBaseMediumPercentageColour = kBaseOutbackOchre40;
 const kBaseLowPercentageColour = kBaseCoralSunset;
 const kBasePremiumBackgroundColour = kBaseGoldenWattle;
 const kBasePremiumForegroundTextColour = kBaseKangarooBrown;
+const kBasePremiumGoldBackgroundColour = kBaseGoldenWattle;
+const kBasePremiumGoldForegroundTextColour = kBaseKangarooBrown;
+const kBasePremiumSilverBackgroundColour = kBaseBushGrey;
+const kBasePremiumSilverForegroundTextColour = kBaseSandyBeach;
 const kBaseStarredMessageColour = kBaseOutbackOchre;
-const kBaseVerifiedIndicatorColour = kBaseEucalyptusGreen;
+const kBaseVerifiedIndicatorColour = kBaseOceanBlue;
 const kBasePendingVerificationIndicatorColour = kBaseOutbackOchre40;
 const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
+const kBaseMessageThreadRecievedMessageBackgroundColour = kBaseOceanBlue;
 
 // Dark theme colours.
 const kBaseDarkColour = Color(0xFFE69F89); // kBaseOutbackOchre;

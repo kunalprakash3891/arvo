@@ -95,113 +95,134 @@ class _ActivateAccountViewState extends State<ActivateAccountView> {
                   end: Alignment.bottomRight,
                 ),
               ),
-              child: Center(
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: _formKey,
-                    autovalidateMode: _autoValidate
-                        ? AutovalidateMode.onUserInteraction
-                        : AutovalidateMode.disabled,
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          width: 320.0,
-                          child: buildLogoTaglineWidget(
-                            logo,
-                            tagline,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(32.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(16.0),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.surface,
-                              borderRadius: BorderRadius.circular(8.0),
+              child: Stack(
+                children: [
+                  const Positioned(
+                    top: 48.0,
+                    right: -8.0,
+                    child: Image(
+                      image: AssetImage(gumTreeBranch),
+                      height: 112.0,
+                    ),
+                  ),
+                  const Positioned(
+                    bottom: 48.0,
+                    left: 8.0,
+                    child: Image(
+                      image: AssetImage(gumLeaves),
+                      height: 80.0,
+                    ),
+                  ),
+                  Center(
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: _formKey,
+                        autovalidateMode: _autoValidate
+                            ? AutovalidateMode.onUserInteraction
+                            : AutovalidateMode.disabled,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: 320.0,
+                              child: buildLogoTaglineWidget(
+                                logo,
+                                tagline,
+                              ),
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _error != null
-                                    ? buildErrorWidget(
-                                        message: _error.toString(),
-                                      )
-                                    : const SizedBox.shrink(),
-                                _error != null
-                                    ? const SizedBox(
-                                        height: 8.0,
-                                      )
-                                    : const SizedBox.shrink(),
-                                Text(
-                                  "Activate Account",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineMedium,
+                            Padding(
+                              padding: const EdgeInsets.all(32.0),
+                              child: Container(
+                                padding: const EdgeInsets.all(16.0),
+                                decoration: BoxDecoration(
+                                  color: Theme.of(context).colorScheme.surface,
+                                  borderRadius: BorderRadius.circular(8.0),
                                 ),
-                                const SizedBox(
-                                  height: 16.0,
-                                ),
-                                Text(
-                                  "You're almost there!\n\nCheck your email for a code to activate your account, and then copy and paste it below.",
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                const SizedBox(
-                                  height: 16.0,
-                                ),
-                                TextFormField(
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                  controller: _activationKey,
-                                  autofocus: true,
-                                  autocorrect: false,
-                                  decoration: const InputDecoration(
-                                      labelText: 'Activation Code'),
-                                  validator: (value) {
-                                    if (value == null || value.trim().isEmpty) {
-                                      return 'Activation code cannot be empty.';
-                                    }
-                                    return null;
-                                  },
-                                  onFieldSubmitted: (value) async {
-                                    _activate();
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 16.0,
-                                ),
-                                FilledButton(
-                                  onPressed: () async {
-                                    _activate();
-                                  },
-                                  child: const Text(
-                                    'Submit',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 8.0,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    TextButton(
-                                      onPressed: _exit,
+                                    _error != null
+                                        ? buildErrorWidget(
+                                            message: _error.toString(),
+                                          )
+                                        : const SizedBox.shrink(),
+                                    _error != null
+                                        ? const SizedBox(
+                                            height: 8.0,
+                                          )
+                                        : const SizedBox.shrink(),
+                                    Text(
+                                      "Activate Account",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineMedium,
+                                    ),
+                                    const SizedBox(
+                                      height: 16.0,
+                                    ),
+                                    Text(
+                                      "You're almost there!\n\nCheck your email for a code to activate your account, and then copy and paste it below.",
+                                      style:
+                                          Theme.of(context).textTheme.bodyLarge,
+                                    ),
+                                    const SizedBox(
+                                      height: 16.0,
+                                    ),
+                                    TextFormField(
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium,
+                                      controller: _activationKey,
+                                      autofocus: true,
+                                      autocorrect: false,
+                                      decoration: const InputDecoration(
+                                          labelText: 'Activation Code'),
+                                      validator: (value) {
+                                        if (value == null ||
+                                            value.trim().isEmpty) {
+                                          return 'Activation code cannot be empty.';
+                                        }
+                                        return null;
+                                      },
+                                      onFieldSubmitted: (value) async {
+                                        _activate();
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 16.0,
+                                    ),
+                                    FilledButton(
+                                      onPressed: () async {
+                                        _activate();
+                                      },
                                       child: const Text(
-                                        'Back to Log In page',
+                                        'Submit',
                                       ),
+                                    ),
+                                    const SizedBox(
+                                      height: 8.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        TextButton(
+                                          onPressed: _exit,
+                                          child: const Text(
+                                            'Back to Log In page',
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
           ),

@@ -229,9 +229,6 @@ class _SmsVerificationViewState extends State<SmsVerificationView> {
             },
             child: const Text(
               'Send SMS Code',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
           const Text(
@@ -264,18 +261,12 @@ class _SmsVerificationViewState extends State<SmsVerificationView> {
                       },
                       child: const Text(
                         'Resend Code',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     )
                   : FilledButton(
                       onPressed: null,
                       child: Text(
                         'Resend Code ($value)',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     );
             },

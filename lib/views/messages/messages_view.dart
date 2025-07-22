@@ -334,15 +334,13 @@ class _MessagesViewState extends State<MessagesView> {
                 _onRefresh();
               },
             ),
-            ElevatedButton(
+            FilledButton(
               onPressed: () async {
                 FocusScope.of(context).unfocus();
                 _onRefresh();
               },
               child: const Text(
                 'Apply',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ],

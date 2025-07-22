@@ -23,6 +23,7 @@ import 'package:app_base/dialogs/error_dialog.dart';
 import 'package:app_base/dialogs/generic_dialog.dart';
 import 'package:uuid/uuid.dart';
 
+// TODO: Change elevated buttons to fill/outline buttons.
 class SubscriptionsView extends StatefulWidget {
   const SubscriptionsView({super.key});
 
@@ -76,7 +77,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
           ? 'assets/images/premium_gold.png'
           : _subscriptionService.hasSilver
               ? 'assets/images/premium_silver.png'
-              : 'assets/images/arvo_a.png';
+              : gumLeaves;
 
       if (mounted) {
         showWidgetInformationDialog(
@@ -326,7 +327,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                                     width: 16.0,
                                     child: Image(
                                       image: AssetImage(
-                                        alternateLogo,
+                                        gumLeaves,
                                       ),
                                       fit: BoxFit.cover,
                                     ),

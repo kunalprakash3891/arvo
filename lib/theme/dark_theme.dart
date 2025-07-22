@@ -76,11 +76,13 @@ ThemeData darkTheme = ThemeData(
   filledButtonTheme: FilledButtonThemeData(
     style: FilledButton.styleFrom(
       minimumSize: const Size.fromHeight(50.0),
+      textStyle: const TextStyle(fontWeight: FontWeight.bold),
     ),
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       minimumSize: const Size.fromHeight(50.0),
+      textStyle: const TextStyle(fontWeight: FontWeight.bold),
     ),
   ),
   iconTheme: const IconThemeData(color: kBaseDarkColour),

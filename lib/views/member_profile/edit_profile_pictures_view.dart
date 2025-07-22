@@ -359,7 +359,7 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
       children: setHeightBetweenWidgets(
         [
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 Navigator.pop(context);
                 await _pickImage(
@@ -376,14 +376,9 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
                       Platform.isIOS
                           ? CupertinoIcons.camera_fill
                           : Icons.camera_alt_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Camera',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,
@@ -392,7 +387,7 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
             ),
           ),
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 Navigator.pop(context);
                 await _pickImage(
@@ -409,14 +404,9 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
                       Platform.isIOS
                           ? CupertinoIcons.photo_fill_on_rectangle_fill
                           : Icons.photo_library_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Browse',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,
@@ -425,19 +415,10 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
             ),
           ),
           Expanded(
-            child: ElevatedButton(
+            child: OutlinedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50.0),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                      color: kBaseColour, width: 1, style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(32.0),
-                ),
-                backgroundColor: Colors.transparent,
-              ),
               child: const Text(
                 'Close',
               ),
@@ -747,7 +728,7 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-        color: Theme.of(context).colorScheme.surfaceContainer,
+        color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),

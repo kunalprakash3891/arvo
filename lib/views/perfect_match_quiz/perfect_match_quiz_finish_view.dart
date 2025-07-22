@@ -159,7 +159,7 @@ class _PerfectMatchQuizFinishViewState
                         _buildTopMatchesCarousel(),
                       ],
                     ),
-              ElevatedButton(
+              FilledButton(
                 onPressed: () {
                   if (mounted) {
                     Navigator.of(context).pop();
@@ -168,10 +168,6 @@ class _PerfectMatchQuizFinishViewState
                 },
                 child: const Text(
                   'Finish',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ),
             ],

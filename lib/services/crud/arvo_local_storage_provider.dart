@@ -1042,10 +1042,9 @@ const createUserSettingTable = '''CREATE TABLE IF NOT EXISTS "user_setting" (
   PRIMARY KEY("id" AUTOINCREMENT)
 );''';
 
-// TODO: Configure PNFPB on server and here.
+// TODO: Configure PNFPB for iOS and add icon on server.
 const insertDefaultServers = '''INSERT INTO server(url, pnfpb_key) VALUES 
-('https://www.arvo.dating', 'dd99bf8fb3d8399eb522597f0b42acd2'), 
-('https://wordpress-888295-3079813.cloudwaysapps.com', 'f87ffed33fb034ea59010d95e8c827e7')
+('https://www.arvo.dating', 'ed3c35b8f7cd2201b57c12c0c930fe2d')
 ;''';
 
 // Drop table SQL statements.

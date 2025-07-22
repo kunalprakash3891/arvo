@@ -631,7 +631,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                           decoration: BoxDecoration(
                             color: isMe
                                 ? Theme.of(context).colorScheme.primaryContainer
-                                : kBaseCoastalTeal,
+                                : kBaseMessageThreadRecievedMessageBackgroundColour,
                             borderRadius: isMe
                                 ? const BorderRadius.only(
                                     topLeft: Radius.circular(16.0),
@@ -746,7 +746,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                 : Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: setWidthBetweenWidgets([
-                                      ElevatedButton(
+                                      FilledButton(
                                         onPressed: _isProcessingMessageThread
                                             ? null
                                             : () async {
@@ -755,29 +755,23 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                                   retryMessage: message,
                                                 );
                                               },
-                                        style: ElevatedButton.styleFrom(
+                                        style: FilledButton.styleFrom(
                                           minimumSize: const Size(64.0, 30.0),
                                         ),
                                         child: const Text(
                                           'Retry',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
-                                      ElevatedButton(
+                                      FilledButton(
                                         onPressed: () async {
                                           _deleteUnsentMessage(message);
                                         },
-                                        style: ElevatedButton.styleFrom(
+                                        style: FilledButton.styleFrom(
                                           minimumSize: const Size(64.0, 30.0),
                                           backgroundColor: kRedColour,
                                         ),
                                         child: const Text(
                                           'Delete',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
                                         ),
                                       ),
                                     ], width: 4.0),
@@ -840,7 +834,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                           ),
                                       textAlign: TextAlign.center,
                                     ),
-                                    ElevatedButton(
+                                    FilledButton(
                                       onPressed: () async {
                                         _toggleBlocked();
                                       },
@@ -854,12 +848,10 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                                   ? CupertinoIcons
                                                       .lock_open_fill
                                                   : Icons.lock_open_rounded,
-                                              color: Colors.white,
                                             ),
                                             const Text(
                                               'Unblock',
                                               style: TextStyle(
-                                                color: Colors.white,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),

@@ -118,41 +118,61 @@ class _LogInViewState extends State<LogInView> {
                             end: Alignment.bottomRight,
                           ),
                         ),
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Form(
-                              key: _formKey,
-                              autovalidateMode: _autoValidate
-                                  ? AutovalidateMode.onUserInteraction
-                                  : AutovalidateMode.disabled,
-                              child: Column(
-                                children: [
-                                  FadeAnimation(
-                                    0.8,
-                                    SizedBox(
-                                        width: 320.0,
-                                        child: buildLogoTaglineWidget(
-                                          logo,
-                                          tagline,
-                                        )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(32.0),
-                                    child: Column(
-                                      children: [
-                                        FadeAnimation(
-                                          1.6,
-                                          _isLogInVisible
-                                              ? _buildLogInWidget()
-                                              : _buildWelcomeWidget(),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                        child: Stack(
+                          children: [
+                            const Positioned(
+                              top: 48.0,
+                              right: -8.0,
+                              child: Image(
+                                image: AssetImage(gumTreeBranch),
+                                height: 112.0,
                               ),
                             ),
-                          ),
+                            const Positioned(
+                              bottom: 48.0,
+                              left: 8.0,
+                              child: Image(
+                                image: AssetImage(gumLeaves),
+                                height: 80.0,
+                              ),
+                            ),
+                            Center(
+                              child: SingleChildScrollView(
+                                child: Form(
+                                  key: _formKey,
+                                  autovalidateMode: _autoValidate
+                                      ? AutovalidateMode.onUserInteraction
+                                      : AutovalidateMode.disabled,
+                                  child: Column(
+                                    children: [
+                                      FadeAnimation(
+                                        0.8,
+                                        SizedBox(
+                                            width: 320.0,
+                                            child: buildLogoTaglineWidget(
+                                              logo,
+                                              tagline,
+                                            )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(32.0),
+                                        child: Column(
+                                          children: [
+                                            FadeAnimation(
+                                              1.6,
+                                              _isLogInVisible
+                                                  ? _buildLogInWidget()
+                                                  : _buildWelcomeWidget(),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       );
                     },
@@ -209,9 +229,6 @@ class _LogInViewState extends State<LogInView> {
             },
             child: const Text(
               'Create Account',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
           const SizedBox(
@@ -234,21 +251,8 @@ class _LogInViewState extends State<LogInView> {
                 );
               }
             },
-            // TODO: Convert elevated buttons to FilledButtons/OutlinedButtons
-            /*style: ElevatedButton.styleFrom(
-              minimumSize: const Size.fromHeight(50.0),
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(
-                    color: kBaseColour, width: 1, style: BorderStyle.solid),
-                borderRadius: BorderRadius.circular(32.0),
-              ),
-              backgroundColor: Colors.transparent,
-            ),*/
             child: const Text(
               'Log In',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
           const SizedBox(
@@ -354,9 +358,6 @@ class _LogInViewState extends State<LogInView> {
             onPressed: _logIn,
             child: const Text(
               'Log In',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
           const SizedBox(

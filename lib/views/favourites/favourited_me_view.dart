@@ -164,7 +164,6 @@ class _FavouritedMeViewState extends State<FavouritedMeView> {
                     'Get Premium',
                     style: TextStyle(
                       color: kBasePremiumForegroundTextColour,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),

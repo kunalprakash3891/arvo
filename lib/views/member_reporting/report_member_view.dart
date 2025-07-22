@@ -251,9 +251,6 @@ class _ReportMemberViewState extends State<ReportMemberView> {
                           },
                           child: const Text(
                             'Submit',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         RichText(

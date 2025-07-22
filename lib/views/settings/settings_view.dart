@@ -395,8 +395,6 @@ class _SettingsViewState extends State<SettingsView> {
                   ),
                   child: const Text(
                     'Delete Account',
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -1209,9 +1207,6 @@ class _SettingsViewState extends State<SettingsView> {
               },
               child: const Text(
                 'Send us a suggestion or report a bug',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
           ],

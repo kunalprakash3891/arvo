@@ -194,6 +194,7 @@ class _HomeViewState extends State<HomeView> {
       pinned: true,
       expandedHeight: 208.0,
       leading: IconButton(
+        splashRadius: 8.0,
         icon: Image.asset(
           alternateLogo,
         ),
@@ -438,7 +439,7 @@ class _HomeViewState extends State<HomeView> {
                                 width: 16.0,
                                 child: Image(
                                   image: AssetImage(
-                                    alternateLogo,
+                                    gumLeaves,
                                   ),
                                   fit: BoxFit.cover,
                                 ),
@@ -506,9 +507,17 @@ class _HomeViewState extends State<HomeView> {
 
   Widget _buildSubscriptionDescriptionWidget() {
     if (_subscriptionService.hasGold) {
-      return _buildPremiumSubscriptionDescriptionNavigationWidget('Gold');
+      return _buildPremiumSubscriptionDescriptionNavigationWidget(
+        'Gold',
+        kBasePremiumGoldForegroundTextColour,
+        kBasePremiumGoldBackgroundColour,
+      );
     } else if (_subscriptionService.hasSilver) {
-      return _buildPremiumSubscriptionDescriptionNavigationWidget('Silver');
+      return _buildPremiumSubscriptionDescriptionNavigationWidget(
+        'Silver',
+        kBasePremiumSilverForegroundTextColour,
+        kBasePremiumSilverBackgroundColour,
+      );
     } else {
       return FilledButton(
         onPressed: () {
@@ -519,32 +528,27 @@ class _HomeViewState extends State<HomeView> {
         ),
         child: const Text(
           'Upgrade',
-          style: TextStyle(color: kBasePremiumForegroundTextColour),
+          style: TextStyle(
+            color: kBasePremiumForegroundTextColour,
+          ),
         ),
       );
     }
   }
 
-  Widget _buildPremiumSubscriptionDescriptionNavigationWidget(String text) {
-    return ElevatedButton(
+  Widget _buildPremiumSubscriptionDescriptionNavigationWidget(
+      String text, Color textColour, Color backgroundColour) {
+    return FilledButton(
       onPressed: () {
         Navigator.of(context).pushNamed(subscriptionsViewRoute);
       },
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size.fromHeight(50.0),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            color: kBaseColour,
-            width: 1,
-            style: BorderStyle.solid,
-          ),
-          borderRadius: BorderRadius.circular(32.0),
-        ),
-        backgroundColor: Colors.transparent,
-      ),
+      style: FilledButton.styleFrom(backgroundColor: backgroundColour),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.displaySmall,
+        style: Theme.of(context)
+            .textTheme
+            .displaySmall!
+            .copyWith(color: textColour),
       ),
     );
   }
@@ -651,10 +655,6 @@ class _HomeViewState extends State<HomeView> {
                       },
                       child: const Text(
                         'Upload Photos',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     ),
                   ],
@@ -720,11 +720,6 @@ class _HomeViewState extends State<HomeView> {
                 },
                 child: const Text(
                   'Verify My Account',
-                  style: TextStyle(
-                    //TODO: Remove the following color line for all buttons like this. Default looks better than white!
-                    // color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ),
             ],
@@ -794,9 +789,6 @@ class _HomeViewState extends State<HomeView> {
                 },
                 child: const Text(
                   'Perfect Match Quiz',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
               ),
             ],

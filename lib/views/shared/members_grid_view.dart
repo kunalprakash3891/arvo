@@ -99,14 +99,9 @@ class MembersGridView extends StatelessWidget {
                                         Platform.isIOS
                                             ? CupertinoIcons.slider_horizontal_3
                                             : Icons.tune_rounded,
-                                        color: Colors.white,
                                       ),
                                       const Text(
                                         'Filters',
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                        ),
                                       ),
                                     ],
                                     width: 8.0,

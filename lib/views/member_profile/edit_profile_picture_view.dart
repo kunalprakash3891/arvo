@@ -182,7 +182,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
       children: setWidthBetweenWidgets(
         [
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 _pickImage(ImageSource.camera);
               },
@@ -194,14 +194,9 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                       Platform.isIOS
                           ? CupertinoIcons.camera_fill
                           : Icons.camera_alt_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Camera',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,
@@ -210,7 +205,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
             ),
           ),
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 _pickImage(ImageSource.gallery);
               },
@@ -222,14 +217,9 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                       Platform.isIOS
                           ? CupertinoIcons.photo_fill_on_rectangle_fill
                           : Icons.photo_library_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Browse',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,
@@ -249,19 +239,10 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
       children: setWidthBetweenWidgets(
         [
           Expanded(
-            child: ElevatedButton(
+            child: OutlinedButton(
               onPressed: () {
                 _clear();
               },
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight(50.0),
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                      color: kBaseColour, width: 1, style: BorderStyle.solid),
-                  borderRadius: BorderRadius.circular(32.0),
-                ),
-                backgroundColor: Colors.transparent,
-              ),
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: setWidthBetweenWidgets(
@@ -282,7 +263,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
             ),
           ),
           Expanded(
-            child: ElevatedButton(
+            child: FilledButton(
               onPressed: () async {
                 _uploadProfilePhoto();
               },
@@ -294,14 +275,9 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                       Platform.isIOS
                           ? CupertinoIcons.cloud_upload_fill
                           : Icons.upload_rounded,
-                      color: Colors.white,
                     ),
                     const Text(
                       'Upload',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
                     ),
                   ],
                   width: 8.0,
@@ -347,17 +323,15 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                   'You will need to delete your current photo before uploading a new one.',
                   textAlign: TextAlign.center,
                 ),
-          ElevatedButton(
+          FilledButton(
             onPressed: () async {
               await _deleteProfilePhoto(context);
             },
-            style: ElevatedButton.styleFrom(
+            style: FilledButton.styleFrom(
               backgroundColor: kRedColour,
             ),
             child: const Text(
               'Delete Photo',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ],
@@ -421,7 +395,6 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                                   'Use the buttons below to add a profile photo.',
                                   style: TextStyle(
                                     fontSize: 24.0,
-                                    // color: Colors.white,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),

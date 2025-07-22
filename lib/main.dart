@@ -223,11 +223,10 @@ class App extends StatelessWidget {
           navigatorKey: navigatorKey,
           // Note: The ErrorHandlerWidget is responsible for catching all top level
           // application errors.
-          home: /*AppUpdateAlert( TODO: Uncomment this after package name has been updated.
-            child:*/
-              const ErrorHandlerWidget(
-            child: HomePage(),
-            //),
+          home: AppUpdateAlert(
+            child: const ErrorHandlerWidget(
+              child: HomePage(),
+            ),
           ),
           routes: {
             editProfilePictureRoute: (context) =>

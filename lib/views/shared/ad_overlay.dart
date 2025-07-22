@@ -104,38 +104,25 @@ class AdOverlay {
                                 ),
                               )
                             : const SizedBox.shrink(),
-                        ElevatedButton(
+                        FilledButton(
                           onPressed: () async {
                             hide();
                             await Navigator.of(context)
                                 .pushNamed(subscriptionsViewRoute);
                           },
+                          style: FilledButton.styleFrom(
+                              backgroundColor: kBasePremiumBackgroundColour),
                           child: const Text(
                             'Get Premium',
                             style: TextStyle(
                               color: kBasePremiumForegroundTextColour,
-                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        ElevatedButton(
+                        OutlinedButton(
                           onPressed: hide,
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size.fromHeight(50.0),
-                            shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  color: kBaseColour,
-                                  width: 1,
-                                  style: BorderStyle.solid),
-                              borderRadius: BorderRadius.circular(32.0),
-                            ),
-                            backgroundColor: Colors.transparent,
-                          ),
                           child: const Text(
                             'Skip',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
                           ),
                         ),
                       ],

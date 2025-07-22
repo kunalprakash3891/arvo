@@ -671,10 +671,6 @@ class _RegisterViewState extends State<RegisterView> {
                       },
                       child: const Text(
                         'Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                     ),
                   ),
@@ -1056,16 +1052,10 @@ class _RegisterViewState extends State<RegisterView> {
                             ? DateFormat('dd/MM/yyyy')
                                 .format(_selectedBirthdate!)
                             : 'Day/Month/Year',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
                       ),
                       if (_selectedBirthdate != null)
                         Text(
                           "${AgeCalculator.age(_selectedBirthdate!).years} years",
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
                         )
                     ],
                   );
@@ -1256,9 +1246,6 @@ class _RegisterViewState extends State<RegisterView> {
                                 },
                                 child: const Text(
                                   'Previous',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
                                 ),
                               ),
                             ),
@@ -1271,10 +1258,6 @@ class _RegisterViewState extends State<RegisterView> {
                                   (_index + 1 == _pageCount)
                                       ? 'Finish'
                                       : 'Next',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
                                 ),
                               ),
                             ),

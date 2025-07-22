@@ -477,10 +477,6 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
         },
         child: const Text(
           'Send',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
         ),
       ),
     );
