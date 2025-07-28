@@ -6,7 +6,7 @@ const darkModeBackgroundGradient = [
   kBaseOutbackNight,
   kBaseBushGrey,
   kBaseOutbackOchre,
-  kBaseCoralSunset
+  kBaseCoralSunset,
 ];
 
 const lightModeBackgroundGradient = [

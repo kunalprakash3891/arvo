@@ -356,7 +356,7 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "Why don't I see high match percentages with other members?",
         answerText:
-            "There could be a couple of reasons for this. The more questions you answer in your profile, the more likely you are to see higher match percentages with other members. We strongly recommend completing the “Perfect Match Quiz”, available through editing your profile, to help increase the accuracy of match percentages. If you, or other members, don't have complete profiles, our system cannot create accurate matches. hello! is also still a young platform, so it will take time for our community of members to grow. This means that it may take some time before your perfect match also joins hello!, but we know it won't take long!",
+            "There could be a couple of reasons for this. The more questions you answer in your profile, the more likely you are to see higher match percentages with other members. We strongly recommend completing the “Fair Dinkum Dating Quiz”, available through editing your profile, to help increase the accuracy of match percentages. If you, or other members, don't have complete profiles, our system cannot create accurate matches. hello! is also still a young platform, so it will take time for our community of members to grow. This means that it may take some time before your perfect match also joins hello!, but we know it won't take long!",
       ),
     );
     _faqs.add(

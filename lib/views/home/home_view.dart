@@ -680,7 +680,7 @@ class _HomeViewState extends State<HomeView> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: const AssetImage(
-              friends,
+              emuElvis,
             ),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
@@ -739,11 +739,11 @@ class _HomeViewState extends State<HomeView> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: const AssetImage(
-              'assets/images/confetti.png',
+              galahs,
             ),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.4),
+              Colors.black.withOpacity(0.6),
               BlendMode.darken,
             ),
           ),
@@ -788,7 +788,7 @@ class _HomeViewState extends State<HomeView> {
                   _awaitReturnFromPerfectMatchQuiz();
                 },
                 child: const Text(
-                  'Perfect Match Quiz',
+                  'Fair Dinkum Dating Quiz',
                 ),
               ),
             ],

@@ -60,7 +60,7 @@ class _PerfectMatchQuizStartViewState extends State<PerfectMatchQuizStartView> {
                         repeat: false,
                       ),
                       Text(
-                        "Perfect Match Quiz",
+                        "Fair Dinkum Dating Quiz",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       const Text(

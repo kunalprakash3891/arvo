@@ -57,7 +57,7 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
     // Optional function that will be executed when quiz ends.
     _quizEndedCallback = _quizEndedCallback ?? context.getArgument<Function>();
 
-    const title = Text('Perfect Match Quiz');
+    const title = Text('Fair Dinkum Dating Quiz');
     return FutureBuilder(
       future: _future,
       builder: (context, snapshot) {
