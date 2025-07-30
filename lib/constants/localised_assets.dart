@@ -1,15 +1,14 @@
-// TODO: Update images for arvo
-// TODO: Compress larger images to smaller sizes.
 const assetImages = 'assets/images';
 const logo = '$assetImages/arvo_logo_white_text.png';
-const logoGradientText = '$assetImages/arvo_logo_gradient_text_1480x560.png';
-const alternateLogo = '$assetImages/gum_leaves.png';
+const logoGradientText = '$assetImages/arvo_logo_gradient_text.png';
+const alternateLogo = '$assetImages/emu_bush.png';
 const gumLeaves = '$assetImages/gum_leaves.png';
 const gumTreeBranch = '$assetImages/gum_tree_branch.png';
 const emuBush = '$assetImages/emu_bush.png';
 const selfie = '$assetImages/selfie.jpg';
 const emuElvis = '$assetImages/emu_elvis.jpg';
 const galahs = '$assetImages/galahs.jpg';
+const flindersStreetStation = '$assetImages/flinders_street_station.jpg';
 
 const adImageGeneric = '$assetImages/arvo_logo_white_text';
 

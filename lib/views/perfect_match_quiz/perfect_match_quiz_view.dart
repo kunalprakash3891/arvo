@@ -137,25 +137,25 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
             size: 32.0,
           ),
         ),
-        FloatingActionButton(
-          heroTag: null,
-          shape: const CircleBorder(),
-          onPressed: _navigateToNextPage,
-          child: ((_currentQuestion != null) &&
-                  (_currentQuestion == _questions.last))
-              ? Icon(
-                  Platform.isIOS
-                      ? CupertinoIcons.check_mark
-                      : Icons.sports_score_rounded,
-                  size: 32.0,
-                )
-              : Icon(
+        (_currentQuestion != null) && (_currentQuestion == _questions.last)
+            ? SizedBox(
+                width: 96.0,
+                child: FilledButton(
+                  onPressed: _navigateToNextPage,
+                  child: const Text('Done'),
+                ),
+              )
+            : FloatingActionButton(
+                heroTag: null,
+                shape: const CircleBorder(),
+                onPressed: _navigateToNextPage,
+                child: Icon(
                   Platform.isIOS
                       ? CupertinoIcons.forward
                       : Icons.navigate_next_rounded,
                   size: 32.0,
                 ),
-        )
+              )
       ],
     );
   }

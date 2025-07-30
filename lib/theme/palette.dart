@@ -62,9 +62,9 @@ const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
 const kBaseMessageThreadRecievedMessageBackgroundColour = kBaseOceanBlue;
 
 // Dark theme colours.
-const kBaseDarkColour = Color(0xFFE69F89); // kBaseOutbackOchre;
+const kBaseDarkColour = Color(0xFFE69F89);
 const kBaseDarkBodyTextColour = kBaseSandyBeach;
-const kBaseDarkDisplayTextColour = Color(0xFFE69F89); // kBaseOutbackOchre;
+const kBaseDarkDisplayTextColour = Color(0xFFE69F89);
 const kBaseDarkLabelTextColour = kBaseSandyBeach;
 const kBaseDarkTitleTextColour = kBaseSandyBeach;
 const kBaseDarkHeadlineTextColour = kBaseSandyBeach;

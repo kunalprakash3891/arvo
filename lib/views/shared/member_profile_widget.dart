@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -492,7 +493,7 @@ class MemberProfileWidget extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: const [Colors.transparent, Colors.black],
                   stops: memberHasDefaultAvatar(memberAvatarUrl)
-                      ? [1.0, 0.0]
+                      ? [0.1, 1.0]
                       : [0.5, 1.0],
                 ).createShader(rect);
               },
@@ -510,7 +511,9 @@ class MemberProfileWidget extends StatelessWidget {
                     )
                   ],
                   image: DecorationImage(
-                    image: CachedNetworkImageProvider(memberAvatarUrl),
+                    image: memberHasDefaultAvatar(memberAvatarUrl)
+                        ? getAvatarPlaceholderImage(member.name)
+                        : CachedNetworkImageProvider(memberAvatarUrl),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -785,7 +788,7 @@ class MemberProfileWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(4.0),
         decoration: BoxDecoration(
-            // border: Border.all(color: kBaseSandyBeach),
+            border: Border.all(color: Colors.white),
             color: kBasePremiumBackgroundColour,
             borderRadius: BorderRadius.circular(8.0)),
         child: const Text(

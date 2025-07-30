@@ -102,11 +102,11 @@ class _ActivateAccountViewState extends State<ActivateAccountView> {
                     right: -8.0,
                     child: Image(
                       image: AssetImage(gumTreeBranch),
-                      height: 112.0,
+                      height: 96.0,
                     ),
                   ),
                   const Positioned(
-                    bottom: -16.0,
+                    bottom: -24.0,
                     child: Image(
                       image: AssetImage(emuBush),
                       height: 120.0,
