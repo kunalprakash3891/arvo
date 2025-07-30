@@ -91,11 +91,11 @@ class _LostPasswordViewState extends State<LostPasswordView> {
               child: Stack(
                 children: [
                   const Positioned(
-                    top: 48.0,
+                    top: 56.0,
                     right: -8.0,
                     child: Image(
                       image: AssetImage(gumTreeBranch),
-                      height: 96.0,
+                      height: 112.0,
                     ),
                   ),
                   const Positioned(
