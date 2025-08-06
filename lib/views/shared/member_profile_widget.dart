@@ -26,6 +26,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 typedef EditProfilePicturesCallback = void Function(BuildContext);
 typedef EditProfileGroupCallback = void Function(BuildContext, int);
+typedef PhotoVerificationCallback = void Function(BuildContext);
 typedef ToggleMatchInsightCallback = void Function();
 typedef PremiumTappedCallback = void Function();
 typedef ProfilePictureTappedCallback = void Function();
@@ -37,6 +38,7 @@ class MemberProfileWidget extends StatelessWidget {
   final Member currentUser;
   final EditProfilePicturesCallback? editProfilePictures;
   final EditProfileGroupCallback? editProfileGroup;
+  final PhotoVerificationCallback? verify;
   final ToggleMatchInsightCallback? toggleMatchInsight;
   final PremiumTappedCallback? premiumTapped;
   final bool matchInsight;
@@ -51,6 +53,7 @@ class MemberProfileWidget extends StatelessWidget {
       required this.currentUser,
       this.editProfilePictures,
       this.editProfileGroup,
+      this.verify,
       this.toggleMatchInsight,
       this.premiumTapped,
       required this.matchInsight,
@@ -377,7 +380,6 @@ class MemberProfileWidget extends StatelessWidget {
                   ? LinearProgressIndicator(
                       minHeight: 8.0,
                       value: groupCompletionPercentage,
-                      // TODO: Check this by completing a profile and making sure the progress is linear and ends at 100%.
                       color: getProfileCompletionPercentageColour(
                           groupCompletionPercentage),
                     )
@@ -714,9 +716,10 @@ class MemberProfileWidget extends StatelessWidget {
                                                 PhotoVerificationStatusType
                                                     .rejected)
                                         ? TextButton(
-                                            onPressed: () async {
-                                              _navigateToPhotoVerificationView(
-                                                  context);
+                                            onPressed: () {
+                                              if (verify != null) {
+                                                verify!(context);
+                                              }
                                             },
                                             child: const Text('Verify Account'),
                                           )
@@ -843,7 +846,9 @@ class MemberProfileWidget extends StatelessWidget {
                       "Thank you for submitting a verification photo. We are currently reviewing your request, please check again later.",
                     );
                   } else {
-                    _navigateToPhotoVerificationView(context);
+                    if (verify != null) {
+                      verify!(context);
+                    }
                   }
                 },
                 child: Container(
@@ -945,10 +950,6 @@ class MemberProfileWidget extends StatelessWidget {
                   )
                 : const SizedBox.shrink()
         : const SizedBox.shrink();
-  }
-
-  Future<void> _navigateToPhotoVerificationView(BuildContext context) async {
-    await Navigator.of(context).pushNamed(photoVerificationViewRoute);
   }
 
   Widget _buildContactInformationInProfileGroupNotificationWidget(

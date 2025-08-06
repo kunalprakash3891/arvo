@@ -112,6 +112,7 @@ class _MemberProfileViewState extends State<MemberProfileView> {
                   currentUser: _currentUser,
                   editProfilePictures: _awaitReturnFromEditProfilePicturesView,
                   editProfileGroup: _awaitReturnFromEditProfileGroupView,
+                  verify: _awaitReturnFromPhotoVerificationView,
                   // TODO: Implement premium promotion for Match Insight
                   //toggleMatchInsight: _toggleMatchInsight,
                   matchInsight: value,
@@ -528,6 +529,21 @@ class _MemberProfileViewState extends State<MemberProfileView> {
         ? await Navigator.of(context).pushNamed(perfectMatchQuizRoute)
         : await Navigator.of(context)
             .pushNamed(editProfileGroupViewRoute, arguments: groupId);
+    // Update this page on return.
+    // Assign to _member (which is passed in via context) and _currentUser.
+    if (context.mounted) {
+      setState(
+        () {
+          _member = _connectionService.currentUser;
+          _currentUser = _member!;
+        },
+      );
+    }
+  }
+
+  Future _awaitReturnFromPhotoVerificationView(BuildContext context) async {
+    // Navigate to view and wait for it to return.
+    await Navigator.of(context).pushNamed(photoVerificationViewRoute);
     // Update this page on return.
     // Assign to _member (which is passed in via context) and _currentUser.
     if (context.mounted) {

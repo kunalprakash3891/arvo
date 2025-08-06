@@ -13,7 +13,6 @@ import 'package:arvo/utilities/url_launcher.dart';
 import 'package:app_base/utilities/widget_utilities.dart';
 import 'package:app_base/widgets/back_to_top_widget.dart';
 
-// TODO: Update FAQs for Arvo.
 class FAQsView extends StatefulWidget {
   const FAQsView({super.key});
 
@@ -343,8 +342,8 @@ class _FAQsViewState extends State<FAQsView> {
     _faqs = [];
     _faqs.add(FAQItem(
         freeText:
-            "Below you'll find some of the most frequently asked questions about hello!\n\nIf you have a question that isn't answered on this page, you can get in touch us with using the button at the bottom of this page."));
-    _faqs.add(FAQItem(header: 'Matching with Other hello! Members'));
+            "Below you'll find some of the most frequently asked questions about Arvo.\n\nIf you have a question that isn't answered on this page, you can get in touch us with using the button at the bottom of this page."));
+    _faqs.add(FAQItem(header: 'Matching with Other Arvo Members'));
     _faqs.add(
       FAQItem(
         question: "How is the match percentage calculated?",
@@ -356,7 +355,7 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "Why don't I see high match percentages with other members?",
         answerText:
-            "There could be a couple of reasons for this. The more questions you answer in your profile, the more likely you are to see higher match percentages with other members. We strongly recommend completing the “Fair Dinkum Dating Quiz”, available through editing your profile, to help increase the accuracy of match percentages. If you, or other members, don't have complete profiles, our system cannot create accurate matches. hello! is also still a young platform, so it will take time for our community of members to grow. This means that it may take some time before your perfect match also joins hello!, but we know it won't take long!",
+            "There could be a couple of reasons for this. The more questions you answer in your profile, the more likely you are to see higher match percentages with other members. We strongly recommend completing the “Fair Dinkum Dating Quiz”, available through editing your profile, to help increase the accuracy of match percentages. If you, or other members, don't have complete profiles, our system cannot create accurate matches. Arvo is also still a young platform, so it will take time for our community of members to grow. This means that it may take some time before your perfect match also joins Arvo, but we know it won't take long!",
       ),
     );
     _faqs.add(
@@ -374,7 +373,7 @@ class _FAQsViewState extends State<FAQsView> {
             "Most of the match percentage between members is dependent on shared interests, values, and preferences. From time to time, you therefore might have a high match percentage with another member, but ultimately not agree on something that you consider to be fundamental. We suggest you get to know people based on their values and personality, rather than basing a decision on a number alone.",
       ),
     );
-    _faqs.add(FAQItem(header: 'Blocking or Reporting hello! Members'));
+    _faqs.add(FAQItem(header: 'Blocking or Reporting Arvo Members'));
     _faqs.add(
       FAQItem(
         question: "How can I block another member?",
@@ -386,7 +385,7 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "What happens when I block another member?",
         answerText:
-            "A couple of key things happen when any member blocks someone:\n\n\u2022 The hello! team will be notified of which member has been blocked and who blocked them.\n\u2022 The blocked member will not be able to access the profile of the member who blocked them.\n\u2022 The profiles of both members will be hidden from one another in some key areas. This includes the “Search” tab on the app.",
+            "A couple of key things happen when any member blocks someone:\n\n\u2022 The Arvo team will be notified of which member has been blocked and who blocked them.\n\u2022 The blocked member will not be able to access the profile of the member who blocked them.\n\u2022 The profiles of both members will be hidden from one another in some key areas. This includes the “Search” tab on the app.",
       ),
     );
     _faqs.add(
@@ -419,14 +418,14 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "When should I report a member?",
         answerText:
-            "hello! is an inclusive platform that welcomes members of all backgrounds, genders, ages, preferences, and orientations. We encourage you to report another member if they breach any of hello!'s Terms and Conditions. This includes, but is not limited to:\n\n\u2022 Threatening, offensive or abusive behaviour, including comments or media uploads.\n\u2022 Fake accounts, or accounts used for catfishing.\n\u2022 Accounts of a member who is under the age of 18.\n\u2022 Members who are engaging in, or encouraging, discriminatory or harassing behaviour (e.g. derogatory comments made towards or about ethnicity or sexual orientation).\n\nFor more information on what hello! considers to be appropriate member conduct, please see our Terms and Conditions.",
+            "Arvo is an inclusive platform that welcomes members of all backgrounds, genders, ages, preferences, and orientations. We encourage you to report another member if they breach any of Arvo's Terms and Conditions. This includes, but is not limited to:\n\n\u2022 Threatening, offensive or abusive behaviour, including comments or media uploads.\n\u2022 Fake accounts, or accounts used for catfishing.\n\u2022 Accounts of a member who is under the age of 18.\n\u2022 Members who are engaging in, or encouraging, discriminatory or harassing behaviour (e.g. derogatory comments made towards or about ethnicity or sexual orientation).\n\nFor more information on what Arvo considers to be appropriate member conduct, please see our Terms and Conditions.",
       ),
     );
     _faqs.add(
       FAQItem(
         question: "How do I report a member?",
         answerText:
-            "If you need to report a member for any reason, you can do so through these steps:\n\n1. Navigate to the profile of the member you wish to report.\n2. Once on their profile page, you will see a button with ellipsis (three dots) in the top right corner.\n3. Tap this button to bring up a pop-up menu.\n4. Tap the option called “Report”. This will take you to a new page where you can enter more details.\n5. Select the most relevant category for reporting, and then enter a description of why you are reporting the member, with as much detail as possible. Then, tap on “Submit”.\n\nWe encourage you to include any relevant information when reporting another member; this will assist us in monitoring for any trends of regularly reported members, so that we can ensure the hello! community remains a safe place for all members.",
+            "If you need to report a member for any reason, you can do so through these steps:\n\n1. Navigate to the profile of the member you wish to report.\n2. Once on their profile page, you will see a button with ellipsis (three dots) in the top right corner.\n3. Tap this button to bring up a pop-up menu.\n4. Tap the option called “Report”. This will take you to a new page where you can enter more details.\n5. Select the most relevant category for reporting, and then enter a description of why you are reporting the member, with as much detail as possible. Then, tap on “Submit”.\n\nWe encourage you to include any relevant information when reporting another member; this will assist us in monitoring for any trends of regularly reported members, so that we can ensure the Arvo community remains a safe place for all members.",
       ),
     );
     _faqs.add(FAQItem(header: 'Account Verification'));
@@ -434,7 +433,7 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "How does account verification work?",
         answerText:
-            "To become verified, a user must upload a selfie that matches the specific pose provided by the hello! Fiji Dating app. If the user then chooses to upload a profile photo, hello! admins compare the user's verification photo to their profile photo during the avatar moderation process to ensure it's the same person using the hello! account.",
+            "To become verified, a user must upload a selfie that matches the specific pose provided by the Arvo Dating app. If the user then chooses to upload a profile photo, Arvo admins compare the user's verification photo to their profile photo during the avatar moderation process to ensure it's the same person using the Arvo account.",
       ),
     );
     _faqs.add(
@@ -448,22 +447,14 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "How do I verify my account?",
         answerText:
-            "Verifying your account is simple! Just head to your profile and tap the “Unverified” button on your profile photo area. Then all you need to do is follow the on-screen prompts to upload your own verification photo. Don't worry; your verification photo will only be seen by hello! admins and won't be visible on your profile.",
+            "Verifying your account is simple! Just head to your profile and tap the “Unverified” button on your profile photo area. Then all you need to do is follow the on-screen prompts to upload your own verification photo. Don't worry; your verification photo will only be seen by Arvo admins and won't be visible on your profile.",
       ),
     );
     _faqs.add(
       FAQItem(
         question: "Do I have to verify my account?",
         answerText:
-            "If you want to upload a profile photo, you will now need to verify your account. We strongly recommend uploading a profile photo, as users with profile photos generally get more views and messages.",
-      ),
-    );
-    _faqs.add(
-      FAQItem(
-        question:
-            "I already had a profile photo. Do I still need to verify my account?",
-        answerText:
-            "We are not currently requiring users with existing profile photos to verify their account, however, we strongly encourage you to do so, as it will likely lead to more engagement with your profile.",
+            "If you want to upload a profile photo, you will need to verify your account. We strongly recommend uploading a profile photo, as users with profile photos generally get more views and messages.",
       ),
     );
     _faqs.add(FAQItem(header: 'Subscriptions'));
@@ -472,22 +463,22 @@ class _FAQsViewState extends State<FAQsView> {
         question:
             "I bought a subscription, but it hasn't been applied. What do I do?",
         answerText:
-            "Try restarting the app. If you're unsure on how to do this, the easiest way is to restart your phone. If your subscription still hasn't applied, please contact the hello! support team by using the “Contact Us” button at the bottom of this page.",
+            "Try restarting the app. If you're unsure on how to do this, the easiest way is to restart your phone. If your subscription still hasn't applied, please contact the Arvo support team by using the “Contact Us” button at the bottom of this page.",
       ),
     );
     _faqs.add(FAQItem(header: 'Other'));
     _faqs.add(
       FAQItem(
-        question: "Is hello! free to use?",
+        question: "Is Arvo free to use?",
         answerText:
-            "hello! is free to join. Members of hello! are able to view other member's profiles and send private messages. In addition, you can opt into paid subscriptions and enjoy access to premium app features.",
+            "Arvo is free to join. Members of Arvo are able to view other member's profiles and send private messages. In addition, you can opt into paid subscriptions and enjoy access to premium app features.",
       ),
     );
     _faqs.add(
       FAQItem(
         question: "How do I delete my account?",
         answerText:
-            "We are always sad to see a hello! member leave, but we hope it's because you've found your perfect match! You can delete your hello! account through following these steps:\n\n1. Navigate to the Settings page by tapping on the icon in the top right corner of the Home page to bring up a pop-up menu, then tap on “Settings”.\n2. Once in the Settings page, look under the “Account” section, and find and tap the button called “Delete Account”.\n3. Follow the on-screen prompts to delete your account.\n\nPlease note, deleting your account on hello! is irreversible; we cannot recover your account for you. Please be sure that you really want to delete your account before following the above steps. Of course, if you ever wanted to return to hello! we'd greet you with a friendly “hello!” when you create your new account.",
+            "We are always sad to see a Arvo member leave, but we hope it's because you've found your perfect match! You can delete your Arvo account through following these steps:\n\n1. Navigate to the Settings page by tapping on the icon in the top right corner of the Home page to bring up a pop-up menu, then tap on “Settings”.\n2. Once in the Settings page, look under the “Account” section, and find and tap the button called “Delete Account”.\n3. Follow the on-screen prompts to delete your account.\n\nPlease note, deleting your account on Arvo is irreversible; we cannot recover your account for you. Please be sure that you really want to delete your account before following the above steps.",
       ),
     );
     _faqs.add(

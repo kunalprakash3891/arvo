@@ -8,7 +8,6 @@ const contactUsURL = "/contact/";
 const termsAndConditionsURL = "/policies/terms-conditions/";
 const privacyPolicyURL = "/policies/privacy-policy/";
 const onlineSafetyTipsURL = "/online-safety-tips/";
-// TODO: Set website to use rounded photo for user default avatar.
 // TODO: Test by creating a new user
 // TODO: Test default photo is assigned properly when deleting photos.
 // TODO: This default avatar may need to be updated as it shows account as verified when it is not.

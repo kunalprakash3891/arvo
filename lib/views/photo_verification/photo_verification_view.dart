@@ -15,6 +15,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:app_base/dialogs/confirm_dialog.dart';
 import 'package:app_base/dialogs/success_dialog.dart';
 import 'package:app_base/loading/loading_screen.dart';
+import 'package:nifty_three_bp_app_base/enums/photo_verification_status_type.dart';
 
 class PhotoVerificationView extends StatefulWidget {
   const PhotoVerificationView({super.key});
@@ -395,6 +396,8 @@ class _PhotoVerificationViewState extends State<PhotoVerificationView> {
           LoadingScreen().hide();
         }
         if (sent) {
+          _connectionService.currentUser!.photoVerificationStatus =
+              PhotoVerificationStatusType.pending;
           if (mounted) {
             await showSuccessDialog(context,
                 "Your account verification photo has been uploaded and is now awaiting review.\n\nDon't worry, it won't take long!");

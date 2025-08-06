@@ -23,7 +23,6 @@ import 'package:app_base/dialogs/error_dialog.dart';
 import 'package:app_base/dialogs/generic_dialog.dart';
 import 'package:uuid/uuid.dart';
 
-// TODO: Change elevated buttons to fill/outline buttons.
 class SubscriptionsView extends StatefulWidget {
   const SubscriptionsView({super.key});
 
@@ -480,8 +479,10 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
             : const SizedBox.shrink(),
         hasPurchased ? const SizedBox(height: 8.0) : const SizedBox.shrink(),
         hasPurchased
-            ? ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: kRedColour),
+            ? FilledButton(
+                style: FilledButton.styleFrom(
+                  backgroundColor: kRedColour,
+                ),
                 onPressed: () async {
                   await showGenericDialog(
                     context: context,
@@ -496,14 +497,10 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                 },
                 child: const Text(
                   'Unsubscribe',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
                 ),
               )
-            : ElevatedButton(
-                style: ElevatedButton.styleFrom(
+            : FilledButton(
+                style: FilledButton.styleFrom(
                   backgroundColor: kActionColour,
                 ),
                 onPressed: () async {
@@ -553,10 +550,6 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                 },
                 child: Text(
                   'Get ${productFeatures.displayName}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
                 ),
               ),
       ],

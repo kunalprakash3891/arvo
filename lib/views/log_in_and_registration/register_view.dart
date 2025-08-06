@@ -42,7 +42,6 @@ class RegisterView extends StatefulWidget {
   State<RegisterView> createState() => _RegisterViewState();
 }
 
-// TODO: Tidy up ethnicities list on the backend, also make it not required for sign up.
 // TODO: Tidy up registration activation email.
 
 class _RegisterViewState extends State<RegisterView> {

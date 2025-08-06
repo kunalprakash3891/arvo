@@ -21,7 +21,6 @@ class MemberXProfileLocationSelectionView extends StatefulWidget {
       _MemberXProfileLocationSelectionViewState();
 }
 
-// TODO: Test with registration process to make sure changing the selected location various times works properly.
 class _MemberXProfileLocationSelectionViewState
     extends State<MemberXProfileLocationSelectionView> {
   XProfileLocationSelectionOptions? _locationOptions;

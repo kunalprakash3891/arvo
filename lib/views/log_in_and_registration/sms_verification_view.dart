@@ -377,7 +377,7 @@ class _SmsVerificationViewState extends State<SmsVerificationView> {
                 context: context,
                 title: 'Phone Number Already In Use',
                 content:
-                    'The phone number you entered is already in use by another user. Please try another phone number, or contact the hello! support team for assistance.',
+                    'The phone number you entered is already in use by another user. Please try another phone number, or contact the Arvo support team for assistance.',
                 confirmText: 'Contact Us',
                 cancelText: 'Close',
               );
