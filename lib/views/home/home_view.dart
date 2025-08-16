@@ -430,32 +430,13 @@ class _HomeViewState extends State<HomeView> {
                         decoration: BoxDecoration(
                             color: kBasePremiumBackgroundColour,
                             borderRadius: BorderRadius.circular(8.0)),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: setWidthBetweenWidgets(
-                            [
-                              const SizedBox(
-                                height: 16.0,
-                                width: 16.0,
-                                child: Image(
-                                  image: AssetImage(
-                                    gumLeaves,
-                                  ),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Text(
-                                'Premium',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                        color:
-                                            kBasePremiumForegroundTextColour),
-                              ),
-                            ],
-                            width: 8.0,
-                          ),
+                        child: Text(
+                          'Premium',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(
+                                  color: kBasePremiumForegroundTextColour),
                         ),
                       )
                 : Text(
@@ -524,13 +505,10 @@ class _HomeViewState extends State<HomeView> {
           Navigator.of(context).pushNamed(subscriptionsViewRoute);
         },
         style: FilledButton.styleFrom(
-          backgroundColor: kBasePremiumBackgroundColour,
+          backgroundColor: kActionColour,
         ),
         child: const Text(
           'Upgrade',
-          style: TextStyle(
-            color: kBasePremiumForegroundTextColour,
-          ),
         ),
       );
     }

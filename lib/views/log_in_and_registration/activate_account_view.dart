@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:arvo/services/features/feature_service.dart';
-import 'package:arvo/views/log_in_and_registration/background_gradient.dart';
+import 'package:arvo/views/shared/background_gradient.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

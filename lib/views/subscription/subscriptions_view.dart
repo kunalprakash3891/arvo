@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/services/features/feature_service.dart';
+import 'package:arvo/views/shared/background_gradient.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/localised_assets.dart';
@@ -76,7 +78,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
           ? 'assets/images/premium_gold.png'
           : _subscriptionService.hasSilver
               ? 'assets/images/premium_silver.png'
-              : gumLeaves;
+              : emuBush;
 
       if (mounted) {
         showWidgetInformationDialog(
@@ -198,27 +200,30 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
 
   Widget _buildPremiumHeaderWidget() {
     return Column(
-      children: [
-        const SizedBox(
-          height: 96.0,
-          child: Image(
-            image: AssetImage(
-              logo,
+      children: setHeightBetweenWidgets(
+        height: 8.0,
+        [
+          const SizedBox(
+            height: 96.0,
+            child: Image(
+              image: AssetImage(
+                logo,
+              ),
+              fit: BoxFit.cover,
             ),
-            fit: BoxFit.cover,
           ),
-        ),
-        Text(
-          _subscriptionService.purchases.isNotEmpty
-              ? 'Thank you for choosing Premium'
-              : 'Upgrade your experience with Premium',
-          style: Theme.of(context)
-              .textTheme
-              .headlineMedium!
-              .copyWith(color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-      ],
+          Text(
+            _subscriptionService.purchases.isNotEmpty
+                ? 'Thank you for choosing Premium'
+                : 'Upgrade your experience with Premium',
+            style: Theme.of(context)
+                .textTheme
+                .headlineSmall!
+                .copyWith(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 
@@ -317,32 +322,13 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                             decoration: BoxDecoration(
                                 color: kBasePremiumBackgroundColour,
                                 borderRadius: BorderRadius.circular(8.0)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: setWidthBetweenWidgets(
-                                [
-                                  const SizedBox(
-                                    height: 16.0,
-                                    width: 16.0,
-                                    child: Image(
-                                      image: AssetImage(
-                                        gumLeaves,
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Premium',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(
-                                            color:
-                                                kBasePremiumForegroundTextColour),
-                                  ),
-                                ],
-                                width: 8.0,
-                              ),
+                            child: Text(
+                              'Premium',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                      color: kBasePremiumForegroundTextColour),
                             ),
                           ),
                           Text(
@@ -393,17 +379,26 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
     productList.add(_buildFinePrintWidget());
 
     return Scaffold(
-      backgroundColor: const Color(0xff782e43),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            children: setHeightBetweenWidgets(productList, height: 16.0),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: getBackgroundGradientColours(
+                FeatureService.arvo().featureSelectedTheme, context),
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Column(
+              children: setHeightBetweenWidgets(productList, height: 16.0),
+            ),
           ),
         ),
       ),

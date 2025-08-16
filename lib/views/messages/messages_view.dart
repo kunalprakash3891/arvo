@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:arvo/constants/x_profile.dart';
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -731,8 +733,11 @@ class _MessagesViewState extends State<MessagesView> {
                             [
                               CircleAvatar(
                                 radius: 32.0,
-                                backgroundImage: CachedNetworkImageProvider(
-                                    recipient.avatar.thumb!),
+                                backgroundImage: memberHasDefaultAvatar(
+                                        recipient.avatar.full)
+                                    ? getAvatarPlaceholderImage(recipient.name)
+                                    : CachedNetworkImageProvider(
+                                        recipient.avatar.thumb!),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

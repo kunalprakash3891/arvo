@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
@@ -367,7 +368,8 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                         [
                           buildCircleAvatarWithOnlineStatus(
                             _recipient!,
-                            kBaseColour,
+                            getMatchPercentageColour(_recipient!.matchWeight,
+                                _featureService.featureMatchInsight),
                             kBaseColour,
                             Theme.of(context).colorScheme.surface,
                             kBaseOnlineColour,
@@ -376,6 +378,10 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                             showOnlineStatus:
                                 _featureService.featureMemberOnlineIndicator,
                             callback: viewRecipientProfile,
+                            avatarPlaceholder: memberHasDefaultAvatar(
+                                _recipient!.avatar?.full),
+                            avatarPlaceholderImageProvider:
+                                getAvatarPlaceholderImage(_recipient!.name!),
                           ),
                           SizedBox(
                             width: mediaSize.width * 0.45,
@@ -630,7 +636,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                           ),
                           decoration: BoxDecoration(
                             color: isMe
-                                ? Theme.of(context).colorScheme.primaryContainer
+                                ? kBaseMessageThreadSentMessageBackgroundColour
                                 : kBaseMessageThreadRecievedMessageBackgroundColour,
                             borderRadius: isMe
                                 ? const BorderRadius.only(
@@ -646,12 +652,8 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                             message.message.raw
                                 .removeEscapeCharacters()
                                 .parseHTML(),
-                            style: isMe
-                                ? Theme.of(context).textTheme.bodyLarge!
-                                : Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
                                       color: Colors.white,
                                     ),
                           ),

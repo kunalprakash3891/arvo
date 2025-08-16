@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -150,7 +151,8 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
                   [
                     buildCircleAvatarWithOnlineStatus(
                       _recipient,
-                      kBaseColour,
+                      getMatchPercentageColour(_recipient.matchWeight,
+                          _featureService.featureMatchInsight),
                       kBaseColour,
                       Theme.of(context).colorScheme.surface,
                       kBaseOnlineColour,
@@ -159,6 +161,10 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
                       showOnlineStatus:
                           _featureService.featureMemberOnlineIndicator,
                       radius: 32.0,
+                      avatarPlaceholder:
+                          memberHasDefaultAvatar(_recipient.avatar?.full),
+                      avatarPlaceholderImageProvider:
+                          getAvatarPlaceholderImage(_recipient.name!),
                     ),
                     SizedBox(
                       width: mediaSize.width * 0.50,

@@ -59,6 +59,7 @@ const kBaseStarredMessageColour = kBaseOutbackOchre;
 const kBaseVerifiedIndicatorColour = kBaseOceanBlue;
 const kBasePendingVerificationIndicatorColour = kBaseOutbackOchre40;
 const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
+const kBaseMessageThreadSentMessageBackgroundColour = kBaseOutbackOchre;
 const kBaseMessageThreadRecievedMessageBackgroundColour = kBaseOceanBlue;
 
 // Dark theme colours.
