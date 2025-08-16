@@ -17,7 +17,6 @@ class MemberXProfileOptionsSelectionView extends StatefulWidget {
       _MemberXProfileOptionsSelectionViewState();
 }
 
-// TODO: Location selection (via filters) does not format correctly for countries with ' in them, like cote d'ivoire. Also check for location selection (for xprofile).
 class _MemberXProfileOptionsSelectionViewState
     extends State<MemberXProfileOptionsSelectionView> {
   XProfileFieldOptionsItem? _optionsItem;

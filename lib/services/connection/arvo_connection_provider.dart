@@ -82,8 +82,8 @@ const photoVerificationRequestsURL =
     "/wp-json/nifty-photo-verification-system/v1/verification-requests";
 const photoVerificationPromptsURL =
     "/wp-json/nifty-photo-verification-system/v1/prompts";
-// TODO: Change the support email below.
-const supportEmail = 'hello@hellofiji.dating';
+// TODO: Check the support email below works. Need to add inbox to Outlook.
+const supportEmail = 'gday@arvo.dating';
 
 const smsVerificationUrl = "/wp-json/nifty-sms-verification-system/v1";
 const smsVerificationAvailableUrl = "$smsVerificationUrl/available";

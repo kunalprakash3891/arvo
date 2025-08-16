@@ -257,7 +257,8 @@ String locationDisplayFormatter(String selectedItemDescription) {
   return selectedItemDescription
       .split(xProfileLocationDisplayTitleSplitOnCharacter)
       .reversed
-      .join(xProfileLocationDisplayTitleJoinOnCharacter);
+      .join(xProfileLocationDisplayTitleJoinOnCharacter)
+      .removeEscapeCharacters();
 }
 
 String shortLocationDisplayFormatter(String selectedItemDescription) {
@@ -273,7 +274,9 @@ String shortLocationDisplayFormatter(String selectedItemDescription) {
   // Remove country if Australia
   locations.removeWhere((location) => location == australia);
 
-  return locations.reversed.join(xProfileLocationDisplayTitleJoinOnCharacter);
+  return locations.reversed
+      .join(xProfileLocationDisplayTitleJoinOnCharacter)
+      .removeEscapeCharacters();
 }
 
 // NOTE: The following code iteratively generates locations with parent identifiers, but does not group them into countries/states/cities.

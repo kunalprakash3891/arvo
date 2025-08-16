@@ -47,3 +47,7 @@ const avatarPlaceholderHardwareLane =
 const avatarPlaceholderHouse = '$assetImagesAvatarPlaceholders/house_bw.jpg';
 const avatarPlaceholderLibrary =
     '$assetImagesAvatarPlaceholders/library_bw.jpg';
+
+// Default Avatar Loading Placeholder
+const defaultAvatarLoadingPlaceholder =
+    '$assetImagesAvatarPlaceholders/give_way.jpg';

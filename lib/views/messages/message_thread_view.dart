@@ -2,15 +2,14 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/constants/localised_assets.dart';
 import 'package:arvo/views/shared/avatar_placeholder.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/localised_text.dart';
 import 'package:arvo/views/shared/confirm_share_contact_information_dialog.dart';
 import 'package:nifty_three_bp_app_base/constants/reporting.dart';
-import 'package:arvo/constants/server.dart';
 import 'package:arvo/constants/x_profile.dart';
 import 'package:nifty_three_bp_app_base/enums/menu_action.dart';
 import 'package:arvo/enums/tip_type.dart';
@@ -441,12 +440,11 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                     Row(
                       children: setWidthBetweenWidgets(
                         [
-                          CircleAvatar(
+                          const CircleAvatar(
                             backgroundColor: kBaseColour,
                             radius: 24.0,
-                            backgroundImage: CachedNetworkImageProvider(
-                                _connectionService.serverUrl! +
-                                    defaultAvatarURL),
+                            backgroundImage:
+                                AssetImage(defaultAvatarLoadingPlaceholder),
                           ),
                           SizedBox(
                             width: mediaSize.width * 0.5,
