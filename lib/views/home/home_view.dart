@@ -181,6 +181,8 @@ class _HomeViewState extends State<HomeView> {
               .textTheme
               .titleMedium!
               .copyWith(fontFamily: 'Overpass'),
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
         ),
         background: SingleChildScrollView(
           child: Column(
