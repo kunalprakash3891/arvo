@@ -352,7 +352,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -369,7 +369,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                         CachedNetworkImageProvider(_currentUser.avatar!.full!),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
-                      Colors.white.withOpacity(0.6),
+                      Colors.white.withValues(alpha: 0.6),
                       BlendMode.dstOut,
                     ),
                   )

@@ -239,7 +239,7 @@ class _HomeViewState extends State<HomeView> {
                         image: getAvatarPlaceholderImage(_currentUser.name),
                         fit: BoxFit.cover,
                         colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.4),
+                          Colors.black.withValues(alpha: 0.4),
                           BlendMode.darken,
                         ),
                       ),
@@ -321,7 +321,7 @@ class _HomeViewState extends State<HomeView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -392,7 +392,7 @@ class _HomeViewState extends State<HomeView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -600,14 +600,14 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.4),
+                    Colors.black.withValues(alpha: 0.4),
                     BlendMode.darken,
                   ),
                 ),
                 borderRadius: BorderRadius.circular(8.0),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(alpha: 0.1),
                     blurRadius: 5.0,
                     spreadRadius: 1.0,
                     offset: const Offset(1.0, 1.0),
@@ -664,14 +664,14 @@ class _HomeViewState extends State<HomeView> {
             ),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6),
+              Colors.black.withValues(alpha: 0.6),
               BlendMode.darken,
             ),
           ),
           borderRadius: BorderRadius.circular(8.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),
@@ -723,14 +723,14 @@ class _HomeViewState extends State<HomeView> {
             ),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.6),
+              Colors.black.withValues(alpha: 0.6),
               BlendMode.darken,
             ),
           ),
           borderRadius: BorderRadius.circular(8.0),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),

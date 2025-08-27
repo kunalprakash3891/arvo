@@ -248,13 +248,23 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
   Widget _buildAnswers(
     PerfectMatchQuizQuestion question,
   ) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
-      children: setHeightBetweenWidgets(
-          question.answers
-              .map((answer) => _buildAnswer(context, answer))
-              .toList(),
-          height: 8.0),
+    return RadioGroup<PerfectMatchQuizAnswer>(
+      groupValue: _currentAnswer,
+      onChanged: (PerfectMatchQuizAnswer? value) {
+        if (mounted) {
+          setState(() {
+            _selectAnswer(value!);
+          });
+        }
+      },
+      child: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: setHeightBetweenWidgets(
+            question.answers
+                .map((answer) => _buildAnswer(context, answer))
+                .toList(),
+            height: 8.0),
+      ),
     );
   }
 
@@ -271,7 +281,7 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -280,14 +290,6 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
       ),
       child: RadioListTile<PerfectMatchQuizAnswer>(
         value: answer,
-        groupValue: _currentAnswer,
-        onChanged: (PerfectMatchQuizAnswer? value) {
-          if (mounted) {
-            setState(() {
-              _selectAnswer(value!);
-            });
-          }
-        },
         title: Text(
           // Replace escape characters.
           answer.answer.name.removeEscapeCharacters(),

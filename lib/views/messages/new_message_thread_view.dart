@@ -134,7 +134,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),
@@ -216,7 +216,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),
@@ -309,7 +309,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: const Offset(1.0, 1.0),
@@ -416,7 +416,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),

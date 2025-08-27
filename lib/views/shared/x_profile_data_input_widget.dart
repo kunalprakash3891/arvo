@@ -50,7 +50,7 @@ Widget buildXProfileTextBoxWidget(
       color: Theme.of(context).colorScheme.surface,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 5.0,
           spreadRadius: 1.0,
           offset: const Offset(1.0, 1.0),
@@ -159,7 +159,7 @@ Widget buildXProfileSelectBoxWidget(
       color: Theme.of(context).colorScheme.surface,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 5.0,
           spreadRadius: 1.0,
           offset: const Offset(1.0, 1.0),
@@ -228,7 +228,7 @@ Widget buildRegistrationXProfileSelectBoxWidget(
       color: Theme.of(context).colorScheme.surface,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 5.0,
           spreadRadius: 1.0,
           offset: const Offset(1.0, 1.0),
@@ -285,7 +285,7 @@ Widget generateDropDownButtomFormField(
       child: Text(xProfileField.name),
     ),
     isExpanded: true,
-    value: selectedOption,
+    initialValue: selectedOption,
     items: xProfileField.options!
         .map<DropdownMenuItem<XProfileField>>((XProfileField value) {
       return DropdownMenuItem<XProfileField>(
@@ -414,7 +414,7 @@ Widget buildXProfileMultiSelectDisplayWidget(
       color: Theme.of(context).colorScheme.surface,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 5.0,
           spreadRadius: 1.0,
           offset: const Offset(1.0, 1.0),
@@ -576,7 +576,7 @@ Widget buildXProfileNavigateToSelectDisplayWidget(
       color: Theme.of(context).colorScheme.surface,
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.1),
+          color: Colors.black.withValues(alpha: 0.1),
           blurRadius: 5.0,
           spreadRadius: 1.0,
           offset: const Offset(1.0, 1.0),

@@ -283,7 +283,7 @@ class _MessagesViewState extends State<MessagesView> {
           })
           .values
           .toList(),
-      value: _currentMessageBox,
+      initialValue: _currentMessageBox,
       onChanged: (MessageBoxMenuAction? newValue) {
         if (newValue != null) {
           _onMessageBoxMenuItemTapped(newValue);
@@ -311,7 +311,7 @@ class _MessagesViewState extends State<MessagesView> {
                   })
                   .values
                   .toList(),
-              value: _currentMessageFilterType,
+              initialValue: _currentMessageFilterType,
               onChanged: (MessageFilterType? newValue) {
                 if (newValue != null) {
                   if (mounted) {
@@ -702,7 +702,7 @@ class _MessagesViewState extends State<MessagesView> {
               : Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),

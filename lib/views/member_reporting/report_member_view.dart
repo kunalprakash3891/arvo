@@ -107,7 +107,7 @@ class _ReportMemberViewState extends State<ReportMemberView> {
                         color: Theme.of(context).colorScheme.surface,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 5.0,
                             spreadRadius: 1.0,
                             offset: const Offset(1.0, 1.0),
@@ -135,7 +135,7 @@ class _ReportMemberViewState extends State<ReportMemberView> {
                                 })
                                 .values
                                 .toList(),
-                            value: _reportCategory,
+                            initialValue: _reportCategory,
                             onChanged: (int? newValue) {
                               if (newValue != null) {
                                 if (mounted) {
@@ -190,7 +190,7 @@ class _ReportMemberViewState extends State<ReportMemberView> {
                         color: Theme.of(context).colorScheme.surface,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 5.0,
                             spreadRadius: 1.0,
                             offset: const Offset(1.0, 1.0),

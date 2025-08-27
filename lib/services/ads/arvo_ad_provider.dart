@@ -92,7 +92,9 @@ class ArvoAdProvider implements AdProvider {
 
     // Return if interval not exceeded.
     if (DateTime.now().difference(previousAdDisplayedDateTime!).inMinutes <
-        _adDisplayInterval) return;
+        _adDisplayInterval) {
+      return;
+    }
 
     // Show ad.
     AdOverlay().show(

@@ -250,7 +250,7 @@ class _SettingsViewState extends State<SettingsView> {
               color: Theme.of(context).colorScheme.surface,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 5.0,
                   spreadRadius: 1.0,
                   offset: const Offset(1.0, 1.0),
@@ -280,7 +280,7 @@ class _SettingsViewState extends State<SettingsView> {
               color: Theme.of(context).colorScheme.surface,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 5.0,
                   spreadRadius: 1.0,
                   offset: const Offset(1.0, 1.0),
@@ -423,7 +423,7 @@ class _SettingsViewState extends State<SettingsView> {
             color: Theme.of(context).colorScheme.surface,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 5.0,
                 spreadRadius: 1.0,
                 offset: const Offset(1.0, 1.0),
@@ -453,7 +453,7 @@ class _SettingsViewState extends State<SettingsView> {
               const SizedBox(height: 16.0),
               DropdownButtonFormField<DatabaseServer>(
                 isExpanded: true,
-                value: _databaseServer,
+                initialValue: _databaseServer,
                 items: _databaseServers.map<DropdownMenuItem<DatabaseServer>>(
                     (DatabaseServer value) {
                   return DropdownMenuItem<DatabaseServer>(
@@ -626,7 +626,7 @@ class _SettingsViewState extends State<SettingsView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -689,7 +689,7 @@ class _SettingsViewState extends State<SettingsView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -721,7 +721,7 @@ class _SettingsViewState extends State<SettingsView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -776,7 +776,7 @@ class _SettingsViewState extends State<SettingsView> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),
@@ -811,92 +811,72 @@ class _SettingsViewState extends State<SettingsView> {
                 ],
               ),
             ),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.light,
+            RadioGroup<ThemeMode>(
               groupValue: themeModeMap.keys.firstWhere((key) =>
                   themeModeMap[key] ==
                   _databaseUserSetting.featureSelectedTheme),
-              onChanged: _featureService.featureThemeControl
-                  ? (ThemeMode? value) {
-                      if (mounted) {
-                        setState(() {
-                          _setTheme(value!);
-                        });
-                      }
-                    }
-                  : null,
-              title: Row(
+              onChanged: (ThemeMode? value) {
+                if (_featureService.featureThemeControl && mounted) {
+                  setState(() {
+                    _setTheme(value!);
+                  });
+                }
+              },
+              child: Column(
                 children: [
-                  Icon(
-                    Platform.isIOS
-                        ? CupertinoIcons.sun_max_fill
-                        : Icons.light_mode_rounded,
-                    size: 24.0,
+                  RadioListTile<ThemeMode>(
+                    value: ThemeMode.light,
+                    title: Row(
+                      children: [
+                        Icon(
+                          Platform.isIOS
+                              ? CupertinoIcons.sun_max_fill
+                              : Icons.light_mode_rounded,
+                          size: 24.0,
+                        ),
+                        const SizedBox(width: 8.0),
+                        Text(
+                          'Light',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(width: 8.0),
-                  Text(
-                    'Light',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  RadioListTile<ThemeMode>(
+                    value: ThemeMode.dark,
+                    title: Row(
+                      children: [
+                        Icon(
+                          Platform.isIOS
+                              ? CupertinoIcons.moon_fill
+                              : Icons.dark_mode_rounded,
+                          size: 24.0,
+                        ),
+                        const SizedBox(width: 8.0),
+                        Text(
+                          'Dark',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                   ),
-                ],
-              ),
-            ),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.dark,
-              groupValue: themeModeMap.keys.firstWhere((key) =>
-                  themeModeMap[key] ==
-                  _databaseUserSetting.featureSelectedTheme),
-              onChanged: _featureService.featureThemeControl
-                  ? (ThemeMode? value) {
-                      if (mounted) {
-                        setState(() {
-                          _setTheme(value!);
-                        });
-                      }
-                    }
-                  : null,
-              title: Row(
-                children: [
-                  Icon(
-                    Platform.isIOS
-                        ? CupertinoIcons.moon_fill
-                        : Icons.dark_mode_rounded,
-                    size: 24.0,
-                  ),
-                  const SizedBox(width: 8.0),
-                  Text(
-                    'Dark',
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
-              ),
-            ),
-            RadioListTile<ThemeMode>(
-              value: ThemeMode.system,
-              groupValue: themeModeMap.keys.firstWhere((key) =>
-                  themeModeMap[key] ==
-                  _databaseUserSetting.featureSelectedTheme),
-              onChanged: _featureService.featureThemeControl
-                  ? (ThemeMode? value) {
-                      if (mounted) {
-                        setState(() {
-                          _setTheme(value!);
-                        });
-                      }
-                    }
-                  : null,
-              title: Row(
-                children: [
-                  Icon(
-                    Platform.isIOS
-                        ? CupertinoIcons.settings
-                        : Icons.manage_accounts_rounded,
-                    size: 24.0,
-                  ),
-                  const SizedBox(width: 8.0),
-                  Text(
-                    'System',
-                    style: Theme.of(context).textTheme.bodyLarge,
+                  RadioListTile<ThemeMode>(
+                    value: ThemeMode.system,
+                    title: Row(
+                      children: [
+                        Icon(
+                          Platform.isIOS
+                              ? CupertinoIcons.settings
+                              : Icons.manage_accounts_rounded,
+                          size: 24.0,
+                        ),
+                        const SizedBox(width: 8.0),
+                        Text(
+                          'System',
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -920,7 +900,7 @@ class _SettingsViewState extends State<SettingsView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -1168,7 +1148,7 @@ class _SettingsViewState extends State<SettingsView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),

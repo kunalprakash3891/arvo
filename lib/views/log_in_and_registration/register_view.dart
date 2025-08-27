@@ -378,7 +378,7 @@ class _RegisterViewState extends State<RegisterView> {
                   color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: const Offset(1.0, 1.0),
@@ -441,7 +441,7 @@ class _RegisterViewState extends State<RegisterView> {
                   color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: const Offset(1.0, 1.0),
@@ -498,7 +498,7 @@ class _RegisterViewState extends State<RegisterView> {
                   color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: const Offset(1.0, 1.0),
@@ -593,7 +593,7 @@ class _RegisterViewState extends State<RegisterView> {
                   color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 5.0,
                       spreadRadius: 1.0,
                       offset: const Offset(1.0, 1.0),
@@ -757,7 +757,7 @@ class _RegisterViewState extends State<RegisterView> {
     return Container(
       width: 72.0,
       decoration: BoxDecoration(
-        color: _getPasswordStrengthColour(strength).withOpacity(0.2),
+        color: _getPasswordStrengthColour(strength).withValues(alpha: 0.2),
         border: Border.all(
           color: _getPasswordStrengthColour(strength),
         ),
@@ -844,7 +844,7 @@ class _RegisterViewState extends State<RegisterView> {
             color: Theme.of(context).colorScheme.surface,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.1),
+                color: Colors.black.withValues(alpha: 0.1),
                 blurRadius: 5.0,
                 spreadRadius: 1.0,
                 offset: const Offset(1.0, 1.0),
@@ -1015,7 +1015,7 @@ class _RegisterViewState extends State<RegisterView> {
         color: Theme.of(context).colorScheme.surface,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5.0,
             spreadRadius: 1.0,
             offset: const Offset(1.0, 1.0),
@@ -1065,7 +1065,7 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 
-  _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: _selectedBirthdate ??

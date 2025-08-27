@@ -125,7 +125,7 @@ Future<ProcessedException?> processBlocException({
   );
 }
 
-void throwUserAccessException(context) async {
+void throwUserAccessException(BuildContext context) async {
   try {
     throw GenericUserAccessException(
         title: 'Exception Test', message: 'User access exception test.');

@@ -811,7 +811,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                 color: Theme.of(context).colorScheme.surface,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
+                                    color: Colors.black.withValues(alpha: 0.1),
                                     blurRadius: 5.0,
                                     spreadRadius: 1.0,
                                     offset: const Offset(1.0, 1.0),
@@ -892,7 +892,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
           color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 5.0,
               spreadRadius: 1.0,
               offset: const Offset(1.0, 1.0),
@@ -1116,7 +1116,9 @@ class _MessageThreadViewState extends State<MessageThreadView> {
     if (!mounted ||
         _messageThread == null ||
         _recipient == null ||
-        _isProcessingMessageThread) return;
+        _isProcessingMessageThread) {
+      return;
+    }
 
     _isProcessingMessageThread = true;
 
@@ -1152,7 +1154,9 @@ class _MessageThreadViewState extends State<MessageThreadView> {
         try {
           // Skip if message has not being marked for sending or has an error.
           if (!outgoingMessageQueue[i].isSending &&
-              outgoingMessageQueue[i].errorStatus != null) continue;
+              outgoingMessageQueue[i].errorStatus != null) {
+            continue;
+          }
           var newMessageRequest = MessageSendNewMessageRequest(
             id: _messageThread!.id,
             message: outgoingMessageQueue[i].message.raw,

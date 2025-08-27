@@ -56,7 +56,8 @@ class _PostViewState extends State<PostView> {
               ? const SizedBox.shrink()
               : IconButton(
                   onPressed: () async {
-                    Share.share(_post!.link!);
+                    SharePlus.instance
+                        .share(ShareParams(uri: Uri.parse(_post!.link!)));
                   },
                   icon: Icon(Platform.isIOS
                       ? CupertinoIcons.share

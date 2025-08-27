@@ -176,7 +176,7 @@ class _TakeVerificationPhotoViewState extends State<TakeVerificationPhotoView>
                                           Theme.of(context).colorScheme.surface,
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withOpacity(0.1),
+                                          color: Colors.black.withValues(alpha: 0.1),
                                           blurRadius: 5.0,
                                           spreadRadius: 1.0,
                                           offset: const Offset(1.0, 1.0),
@@ -280,7 +280,7 @@ class _TakeVerificationPhotoViewState extends State<TakeVerificationPhotoView>
             onPressed: () async {
               _toggleFlashMode();
             },
-            backgroundColor: Colors.black.withOpacity(0.4),
+            backgroundColor: Colors.black.withValues(alpha: 0.4),
             child: Icon(
               _getFlashIcon(),
               size: 24.0,
@@ -305,7 +305,7 @@ class _TakeVerificationPhotoViewState extends State<TakeVerificationPhotoView>
                   onPressed: () async {
                     _toggleCamera();
                   },
-                  backgroundColor: Colors.black.withOpacity(0.4),
+                  backgroundColor: Colors.black.withValues(alpha: 0.4),
                   child: Icon(
                     Platform.isIOS
                         ? CupertinoIcons.switch_camera
