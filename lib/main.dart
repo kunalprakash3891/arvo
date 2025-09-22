@@ -218,6 +218,13 @@ class App extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, state) {
         return MaterialApp(
+          builder: (context, child) {
+            return SafeArea(
+              top: false, // Set to true if you want to avoid notch overlap too.
+              bottom: true, // Avoids overlap with navigation bar.
+              child: child!,
+            );
+          },
           title: 'arvo',
           theme: _getTheme(state),
           navigatorKey: navigatorKey,
