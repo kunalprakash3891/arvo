@@ -22,7 +22,6 @@ import 'package:nifty_three_bp_app_base/api/member.dart';
 import 'package:nifty_three_bp_app_base/api/post.dart';
 import 'package:nifty_three_bp_app_base/api/posts_get_request.dart';
 import 'package:arvo/services/features/feature_service.dart';
-import 'package:arvo/services/features/subscription_products.dart';
 import 'package:arvo/services/features/subscription_service.dart';
 import 'package:arvo/theme/palette.dart';
 import 'package:app_base/utilities/widget_utilities.dart';
@@ -399,13 +398,7 @@ class _HomeViewState extends State<HomeView> {
           )
         ],
       ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          _buildSubscriptionTypeBackgroundImage(),
-          _buildSubscriptionInformationWidget(),
-        ],
-      ),
+      child: _buildSubscriptionInformationWidget(),
     );
   }
 
@@ -422,25 +415,7 @@ class _HomeViewState extends State<HomeView> {
             ),
             _buildSubscriptionDescriptionWidget(),
             _subscriptionService.purchases.isNotEmpty
-                ? _currentUser.profileCompletionPercentage == 1.0
-                    // NOTE: The following widget is based on if the user has a subscription,
-                    // this to make sure the profile completion and subscription child widgets are
-                    // aligned.
-                    ? const SizedBox.shrink()
-                    : Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                            color: kBasePremiumBackgroundColour,
-                            borderRadius: BorderRadius.circular(8.0)),
-                        child: Text(
-                          'Premium',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(
-                                  color: kBasePremiumForegroundTextColour),
-                        ),
-                      )
+                ? const SizedBox.shrink()
                 : Text(
                     localisedTextNotPremium,
                     textAlign: TextAlign.center,
@@ -452,40 +427,6 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
     );
-  }
-
-  Widget _buildSubscriptionTypeBackgroundImage() {
-    if (_subscriptionService.hasGold) {
-      return Positioned(
-        right: -48.0,
-        child: Image.asset(
-          _subscriptionService.productFeatures!
-              .where((productFeature) =>
-                  productFeature.productId == kGoldSubscriptionId)
-              .first
-              .image!,
-          height: 96.0,
-          fit: BoxFit.cover,
-          opacity: const AlwaysStoppedAnimation(0.5),
-        ),
-      );
-    } else if (_subscriptionService.hasSilver) {
-      return Positioned(
-        right: -48.0,
-        child: Image.asset(
-          _subscriptionService.productFeatures!
-              .where((productFeature) =>
-                  productFeature.productId == kSilverSubscriptionId)
-              .first
-              .image!,
-          height: 96.0,
-          fit: BoxFit.cover,
-          opacity: const AlwaysStoppedAnimation(0.5),
-        ),
-      );
-    } else {
-      return const SizedBox.shrink();
-    }
   }
 
   Widget _buildSubscriptionDescriptionWidget() {
@@ -506,9 +447,6 @@ class _HomeViewState extends State<HomeView> {
         onPressed: () {
           Navigator.of(context).pushNamed(subscriptionsViewRoute);
         },
-        style: FilledButton.styleFrom(
-          backgroundColor: kActionColour,
-        ),
         child: const Text(
           'Upgrade',
         ),

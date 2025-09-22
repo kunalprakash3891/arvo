@@ -1042,7 +1042,6 @@ const createUserSettingTable = '''CREATE TABLE IF NOT EXISTS "user_setting" (
   PRIMARY KEY("id" AUTOINCREMENT)
 );''';
 
-// TODO: Configure PNFPB for iOS and add icon on server.
 const insertDefaultServers = '''INSERT INTO server(url, pnfpb_key) VALUES 
 ('https://www.arvo.dating', 'ed3c35b8f7cd2201b57c12c0c930fe2d')
 ;''';
