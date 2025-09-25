@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arvo/helpers/processing/member_processing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/constants/routes.dart';
@@ -335,6 +336,8 @@ class _PerfectMatchQuizViewState extends State<PerfectMatchQuizView> {
       var name = selectedAnswer.answer.name.removeEscapeCharacters();
       memberField.value =
           MemberFieldValue(raw: name, rendered: name, unserialized: [name]);
+      // Recalculate the completion percentage.
+      populateMemberProfileCompletionPercentage(_currentUser);
       // Navigate to the next question.
       _navigateToNextPage();
       if (mounted) {

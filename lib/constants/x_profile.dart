@@ -214,6 +214,7 @@ const int xProfileFieldIDontLikeSportsOrExercise = 11554;
 const int xProfileFieldIDontLikeReading = 11425;
 const int xProfileFieldIDontReallyLikeGames = 11440;
 const int xProfileFieldNoPets = 11567;
+const int xProfileFieldIllEatAnything = 11468;
 Map<int, int> noneSelectionItemXProfileFieldMap = {
   xProfileFieldHobbies: xProfileFieldIDontHaveAnyHobbies,
   xProfileFieldFavouriteMovies: xProfileFieldIDontLikeWatchingMovies,
@@ -223,6 +224,7 @@ Map<int, int> noneSelectionItemXProfileFieldMap = {
   xProfileFieldFavouriteBooks: xProfileFieldIDontLikeReading,
   xProfileFieldFavouriteGames: xProfileFieldIDontReallyLikeGames,
   xProfileFieldPets: xProfileFieldNoPets,
+  xProfileFieldFavouriteCuisine: xProfileFieldIllEatAnything,
 };
 
 // Returns a predefined icon for specific XProfile fields.

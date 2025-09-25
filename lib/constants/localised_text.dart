@@ -16,9 +16,8 @@ const noResults =
     "Bugger! Your search returned no results. Try adjusting your filters and searching again.";
 
 // Messaging
-const localisedMessageOpenerPrefix = 'Bula';
-const localisedMessageOpener1 = 'Ni Sa Bula';
-const localisedMessageOpener2 = 'Kaise Hain?';
+const localisedMessageOpener1 = "How ya goin'?";
+const localisedMessageOpener2 = "How's it hangin'?";
 
 // Premium
 const localisedFavouritedMeUpgradePromotionText =
