@@ -61,6 +61,10 @@ const kBasePendingVerificationIndicatorColour = kBaseOutbackOchre40;
 const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
 const kBaseMessageThreadSentMessageBackgroundColour = kBaseOutbackOchre;
 const kBaseMessageThreadRecievedMessageBackgroundColour = kBaseOceanBlue;
+const kBaseArvoDemoProfileTagBackgroundColour = kBaseSandyBeach;
+const kBaseArvoDemoProfileTagForegroundColour = kBaseKangarooBrown;
+const kBaseArvoTeamMemberProfileTagBackgroundColour = kBaseSydneySky;
+const kBaseArvoTeamMemberProfileTagForegroundColour = kBaseSandyBeach;
 
 // Dark theme colours.
 const kBaseDarkColour = Color(0xFFE69F89);

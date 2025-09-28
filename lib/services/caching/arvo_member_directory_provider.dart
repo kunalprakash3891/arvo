@@ -287,13 +287,14 @@ class ArvoMemberDirectoryProvider implements MemberDirectoryProvider {
         members.removeWhere((member) => contributors.contains(member.id));
       }
     }
-    if (!_databaseSystemSetting.showDemoUsers) {
+    // TODO: Hide demo users after enough real users have joined.
+    /*if (!_databaseSystemSetting.showDemoUsers) {
       // Filter out demo users.
       final demoUsers = demoUsersMap[_connectionProvider.serverUrl];
       if (demoUsers != null) {
         members.removeWhere((member) => demoUsers.contains(member.id));
       }
-    }
+    }*/
     return members;
   }
 

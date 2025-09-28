@@ -108,6 +108,7 @@ class _MemberProfileViewState extends State<MemberProfileView> {
               valueListenable: _matchInsightEnabled,
               builder: (context, value, child) {
                 return MemberProfileWidget(
+                  serverUrl: _connectionService.serverUrl!,
                   member: _member!,
                   currentUser: _currentUser,
                   editProfilePictures: _awaitReturnFromEditProfilePicturesView,

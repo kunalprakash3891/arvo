@@ -1362,6 +1362,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
   void viewRecipientProfile() {
     MemberProfileOverlay().show(
       context: context,
+      serverUrl: _connectionService.serverUrl!,
       member: _recipient!,
       currentUser: _currentUser,
       matchInsight: _featureService.featureMatchInsight,

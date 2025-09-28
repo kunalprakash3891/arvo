@@ -663,6 +663,7 @@ class _MemberSwipeViewState extends State<MemberSwipeView> {
               valueListenable: _matchInsightEnabled,
               builder: (context, value, child) {
                 return MemberProfileWidget(
+                  serverUrl: _connectionService.serverUrl!,
                   member: _members[index],
                   currentUser: _currentUser,
                   // TODO: Implement premium promotion for Match Insight

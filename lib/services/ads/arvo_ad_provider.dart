@@ -56,7 +56,7 @@ class ArvoAdProvider implements AdProvider {
             ? adImageIOSActivityIndicator
             : adImageAndroidActivityIndicator),
     Ad(
-        headline: 'Oi lei! Relax your eyes.',
+        headline: 'Relax your eyes.',
         promoText: 'Browse with dark mode, only available with Premium.',
         assetImage:
             Platform.isIOS ? adImageIOSDarkMode : adImageAndroidDarkMode),

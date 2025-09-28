@@ -1162,7 +1162,7 @@ class _SettingsViewState extends State<SettingsView> {
               height: 72.0,
               child: Image(
                 image: AssetImage(
-                  logoGradientText,
+                  logoOcreGradientText,
                 ),
                 fit: BoxFit.cover,
               ),

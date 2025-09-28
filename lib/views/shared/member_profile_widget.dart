@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:app_base/dialogs/widget_information_dialog.dart';
+import 'package:arvo/constants/localised_assets.dart';
+import 'package:arvo/constants/server.dart';
 import 'package:arvo/views/shared/avatar_placeholder.dart';
 import 'package:arvo/views/shared/x_profile_concat_location_utilities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -34,6 +36,7 @@ typedef VerificationTappedCallback = void Function();
 typedef ReportMemberTappedCallback = void Function();
 
 class MemberProfileWidget extends StatelessWidget {
+  final String serverUrl;
   final Member member;
   final Member currentUser;
   final EditProfilePicturesCallback? editProfilePictures;
@@ -49,6 +52,7 @@ class MemberProfileWidget extends StatelessWidget {
   final ReportMemberTappedCallback? reportMemberTapped;
   const MemberProfileWidget(
       {super.key,
+      required this.serverUrl,
       required this.member,
       required this.currentUser,
       this.editProfilePictures,
@@ -556,7 +560,7 @@ class MemberProfileWidget extends StatelessWidget {
                         _buildVerificationStatusWidget(context),
                         if (memberAvatar != null)
                           _buildBuildMemberPhotoModerationStatusWidget(
-                              context, memberAvatar)
+                              context, memberAvatar),
                       ],
                     ),
                   ],
@@ -633,6 +637,14 @@ class MemberProfileWidget extends StatelessWidget {
                           : Icons.open_in_full_rounded,
                     ),
                   ),
+          ),
+          Positioned(
+            top: 0.0,
+            left: 5.0,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _buildMemberProfileTypeWidget(context),
+            ),
           ),
           (member.id == currentUser.id &&
                   memberHasDefaultAvatar(memberAvatarUrl))
@@ -1166,6 +1178,91 @@ class MemberProfileWidget extends StatelessWidget {
             ),
           )
         : const SizedBox.shrink();
+  }
+
+  Widget _buildMemberProfileTypeWidget(BuildContext context) {
+    final isDemoUser = demoUsersMap[serverUrl]?.contains(member.id) ?? false;
+    final isTeamMemberUser =
+        teamMemberUsersMap[serverUrl]?.contains(member.id) ?? false;
+
+    if (!isDemoUser && !isTeamMemberUser) return SizedBox.shrink();
+
+    return GestureDetector(
+      onTap: () {
+        showWidgetInformationDialog(
+          context: context,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: setHeightBetweenWidgets(
+              height: 16.0,
+              header: true,
+              [
+                Text(
+                  isDemoUser
+                      ? '${member.name} is a demo user.'
+                      : '${member.name} is an Arvo team member.',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 72.0,
+                  child: Image(
+                    image: AssetImage(
+                      logoOcreGradientText,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Text(
+                  isDemoUser
+                      ? 'Demo user profiles are provided for sample purposes. You can contact a demo user, but they will not reply.'
+                      : 'You can contact Arvo team members if you need help, or have any questions or suggestions.',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          buttonText: 'Close',
+        );
+        verificationTapped?.call();
+      },
+      child: Container(
+        padding: const EdgeInsets.all(4.0),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            color: isDemoUser
+                ? kBaseArvoDemoProfileTagBackgroundColour
+                : kBaseArvoTeamMemberProfileTagBackgroundColour,
+            borderRadius: BorderRadius.circular(8.0)),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: setWidthBetweenWidgets(
+            width: 4.0,
+            [
+              const SizedBox(
+                height: 16.0,
+                child: Image(
+                  image: AssetImage(
+                    logoOcreGradientText,
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Text(
+                isDemoUser ? 'Demo User' : 'Team Member',
+                style: TextStyle(
+                  fontSize: 12.0,
+                  color: isDemoUser
+                      ? kBaseArvoDemoProfileTagForegroundColour
+                      : kBaseArvoTeamMemberProfileTagForegroundColour,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

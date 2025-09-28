@@ -16,26 +16,63 @@ const lostPasswordURL = "/wp-login.php?action=lostpassword";
 const profilePhotoTipsURL =
     "/news/picture-perfect-how-to-take-great-photos-for-your-dating-profile/";
 
-const userIdKunal = 29;
+const userIdKunal = 4;
 
 // System Users Map
 Map<String, List<int>> systemUsersMap = {
   arvoURL: [
     2, // 4rv0da7ing
   ],
-  arvoTestURL: [],
+  arvoTestURL: [
+    2, // 4rv0da7ing
+  ],
+};
+
+// Arvo Team Member Map
+Map<String, List<int>> teamMemberUsersMap = {
+  // TODO: Hide team member users.
+  arvoURL: [
+    4, // Kunal
+    9, // Susan
+  ],
+  arvoTestURL: [
+    4, // Kunal
+    9, // Susan
+  ],
 };
 
 // Demo Users Map
 Map<String, List<int>> demoUsersMap = {
-  arvoURL: [],
-  arvoTestURL: [],
+  arvoURL: [
+    8, // App Demo
+    7, // Hamish
+    10, // Jolene
+    11, // Monti
+    12, // Kerry
+    13, // Stephen
+    14, // Celeste
+    15, // Ryan
+  ],
+  arvoTestURL: [
+    8, // App Demo
+    7, // Hamish
+    10, // Jolene
+    11, // Monti
+    12, // Kerry
+    13, // Stephen
+    14, // Celeste
+    15, // Ryan
+  ],
 };
 
 // Restricted Messaging Users Map
 Map<String, List<int>> restrictedMessagingUsersMap = {
-  arvoURL: [],
-  arvoTestURL: [],
+  arvoURL: [
+    8, // App Demo
+  ],
+  arvoTestURL: [
+    8, // App Demo
+  ],
 };
 
 // Contributors Map

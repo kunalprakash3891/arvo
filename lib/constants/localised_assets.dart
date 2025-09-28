@@ -1,6 +1,8 @@
 const assetImages = 'assets/images';
 const logo = '$assetImages/arvo_logo_white_text.png';
-const logoGradientText = '$assetImages/arvo_logo_gradient_text.png';
+const logoCoastalOceanGradientText =
+    '$assetImages/arvo_logo_coastal_ocean_gradient_text.png';
+const logoOcreGradientText = '$assetImages/arvo_logo_ocre_gradient_text.png';
 const alternateLogo = '$assetImages/emu_bush.png';
 const gumLeaves = '$assetImages/gum_leaves.png';
 const gumTreeBranch = '$assetImages/gum_tree_branch.png';

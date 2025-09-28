@@ -13,6 +13,7 @@ class MemberProfileOverlay {
 
   void show({
     required BuildContext context,
+    required String serverUrl,
     required Member member,
     required Member currentUser,
     required bool matchInsight,
@@ -21,6 +22,7 @@ class MemberProfileOverlay {
   }) {
     controller = showOverlay(
       context: context,
+      serverUrl: serverUrl,
       member: member,
       currentUser: currentUser,
       matchInsight: matchInsight,
@@ -37,6 +39,7 @@ class MemberProfileOverlay {
 
   MemberProfileOverlayController showOverlay({
     required BuildContext context,
+    required String serverUrl,
     required Member member,
     required Member currentUser,
     required bool matchInsight,
@@ -69,6 +72,7 @@ class MemberProfileOverlay {
             body: Padding(
               padding: const EdgeInsets.only(left: 16.0, right: 16.0),
               child: MemberProfileWidget(
+                serverUrl: serverUrl,
                 member: member,
                 currentUser: currentUser,
                 matchInsight: matchInsight,
