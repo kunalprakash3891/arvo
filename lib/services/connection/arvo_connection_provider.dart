@@ -112,7 +112,7 @@ Future<String> getUserAgent() async {
         {
           final deviceInfo = await DeviceInfoPlugin().androidInfo;
           final userAgent =
-              'arvo F./${packageInfo.version}_${packageInfo.buildNumber} (${deviceInfo.manufacturer}; ${deviceInfo.model}; ${deviceInfo.isPhysicalDevice ? 'Physical' : 'Emulator'}; Android ${deviceInfo.version.release})';
+              'Arvo F./${packageInfo.version}_${packageInfo.buildNumber} (${deviceInfo.manufacturer}; ${deviceInfo.model}; ${deviceInfo.isPhysicalDevice ? 'Physical' : 'Emulator'}; Android ${deviceInfo.version.release})';
           return userAgent;
         }
       case TargetPlatform.iOS:
@@ -120,7 +120,7 @@ Future<String> getUserAgent() async {
           final deviceInfo = await DeviceInfoPlugin().iosInfo;
           final deviceType = deviceInfo.data['utsname']['machine'] ?? 'Unknown';
           final userAgent =
-              'arvo F./${packageInfo.version}_${packageInfo.buildNumber} (Apple; $deviceType; ${deviceInfo.isPhysicalDevice ? 'Physical' : 'Emulator'}; iOS ${deviceInfo.systemVersion})';
+              'Arvo F./${packageInfo.version}_${packageInfo.buildNumber} (Apple; $deviceType; ${deviceInfo.isPhysicalDevice ? 'Physical' : 'Emulator'}; iOS ${deviceInfo.systemVersion})';
           return userAgent;
         }
       default:
@@ -130,7 +130,7 @@ Future<String> getUserAgent() async {
     }
   } on Exception catch (_) {
     final userAgent =
-        'arvo! F./${packageInfo != null ? packageInfo.version : 0}_${packageInfo != null ? packageInfo.buildNumber : 0} (Fallback)';
+        'Arvo! F./${packageInfo != null ? packageInfo.version : 0}_${packageInfo != null ? packageInfo.buildNumber : 0} (Fallback)';
     return userAgent;
   }
 }

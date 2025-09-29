@@ -225,11 +225,12 @@ class App extends StatelessWidget {
               child: child!,
             );
           },
-          title: 'arvo',
+          title: 'Arvo',
           theme: _getTheme(state),
           navigatorKey: navigatorKey,
           // Note: The ErrorHandlerWidget is responsible for catching all top level
           // application errors.
+          // TODO: Check update check works after app is live on store.
           home: AppUpdateAlert(
             child: const ErrorHandlerWidget(
               child: HomePage(),

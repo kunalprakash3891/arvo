@@ -8,8 +8,8 @@ const contactUsURL = "/contact/";
 const termsAndConditionsURL = "/policies/terms-conditions/";
 const privacyPolicyURL = "/policies/privacy-policy/";
 const onlineSafetyTipsURL = "/online-safety-tips/";
-// TODO: Test by creating a new user
-// TODO: This default avatar may need to be updated as it shows account as verified when it is not.
+// TODO: Update the default avatar on the website. Note: Release app first before updating on website, ensure app check for both old and new.
+//const updatedDefaultAvatarURL = "?";
 const defaultAvatarURL = "/wp-content/uploads/2024/02/arvo-avatar.png";
 const faqsURL = "/faq/";
 const lostPasswordURL = "/wp-login.php?action=lostpassword";

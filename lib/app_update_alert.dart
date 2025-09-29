@@ -61,8 +61,8 @@ class AppUpdateAlertState extends UpgradeAlertState {
                 child: ListBody(
                   children: [
                     Text(Platform.isIOS
-                        ? "arvo needs to be updated before proceeding.\n\nTap the Continue button to update."
-                        : "arvo needs to be updated before proceeding.\n\nTap the Continue button to update, or Exit to close the app."),
+                        ? "Arvo needs to be updated before proceeding.\n\nTap the Continue button to update."
+                        : "Arvo needs to be updated before proceeding.\n\nTap the Continue button to update, or Exit to close the app."),
                   ],
                 ),
               ),

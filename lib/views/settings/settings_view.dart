@@ -537,6 +537,22 @@ class _SettingsViewState extends State<SettingsView> {
         ),
         const SizedBox(height: 16.0),
         _buildSettingsToggleItemWidget(
+          'Show team member users',
+          Switch(
+            value: _databaseSystemSetting.showTeamMembers,
+            onChanged: (bool value) {
+              if (mounted) {
+                setState(
+                  () {
+                    _databaseSystemSetting.showTeamMembers = value;
+                  },
+                );
+              }
+            },
+          ),
+        ),
+        const SizedBox(height: 16.0),
+        _buildSettingsToggleItemWidget(
           'Show contributors',
           Switch(
             value: _databaseSystemSetting.showContributors,

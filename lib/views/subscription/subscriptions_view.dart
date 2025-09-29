@@ -32,6 +32,7 @@ class SubscriptionsView extends StatefulWidget {
   State<SubscriptionsView> createState() => _SubscriptionsViewState();
 }
 
+// TODO: Test that subscriptions work once app is live on the store.
 class _SubscriptionsViewState extends State<SubscriptionsView> {
   late final ConnectionService _connectionService;
   late final SubscriptionService _subscriptionService;

@@ -187,6 +187,7 @@ class ArvoLocalStorageProvider implements LocalStorageProvider {
             databaseSystemSetting.firebaseEventLogging ? 1 : 0,
         developmentModeColumn: databaseSystemSetting.developmentMode ? 1 : 0,
         showDemoUsersColumn: databaseSystemSetting.showDemoUsers ? 1 : 0,
+        showTeamMembersColumn: databaseSystemSetting.showTeamMembers ? 1 : 0,
         showContributorsColumn: databaseSystemSetting.showContributors ? 1 : 0,
         bypassStoreColumn: databaseSystemSetting.bypassStore ? 1 : 0,
         firebasePushNotificationTokenColumn:
@@ -209,6 +210,7 @@ class ArvoLocalStorageProvider implements LocalStorageProvider {
       firebaseEventLogging: databaseSystemSetting.firebaseEventLogging,
       developmentMode: databaseSystemSetting.developmentMode,
       showDemoUsers: databaseSystemSetting.showDemoUsers,
+      showTeamMembers: databaseSystemSetting.showTeamMembers,
       showContributors: databaseSystemSetting.showContributors,
       bypassStore: databaseSystemSetting.bypassStore,
       firebasePushNotificationToken:
@@ -256,6 +258,7 @@ class ArvoLocalStorageProvider implements LocalStorageProvider {
         firebaseEventLoggingColumn: systemSetting.firebaseEventLogging ? 1 : 0,
         developmentModeColumn: systemSetting.developmentMode ? 1 : 0,
         showDemoUsersColumn: systemSetting.showDemoUsers ? 1 : 0,
+        showTeamMembersColumn: systemSetting.showTeamMembers ? 1 : 0,
         showContributorsColumn: systemSetting.showContributors ? 1 : 0,
         bypassStoreColumn: systemSetting.bypassStore ? 1 : 0,
         firebasePushNotificationTokenColumn:
@@ -562,6 +565,7 @@ class ArvoLocalStorageProvider implements LocalStorageProvider {
         firebaseEventLogging: true,
         developmentMode: false,
         showDemoUsers: false,
+        showTeamMembers: false,
         showContributors: false,
         bypassStore: false,
         firebasePushNotificationToken: '',
@@ -694,6 +698,7 @@ class DatabaseSystemSetting {
   bool firebaseEventLogging;
   bool developmentMode;
   bool showDemoUsers;
+  bool showTeamMembers;
   bool showContributors;
   bool bypassStore;
   String firebasePushNotificationToken;
@@ -713,6 +718,7 @@ class DatabaseSystemSetting {
     required this.firebaseEventLogging,
     required this.developmentMode,
     required this.showDemoUsers,
+    required this.showTeamMembers,
     required this.showContributors,
     required this.bypassStore,
     required this.firebasePushNotificationToken,
@@ -734,6 +740,8 @@ class DatabaseSystemSetting {
         developmentMode =
             (map[developmentModeColumn] as int) == 1 ? true : false,
         showDemoUsers = (map[showDemoUsersColumn] as int) == 1 ? true : false,
+        showTeamMembers =
+            (map[showTeamMembersColumn] as int) == 1 ? true : false,
         showContributors =
             (map[showContributorsColumn] as int) == 1 ? true : false,
         bypassStore = (map[bypassStoreColumn] as int) == 1 ? true : false,
@@ -749,7 +757,7 @@ class DatabaseSystemSetting {
 
   @override
   String toString() =>
-      'System Setting, ID = $id, serverId = $serverId, logInToken = $logInToken, logInUserName = $logInUserName, logInPassword = $logInPassword, rememberLogIn = $rememberLogIn, firebaseEventLogging = $firebaseEventLogging, developmentMode = $developmentMode, showDemoUsers = $showDemoUsers, showContributors = $showContributors, bypassStore = $bypassStore, firebasePushNotificationToken = $firebasePushNotificationToken, hasRegisterd = $hasRegistered, messageCountLimitPerThread = $messageCountLimitPerThread, maxPendingMessageReplies = $maxPendingMessageReplies, adDisplayInterval = $adDisplayInterval';
+      'System Setting, ID = $id, serverId = $serverId, logInToken = $logInToken, logInUserName = $logInUserName, logInPassword = $logInPassword, rememberLogIn = $rememberLogIn, firebaseEventLogging = $firebaseEventLogging, developmentMode = $developmentMode, showDemoUsers = $showDemoUsers, showTeamMembers = $showTeamMembers, showContributors = $showContributors, bypassStore = $bypassStore, firebasePushNotificationToken = $firebasePushNotificationToken, hasRegisterd = $hasRegistered, messageCountLimitPerThread = $messageCountLimitPerThread, maxPendingMessageReplies = $maxPendingMessageReplies, adDisplayInterval = $adDisplayInterval';
 
   @override
   bool operator ==(covariant DatabaseSystemSetting other) =>
@@ -762,6 +770,7 @@ class DatabaseSystemSetting {
       other.firebaseEventLogging == firebaseEventLogging &&
       other.developmentMode == developmentMode &&
       other.showDemoUsers == showDemoUsers &&
+      other.showTeamMembers == showTeamMembers &&
       other.showContributors == showContributors &&
       other.bypassStore == bypassStore &&
       other.firebasePushNotificationToken == firebasePushNotificationToken &&
@@ -940,6 +949,7 @@ const rememberLogInColumn = 'remember_log_in';
 const firebaseEventLoggingColumn = 'firebase_event_logging';
 const developmentModeColumn = 'development_mode';
 const showDemoUsersColumn = 'show_demo_users';
+const showTeamMembersColumn = 'show_team_members';
 const showContributorsColumn = 'show_contributors';
 const bypassStoreColumn = 'bypass_store';
 const firebasePushNotificationTokenColumn = 'firebase_push_notification_token';
@@ -998,6 +1008,7 @@ const createSystemSettingTable =
   "firebase_event_logging"	INTEGER DEFAULT 1,
   "development_mode"	INTEGER DEFAULT 0,
   "show_demo_users"	INTEGER DEFAULT 0,
+  "show_team_members"	INTEGER DEFAULT 0,
   "show_contributors"	INTEGER DEFAULT 0,
   "bypass_store"	INTEGER DEFAULT 0,
   "firebase_push_notification_token" TEXT,

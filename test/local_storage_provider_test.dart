@@ -142,6 +142,7 @@ void main() {
       expect(existingDatabaseSystemSetting.firebaseEventLogging, true);
       expect(existingDatabaseSystemSetting.developmentMode, false);
       expect(existingDatabaseSystemSetting.showDemoUsers, false);
+      expect(existingDatabaseSystemSetting.showTeamMembers, false);
       expect(
           existingDatabaseSystemSetting.firebasePushNotificationToken, isEmpty);
 
@@ -154,6 +155,7 @@ void main() {
       existingDatabaseSystemSetting.firebaseEventLogging = false;
       existingDatabaseSystemSetting.developmentMode = true;
       existingDatabaseSystemSetting.showDemoUsers = true;
+      existingDatabaseSystemSetting.showTeamMembers = true;
       existingDatabaseSystemSetting.firebasePushNotificationToken =
           testFirebaseToken1;
 
@@ -170,6 +172,7 @@ void main() {
       expect(updatedDatabaseSystemSetting.firebaseEventLogging, false);
       expect(updatedDatabaseSystemSetting.developmentMode, true);
       expect(updatedDatabaseSystemSetting.showDemoUsers, true);
+      expect(updatedDatabaseSystemSetting.showTeamMembers, true);
       expect(updatedDatabaseSystemSetting.firebasePushNotificationToken,
           testFirebaseToken1);
 
@@ -194,6 +197,7 @@ void main() {
       expect(recreatedDatabaseSystemSetting.firebaseEventLogging, true);
       expect(recreatedDatabaseSystemSetting.developmentMode, false);
       expect(recreatedDatabaseSystemSetting.showDemoUsers, false);
+      expect(recreatedDatabaseSystemSetting.showTeamMembers, false);
       expect(recreatedDatabaseSystemSetting.firebasePushNotificationToken,
           isEmpty);
     });
