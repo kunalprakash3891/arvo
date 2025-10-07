@@ -140,7 +140,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
     _multiplePhotoSystemStatus = multiplePhotoSystemStatus;
 
     bool userHasDefaultPhoto =
-        memberHasDefaultAvatar(_currentUser.avatar!.full!);
+        memberHasDefaultAvatar(_currentUser.avatar?.thumb);
 
     return PopScope(
       canPop: _croppedImageFile == null,
@@ -342,7 +342,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
 
   Widget _buildProfilePhotoWidget() {
     bool userHasDefaultPhoto =
-        memberHasDefaultAvatar(_currentUser.avatar!.full!);
+        memberHasDefaultAvatar(_currentUser.avatar?.thumb);
 
     return Container(
       padding: const EdgeInsets.all(8.0),
@@ -366,7 +366,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                   )
                 : DecorationImage(
                     image:
-                        CachedNetworkImageProvider(_currentUser.avatar!.full!),
+                        CachedNetworkImageProvider(_currentUser.avatar!.thumb!),
                     fit: BoxFit.cover,
                     colorFilter: ColorFilter.mode(
                       Colors.white.withValues(alpha: 0.6),
@@ -374,7 +374,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
                     ),
                   )
             : DecorationImage(
-                image: CachedNetworkImageProvider(_currentUser.avatar!.full!),
+                image: CachedNetworkImageProvider(_currentUser.avatar!.thumb!),
                 fit: BoxFit.cover,
               ),
       ),
@@ -431,7 +431,7 @@ class _EditProfilePictureViewState extends State<EditProfilePictureView> {
           LoadingScreen().hide();
         }
         if (memberAvatar != null &&
-            !memberHasDefaultAvatar(memberAvatar.full!)) {
+            !memberHasDefaultAvatar(memberAvatar.thumb)) {
           if (mounted) {
             await showSuccessDialog(context,
                 "Your profile photo has been uploaded and is now awaiting moderation.\n\nDon't worry, it won't take long!");

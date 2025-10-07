@@ -220,7 +220,7 @@ class App extends StatelessWidget {
         return MaterialApp(
           builder: (context, child) {
             return SafeArea(
-              top: false, // Set to true if you want to avoid notch overlap too.
+              top: false, // Set to true to avoid notch overlap.
               bottom: true, // Avoids overlap with navigation bar.
               child: child!,
             );

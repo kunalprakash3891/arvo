@@ -8,5 +8,5 @@ class ArvoDevelopmentProvider implements DevelopmentProvider {
 
   // NOTE: Set to false for production release.
   @override
-  bool? isDevelopment = false;
+  bool? isDevelopment = true;
 }

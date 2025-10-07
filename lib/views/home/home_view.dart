@@ -228,7 +228,7 @@ class _HomeViewState extends State<HomeView> {
             animation: true,
             animationDuration: 1000,
             percent: _currentUser.profileCompletionPercentage,
-            center: memberHasDefaultAvatar(_currentUser.avatar!.full!)
+            center: memberHasDefaultAvatar(_currentUser.avatar?.thumb)
                 ? Container(
                     width: 100.0,
                     height: 100.0,
@@ -262,7 +262,7 @@ class _HomeViewState extends State<HomeView> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: CachedNetworkImageProvider(
-                              _currentUser.avatar!.full!),
+                              _currentUser.avatar!.thumb!),
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -519,13 +519,7 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _buildProfilePictureWidget() {
-    if (_currentUser.photoVerificationStatus != null &&
-        _currentUser.photoVerificationStatus !=
-            PhotoVerificationStatusType.approved) {
-      return const SizedBox.shrink();
-    }
-
-    return memberHasDefaultAvatar(_currentUser.avatar!.full!)
+    return memberHasDefaultAvatar(_currentUser.avatar?.thumb)
         ? Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -585,8 +579,11 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget _buildVerifyAccountWidget() {
-    if (_currentUser.photoVerificationStatus ==
-        PhotoVerificationStatusType.approved) {
+    if (memberHasDefaultAvatar(_currentUser.avatar?.thumb) ||
+        _currentUser.photoVerificationStatus ==
+            PhotoVerificationStatusType.pending ||
+        _currentUser.photoVerificationStatus ==
+            PhotoVerificationStatusType.approved) {
       return const SizedBox.shrink();
     }
 
@@ -782,8 +779,10 @@ class _HomeViewState extends State<HomeView> {
                           kBaseVerifiedIndicatorColour,
                       locationTextDisplayFormatter:
                           shortLocationDisplayFormatter,
+                      avatarUrl:
+                          getMemberPhoto(_newestMembers[index])?.urls.full,
                       avatarAsText: memberHasDefaultAvatar(
-                          _newestMembers[index].avatar?.full),
+                          _newestMembers[index].avatar?.thumb),
                       avatarAsTextTextColour: getMatchPercentageColour(
                         _newestMembers[index].matchWeight,
                         _featureService.featureMatchInsight,

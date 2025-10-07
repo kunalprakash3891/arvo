@@ -34,7 +34,7 @@ void populateMemberProfileCompletionPercentage(Member member) {
   }
 
   var memberPercentagePhoto =
-      memberHasDefaultAvatar(member.avatar!.full!) ? 0 : totalPointsPhoto;
+      memberHasDefaultAvatar(member.avatar?.thumb) ? 0 : totalPointsPhoto;
 
   var completedPercentage =
       ((memberProfileFieldsCompletedCount / totalMemberProfileFieldsCount) -

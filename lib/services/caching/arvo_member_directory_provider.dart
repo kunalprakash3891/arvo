@@ -311,10 +311,10 @@ class ArvoMemberDirectoryProvider implements MemberDirectoryProvider {
     switch (_memberFilters.selectedProfilePhotoType.value) {
       case photoTypeHasPhoto:
         members.removeWhere(
-            (member) => memberHasDefaultAvatar(member.avatar!.full!));
+            (member) => memberHasDefaultAvatar(member.avatar?.thumb));
       case photoTypeHasNoPhoto:
         members.removeWhere(
-            (member) => !memberHasDefaultAvatar(member.avatar!.full!));
+            (member) => !memberHasDefaultAvatar(member.avatar?.thumb));
     }
 
     return members;

@@ -734,7 +734,7 @@ class _MessagesViewState extends State<MessagesView> {
                               CircleAvatar(
                                 radius: 32.0,
                                 backgroundImage: memberHasDefaultAvatar(
-                                        recipient.avatar.full)
+                                        recipient.avatar.thumb)
                                     ? getAvatarPlaceholderImage(recipient.name)
                                     : CachedNetworkImageProvider(
                                         recipient.avatar.thumb!),

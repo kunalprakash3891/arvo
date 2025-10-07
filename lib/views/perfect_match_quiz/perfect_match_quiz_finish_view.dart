@@ -201,7 +201,8 @@ class _PerfectMatchQuizFinishViewState
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
                 locationTextDisplayFormatter: shortLocationDisplayFormatter,
-                avatarAsText: memberHasDefaultAvatar(item.avatar?.full),
+                avatarUrl: getMemberPhoto(item)?.urls.full,
+                avatarAsText: memberHasDefaultAvatar(item.avatar?.thumb),
                 avatarAsTextTextColour: getMatchPercentageColour(
                   item.matchWeight,
                   _featureService.featureMatchInsight,

@@ -19,7 +19,7 @@ Future navigateToEditProfilePicturesView(
     final multiplePhotoSystemStatus =
         await connectionService.getMultiplePhotoSystemStatus();
     bool userHasUploadedAvatar =
-        !memberHasDefaultAvatar(connectionService.currentUser!.avatar!.full!);
+        !memberHasDefaultAvatar(connectionService.currentUser!.avatar?.thumb);
     final route = multiplePhotoSystemStatus.available
         // An avatar is already assigned, but does not exist in the Multiple Photo Management System, so navigate
         // to original avatar edit view and prompt user to delete their existing avatar before they can upload more photos.

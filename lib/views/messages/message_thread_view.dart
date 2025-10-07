@@ -378,7 +378,7 @@ class _MessageThreadViewState extends State<MessageThreadView> {
                                 _featureService.featureMemberOnlineIndicator,
                             callback: viewRecipientProfile,
                             avatarPlaceholder: memberHasDefaultAvatar(
-                                _recipient!.avatar?.full),
+                                _recipient!.avatar?.thumb),
                             avatarPlaceholderImageProvider:
                                 getAvatarPlaceholderImage(_recipient!.name!),
                           ),

@@ -121,19 +121,16 @@ class MemberProfileWidget extends StatelessWidget {
     profilePhotos.sort((a, b) => a.sequence.compareTo(b.sequence));
     int profilePhotoIndex = 0;
 
+    // Add verification information.
+    final verificationWidget = _buildVerificationWidget(context);
+    if (verificationWidget != SizedBox.shrink()) {
+      profileDataWidgets.add(verificationWidget);
+      profileDataWidgets.add(const SizedBox(height: 8.0));
+    }
+
     // Add member avatar.
-    final memberAvatar = (member.photos != null)
-        ? (member.id == currentUser.id)
-            ? member.photos!
-                .where((photo) => photo.type == MemberPhotoType.avatar)
-                .firstOrNull
-            : member.photos!
-                .where((photo) =>
-                    photo.type == MemberPhotoType.avatar &&
-                    photo.status == MemberPhotoModerationStatusType.approved)
-                .firstOrNull
-        : null;
-    profileDataWidgets.add(_buildMemberAvatarWidget(context, memberAvatar));
+    final memberPhoto = getMemberPhoto(member, currentUser: currentUser);
+    profileDataWidgets.add(_buildMemberAvatarWidget(context, memberPhoto));
 
     // Add profile data.
     for (final group in member.xProfile!.groups) {
@@ -477,9 +474,9 @@ class MemberProfileWidget extends StatelessWidget {
   }
 
   Widget _buildMemberAvatarWidget(
-      BuildContext context, MemberPhoto? memberAvatar) {
+      BuildContext context, MemberPhoto? memberPhoto) {
     final mediaSize = MediaQuery.of(context).size;
-    final memberAvatarUrl = memberAvatar?.urls.full ?? member.avatar!.full!;
+    final memberAvatarUrl = memberPhoto?.urls.full ?? member.avatar!.thumb!;
     return GestureDetector(
       onTap: () async {
         if (memberHasDefaultAvatar(memberAvatarUrl)) {
@@ -558,9 +555,9 @@ class MemberProfileWidget extends StatelessWidget {
                             : _buildActiveStatusPremiumRequiredWidget(
                                 context, premiumTapped),
                         _buildVerificationStatusWidget(context),
-                        if (memberAvatar != null)
+                        if (memberPhoto != null)
                           _buildBuildMemberPhotoModerationStatusWidget(
-                              context, memberAvatar),
+                              context, memberPhoto),
                       ],
                     ),
                   ],
@@ -674,71 +671,41 @@ class MemberProfileWidget extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: (member.photoVerificationStatus == null ||
-                                member.photoVerificationStatus ==
-                                    PhotoVerificationStatusType.approved)
-                            ? Row(
-                                children: setWidthBetweenWidgets(
-                                  width: 8.0,
-                                  [
-                                    const SizedBox(
-                                      height: 32.0,
-                                      width: 32.0,
-                                      child: Image(
-                                        image: AssetImage(
-                                          'assets/images/camera.png',
-                                        ),
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    const Flexible(
-                                      child: Text(
-                                        'Adding a photo is recommended to help your profile stand out.',
-                                      ),
-                                    ),
-                                    FloatingActionButton.small(
-                                      heroTag: null,
-                                      elevation: 3.0,
-                                      shape: const CircleBorder(),
-                                      onPressed: () {
-                                        if (editProfilePictures != null) {
-                                          editProfilePictures!(context);
-                                        }
-                                      },
-                                      child: const Icon(
-                                        Icons.edit_rounded,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            : Row(
-                                children: setWidthBetweenWidgets(
-                                  width: 8.0,
-                                  [
-                                    const Flexible(
-                                      child: Text(
-                                        "Your account needs to be verified before you can upload a photo.",
-                                      ),
-                                    ),
-                                    (member.photoVerificationStatus ==
-                                                PhotoVerificationStatusType
-                                                    .unverified ||
-                                            member.photoVerificationStatus ==
-                                                PhotoVerificationStatusType
-                                                    .rejected)
-                                        ? TextButton(
-                                            onPressed: () {
-                                              if (verify != null) {
-                                                verify!(context);
-                                              }
-                                            },
-                                            child: const Text('Verify Account'),
-                                          )
-                                        : const SizedBox.shrink(),
-                                  ],
+                        child: Row(
+                          children: setWidthBetweenWidgets(
+                            width: 8.0,
+                            [
+                              const SizedBox(
+                                height: 32.0,
+                                width: 32.0,
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/images/camera.png',
+                                  ),
+                                  fit: BoxFit.contain,
                                 ),
                               ),
+                              const Flexible(
+                                child: Text(
+                                  'Adding a photo is recommended to help your profile stand out.',
+                                ),
+                              ),
+                              FloatingActionButton.small(
+                                heroTag: null,
+                                elevation: 3.0,
+                                shape: const CircleBorder(),
+                                onPressed: () {
+                                  if (editProfilePictures != null) {
+                                    editProfilePictures!(context);
+                                  }
+                                },
+                                child: const Icon(
+                                  Icons.edit_rounded,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -960,7 +927,65 @@ class MemberProfileWidget extends StatelessWidget {
                       ),
                     ),
                   )
-                : const SizedBox.shrink()
+                : GestureDetector(
+                    onTap: () {
+                      showWidgetInformationDialog(
+                        context: context,
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: setHeightBetweenWidgets(
+                            height: 16.0,
+                            header: true,
+                            [
+                              Icon(
+                                Platform.isIOS
+                                    ? CupertinoIcons.info_circle_fill
+                                    : Icons.info_rounded,
+                                color: kBaseUnverifiedIndicatorColour,
+                                size: 64.0,
+                              ),
+                              Text(
+                                '${member.name} has not verified their account yet.',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ),
+                        ),
+                        buttonText: 'Close',
+                      );
+                      verificationTapped?.call();
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(4.0),
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.white),
+                          color: kBaseUnverifiedIndicatorColour,
+                          borderRadius: BorderRadius.circular(8.0)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: setWidthBetweenWidgets(
+                          width: 4.0,
+                          [
+                            Icon(
+                              Platform.isIOS
+                                  ? CupertinoIcons.info_circle_fill
+                                  : Icons.info_rounded,
+                              size: 16.0,
+                              color: Colors.white,
+                            ),
+                            const Text(
+                              'Unverified',
+                              style: TextStyle(
+                                fontSize: 12.0,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
         : const SizedBox.shrink();
   }
 
@@ -1263,6 +1288,64 @@ class MemberProfileWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildVerificationWidget(BuildContext context) {
+    return (member.id != currentUser.id ||
+            member.photoVerificationStatus == null ||
+            member.photoVerificationStatus ==
+                PhotoVerificationStatusType.pending ||
+            member.photoVerificationStatus ==
+                PhotoVerificationStatusType.approved)
+        ? const SizedBox.shrink()
+        : Container(
+            clipBehavior: Clip.antiAlias,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              color: Theme.of(context).colorScheme.surface,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.1),
+                  blurRadius: 5.0,
+                  spreadRadius: 1.0,
+                  offset: const Offset(1.0, 1.0),
+                )
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: setWidthBetweenWidgets(
+                  width: 8.0,
+                  [
+                    Icon(
+                      Platform.isIOS
+                          ? CupertinoIcons.exclamationmark_triangle_fill
+                          : Icons.warning_rounded,
+                      size: 32.0,
+                    ),
+                    Expanded(
+                      child: Text(
+                        member.photoVerificationStatus ==
+                                PhotoVerificationStatusType.rejected
+                            ? "Unfortunately, your account verification was rejected, please try again."
+                            : "Your account is not verified.",
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        if (verify != null) {
+                          verify!(context);
+                        }
+                      },
+                      child: const Text('Verify Account'),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 }
 

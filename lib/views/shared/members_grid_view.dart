@@ -172,8 +172,9 @@ class MembersGridView extends StatelessWidget {
                 ),
                 verifiedMemberIndicatorColour: kBaseVerifiedIndicatorColour,
                 locationTextDisplayFormatter: shortLocationDisplayFormatter,
+                avatarUrl: getMemberPhoto(members.elementAt(index))?.urls.full,
                 avatarAsText: memberHasDefaultAvatar(
-                    members.elementAt(index).avatar?.full),
+                    members.elementAt(index).avatar?.thumb),
                 avatarAsTextTextColour: getMatchPercentageColour(
                     members.elementAt(index).matchWeight,
                     showColourCodedMatchPercentage),

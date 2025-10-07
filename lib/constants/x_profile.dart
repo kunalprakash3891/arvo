@@ -4,6 +4,9 @@ import 'package:arvo/constants/server.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:arvo/theme/palette.dart';
+import 'package:nifty_three_bp_app_base/api/member.dart';
+import 'package:nifty_three_bp_app_base/api/multiple_photo.dart';
+import 'package:nifty_three_bp_app_base/enums/member_photo_type.dart';
 import 'package:path/path.dart' show basename;
 
 // xProfile field types.
@@ -302,4 +305,18 @@ Color getProfileCompletionPercentageColour(double percentage) {
 bool memberHasDefaultAvatar(String? memberAvatarUrl) {
   return (memberAvatarUrl == null) ||
       basename(memberAvatarUrl) == basename(defaultAvatarURL);
+}
+
+MemberPhoto? getMemberPhoto(Member member, {Member? currentUser}) {
+  return (member.photos != null)
+      ? (currentUser != null && member.id == currentUser.id)
+          ? member.photos!
+              .where((photo) => photo.type == MemberPhotoType.avatar)
+              .firstOrNull
+          : member.photos!
+              .where((photo) =>
+                  photo.type == MemberPhotoType.avatar &&
+                  photo.status == MemberPhotoModerationStatusType.approved)
+              .firstOrNull
+      : null;
 }

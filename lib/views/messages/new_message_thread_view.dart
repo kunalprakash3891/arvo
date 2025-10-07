@@ -162,7 +162,7 @@ class _NewMessageThreadViewState extends State<NewMessageThreadView> {
                           _featureService.featureMemberOnlineIndicator,
                       radius: 32.0,
                       avatarPlaceholder:
-                          memberHasDefaultAvatar(_recipient.avatar?.full),
+                          memberHasDefaultAvatar(_recipient.avatar?.thumb),
                       avatarPlaceholderImageProvider:
                           getAvatarPlaceholderImage(_recipient.name!),
                     ),

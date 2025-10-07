@@ -57,6 +57,7 @@ const kBasePremiumSilverBackgroundColour = kBaseBushGrey;
 const kBasePremiumSilverForegroundTextColour = kBaseSandyBeach;
 const kBaseStarredMessageColour = kBaseOutbackOchre;
 const kBaseVerifiedIndicatorColour = kBaseOceanBlue;
+const kBaseUnverifiedIndicatorColour = kBaseBushGrey;
 const kBasePendingVerificationIndicatorColour = kBaseOutbackOchre40;
 const kBaseVerificationRejectedIndicatorColour = kBaseCoralSunset;
 const kBaseMessageThreadSentMessageBackgroundColour = kBaseOutbackOchre;
