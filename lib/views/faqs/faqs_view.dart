@@ -433,7 +433,7 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "How does account verification work?",
         answerText:
-            "To become verified, a user must upload a selfie that matches the specific pose provided by the Arvo Dating app. If the user then chooses to upload a profile photo, Arvo admins compare the user's verification photo to their profile photo during the avatar moderation process to ensure it's the same person using the Arvo account.",
+            "To become verified, a user must upload a selfie that matches the specific pose provided by the Arvo Dating app. Arvo admins compare the user's verification photo to their profile photo during the avatar moderation process to ensure it's the same person using the Arvo account.",
       ),
     );
     _faqs.add(
@@ -447,14 +447,14 @@ class _FAQsViewState extends State<FAQsView> {
       FAQItem(
         question: "How do I verify my account?",
         answerText:
-            "Verifying your account is simple! Just head to your profile and tap the “Unverified” button on your profile photo area. Then all you need to do is follow the on-screen prompts to upload your own verification photo. Don't worry; your verification photo will only be seen by Arvo admins and won't be visible on your profile.",
+            "Verifying your account is simple! Just head to your profile and tap the “Verify Account” button at the top of the page. Then all you need to do is follow the on-screen prompts to upload your own verification photo. Don't worry; your verification photo will only be seen by Arvo admins and won't be visible on your profile.",
       ),
     );
     _faqs.add(
       FAQItem(
         question: "Do I have to verify my account?",
         answerText:
-            "If you want to upload a profile photo, you will need to verify your account. We strongly recommend uploading a profile photo, as users with profile photos generally get more views and messages.",
+            "We strongly recommend that you verify your account as it shows other users that you are genuine. Verified users with profile photos generally get more views and messages.",
       ),
     );
     _faqs.add(FAQItem(header: 'Subscriptions'));
