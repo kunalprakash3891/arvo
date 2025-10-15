@@ -718,10 +718,6 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
   }
 
   Widget _buildDragPhotoNotificationWidget() {
-    final hasMoreThanOnePhoto =
-        _userPhotosEdit.where((userPhoto) => !userPhoto.isPlaceholder).length >
-            1;
-
     return Container(
       padding: const EdgeInsets.all(4.0),
       width: double.infinity,
@@ -742,50 +738,15 @@ class _EditProfilePicturesViewState extends State<EditProfilePicturesView> {
         children: setWidthBetweenWidgets(
           width: 8.0,
           [
-            hasMoreThanOnePhoto
-                ? Icon(
-                    Platform.isIOS ? CupertinoIcons.info : Icons.info_rounded,
-                    size: 32.0,
-                  )
-                : const SizedBox(
-                    height: 32.0,
-                    width: 32.0,
-                    child: Image(
-                      image: AssetImage(
-                        'assets/images/camera.png',
-                      ),
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-            hasMoreThanOnePhoto
-                ? const Expanded(
-                    child: Text(
-                      'To reposition, hold down then drag on a photo.',
-                    ),
-                  )
-                : RichText(
-                    text: TextSpan(
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      children: [
-                        TextSpan(
-                          text: 'View tips on taking great profile photos.',
-                          style: const TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.blue,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () async {
-                              await browseToUrl(
-                                context: context,
-                                _connectionService.serverUrl! +
-                                    profilePhotoTipsURL,
-                              );
-                            },
-                        ),
-                      ],
-                    ),
-                  ),
+            Icon(
+              Platform.isIOS ? CupertinoIcons.info : Icons.info_rounded,
+              size: 32.0,
+            ),
+            const Expanded(
+              child: Text(
+                'To reposition, hold down then drag on a photo.',
+              ),
+            )
           ],
         ),
       ),

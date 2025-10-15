@@ -33,9 +33,9 @@ Map<String, String> avatarPlaceholderMap = {
 
 AssetImage getAvatarPlaceholderImage(String? memberName) {
   if (memberName == null || memberName.isEmpty) {
-    AssetImage(avatarPlaceholderMap.values.first);
+    return AssetImage(avatarPlaceholderMap.values.first);
   }
 
-  return AssetImage(avatarPlaceholderMap[memberName![0].toLowerCase()] ??
+  return AssetImage(avatarPlaceholderMap[memberName[0].toLowerCase()] ??
       avatarPlaceholderMap.values.first);
 }

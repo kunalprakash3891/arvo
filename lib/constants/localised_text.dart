@@ -4,7 +4,7 @@ const tagline = "Dating for Aussies";
 const localisedOpenWebsiteToChangePassword =
     'Open arvo.dating on your web browser\nto change your password';
 const localisedAccountDeletedGoodbyeMessage =
-    'Your account has been successfully deleted.\n\nSee you later, cheers for using arvo.';
+    'Your account has been successfully deleted.\n\nCheers for using Arvo.';
 const localisedPraise = 'Ace!';
 const localisedAboutText = 'Made by humans in Melbourne';
 const localisedTextNotPremium = "You're not a Premium member.";
@@ -21,7 +21,7 @@ const localisedMessageOpener2 = "How's it hangin'?";
 
 // Premium
 const localisedFavouritedMeUpgradePromotionText =
-    "See who's added you as a Favourite with arvo Premium.";
+    "See who's added you as a Favourite with Arvo Premium.";
 
 // Errors & Notifications
 const localisedErrorTooManyNewMessages =
@@ -34,7 +34,7 @@ const localisedGenericFriendlyErrorTitleText = 'Something went wrong';
 const localisedGenericFriendlyErrorBodyText =
     'Something went wrong, please try again later.';
 const localisedErrorMessageGenericRequestException =
-    "Could not complete the request, please try again. If this error persists, please contact the arvo support team at arvo.dating/contact/";
+    "Could not complete the request, please try again. If this error persists, please contact the Arvo support team at arvo.dating/contact/";
 const localisedErrorMessageCouldNotProcessRequest =
     'Could not process this request. Please try again later.';
 

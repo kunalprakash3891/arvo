@@ -731,14 +731,16 @@ class _MessagesViewState extends State<MessagesView> {
                         Row(
                           children: setWidthBetweenWidgets(
                             [
-                              CircleAvatar(
-                                radius: 32.0,
-                                backgroundImage: memberHasDefaultAvatar(
-                                        recipient.avatar.thumb)
-                                    ? getAvatarPlaceholderImage(recipient.name)
-                                    : CachedNetworkImageProvider(
-                                        recipient.avatar.thumb!),
-                              ),
+                              if (recipient.name.isNotEmpty)
+                                CircleAvatar(
+                                  radius: 32.0,
+                                  backgroundImage: memberHasDefaultAvatar(
+                                          recipient.avatar.thumb)
+                                      ? getAvatarPlaceholderImage(
+                                          recipient.name)
+                                      : CachedNetworkImageProvider(
+                                          recipient.avatar.thumb!),
+                                ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: setHeightBetweenWidgets(

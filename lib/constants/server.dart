@@ -13,8 +13,6 @@ const onlineSafetyTipsURL = "/online-safety-tips/";
 const defaultAvatarURL = "/wp-content/uploads/2024/02/arvo-avatar.png";
 const faqsURL = "/faq/";
 const lostPasswordURL = "/wp-login.php?action=lostpassword";
-const profilePhotoTipsURL =
-    "/news/picture-perfect-how-to-take-great-photos-for-your-dating-profile/";
 
 const userIdKunal = 4;
 
