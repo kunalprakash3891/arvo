@@ -351,14 +351,7 @@ class ArvoSubscriptionProvider implements SubscriptionProvider {
       // Unix to date & time converter https://currentmillis.com/
       final transactionDate = purchaseDetails.transactionDate!;
 
-      int? purchaseDateMilliseconds = int.tryParse(transactionDate);
-
-      if (purchaseDateMilliseconds == null) {
-        return Future<bool>.value(false);
-      }
-
-      DateTime purchaseDate =
-          DateTime.fromMillisecondsSinceEpoch(purchaseDateMilliseconds);
+      DateTime purchaseDate = DateTime.parse(transactionDate);
 
       final expiryDate = purchaseDate.add(const Duration(days: 31));
 
