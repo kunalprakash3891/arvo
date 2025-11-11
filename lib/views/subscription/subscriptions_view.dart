@@ -63,11 +63,16 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
       // before showing the success dialog.
       if (_purchasingProductDetails == null) return;
 
-      bool purchaseSuccessful =
-          (_purchasingProductDetails!.id == kSilverSubscriptionId &&
-                  _subscriptionService.hasSilver) ||
-              (_purchasingProductDetails!.id == kGoldSubscriptionId &&
-                  _subscriptionService.hasGold);
+      bool purchaseSuccessful = (_purchasingProductDetails!.id ==
+                  (Platform.isIOS
+                      ? kiOSSilverSubscriptionId
+                      : kAndroidSilverSubscriptionId) &&
+              _subscriptionService.hasSilver) ||
+          (_purchasingProductDetails!.id ==
+                  (Platform.isIOS
+                      ? kiOSGoldSubscriptionId
+                      : kAndroidGoldSubscriptionId) &&
+              _subscriptionService.hasGold);
 
       if (!purchaseSuccessful) {
         return;

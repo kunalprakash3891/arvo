@@ -60,20 +60,20 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAKggZpy2WI6bMAqjcSK3ZP4bE13u4zgt0',
-    appId: '1:688520948191:ios:73479888dd9c052f997c6a',
+    appId: '1:688520948191:ios:4787d65cb95629fd997c6a',
     messagingSenderId: '688520948191',
     projectId: 'arvo-bb0ae',
     storageBucket: 'arvo-bb0ae.firebasestorage.app',
-    iosBundleId: 'com.n3.arvo',
+    iosBundleId: 'com.n3.hello',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAKggZpy2WI6bMAqjcSK3ZP4bE13u4zgt0',
-    appId: '1:688520948191:ios:73479888dd9c052f997c6a',
+    appId: '1:688520948191:ios:4787d65cb95629fd997c6a',
     messagingSenderId: '688520948191',
     projectId: 'arvo-bb0ae',
     storageBucket: 'arvo-bb0ae.firebasestorage.app',
-    iosBundleId: 'com.n3.arvo',
+    iosBundleId: 'com.n3.hello',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(

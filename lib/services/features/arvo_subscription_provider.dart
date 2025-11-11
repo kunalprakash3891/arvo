@@ -35,7 +35,9 @@ class ArvoSubscriptionProvider implements SubscriptionProvider {
   DatabaseSystemSetting? _databaseSystemSetting;
   final Map<String, Function> _updateFunctionsMap = {};
   final _kSilverSubscriptionFeatures = ProductFeatures(
-    productId: kSilverSubscriptionId,
+    productId: Platform.isIOS
+        ? kiOSSilverSubscriptionId
+        : kAndroidSilverSubscriptionId,
     displayName: 'Silver',
     description:
         'Search for your perfect match without the interruption of ads.',
@@ -48,7 +50,8 @@ class ArvoSubscriptionProvider implements SubscriptionProvider {
     image: 'assets/images/premium_silver.png',
   );
   final _kGoldSubscriptionFeatures = ProductFeatures(
-    productId: kGoldSubscriptionId,
+    productId:
+        Platform.isIOS ? kiOSGoldSubscriptionId : kAndroidGoldSubscriptionId,
     displayName: 'Gold',
     description:
         'All the exclusive features to help you find your perfect match.',
@@ -234,8 +237,10 @@ class ArvoSubscriptionProvider implements SubscriptionProvider {
       // await iosPlatformAddition.setDelegate(ExamplePaymentQueueDelegate());
     }*/
 
-    final ProductDetailsResponse productDetailResponse =
-        await inAppPurchase!.queryProductDetails(kProductIds.toSet());
+    final ProductDetailsResponse productDetailResponse = await inAppPurchase!
+        .queryProductDetails(Platform.isIOS
+            ? kiOSProductIds.toSet()
+            : kAndroidProductIds.toSet());
     if (productDetailResponse.error != null) {
       queryProductError = productDetailResponse.error!.message;
       isAvailable = isAvailable;
@@ -401,14 +406,20 @@ class ArvoSubscriptionProvider implements SubscriptionProvider {
 
     final hasSilver = purchases!
         .where((purchaseDetails) =>
-            purchaseDetails.productID == kSilverSubscriptionId)
+            purchaseDetails.productID ==
+            (Platform.isIOS
+                ? kiOSSilverSubscriptionId
+                : kAndroidSilverSubscriptionId))
         .isNotEmpty;
 
     this.hasSilver = hasSilver;
 
     final hasGold = purchases!
         .where((purchaseDetails) =>
-            purchaseDetails.productID == kGoldSubscriptionId)
+            purchaseDetails.productID ==
+            (Platform.isIOS
+                ? kiOSGoldSubscriptionId
+                : kAndroidGoldSubscriptionId))
         .isNotEmpty;
 
     this.hasGold = hasGold;
